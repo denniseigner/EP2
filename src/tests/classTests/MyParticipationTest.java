@@ -41,6 +41,8 @@ public class MyParticipationTest implements MyTestInterface {
         int bibnumber = 40;
         testParticipation = new Participation(race, racer, bibnumber);
 
-        return MyMiniTestSuite.assertEquals("40 Mikaela Shiffrin (Lienz 2011 Ladies\' Slalom)" , testParticipation.testPrint());
+        MyMiniTestSuite.changeOutToFile();
+        testParticipation.print();
+        return MyMiniTestSuite.assertOutContent("40 Mikaela Shiffrin (Lienz 2011 Ladies\' Slalom)");
     }
 }

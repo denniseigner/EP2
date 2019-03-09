@@ -2,7 +2,11 @@ package tests.classTests;
 
 import main.Participation;
 import main.Startlist;
+import tests.miniTestSuite.MyMiniTestSuite;
 import tests.miniTestSuite.MyTestInterface;
+
+import java.io.File;
+import java.io.PrintStream;
 
 public class MyStartlistTest implements MyTestInterface {
     private static String classTested = "Startlist";
@@ -27,10 +31,15 @@ public class MyStartlistTest implements MyTestInterface {
         startlist.add(new Participation("Kitzbühel", "Marcel Hirscher", 1));
         startlist.add(new Participation("Kitzbühel", "Hermann Maier", 2));
         startlist.add(new Participation("Kitzbühel", "Benni Raich", 3));
-        
-        startlist.print();
 
-        return true;
+        MyMiniTestSuite.changeOutToFile();
+        startlist.print();
+        return MyMiniTestSuite.assertOutContent("1 Marcel Hirscher (Kitzbühel)\n" +
+            "\n" +
+            "2 Hermann Maier (Kitzbühel)\n" +
+            "\n" +
+            "3 Benni Raich (Kitzbühel)" +
+            "\n");
     }
 
     // TODO: find an automated way of thesting this
@@ -43,8 +52,13 @@ public class MyStartlistTest implements MyTestInterface {
         startlist.add(new Participation("Kitzbühel", "Marcel Hirscher", 1));
         startlist.add(new Participation("Kitzbühel", "Hermann Maier", 2));
 
+        MyMiniTestSuite.changeOutToFile();
         startlist.printOrdered();
-
-        return true;
+        return MyMiniTestSuite.assertOutContent("1 Marcel Hirscher (Kitzbühel)\n" +
+            "\n" +
+            "2 Hermann Maier (Kitzbühel)\n" +
+            "\n" +
+            "3 Benni Raich (Kitzbühel)" +
+            "\n");
     }
 }
