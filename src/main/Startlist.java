@@ -1,3 +1,5 @@
+package main;
+
 /*
 This class will be used in future assignments.  It is highly
 recommended to solve Assignment 1.2.

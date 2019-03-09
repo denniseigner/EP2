@@ -1,3 +1,5 @@
+package main;
+
 /*
 This class will be extended in the ad-hoc-assignment, and will be used
 in future assignments, so it is highly recommended to solve this
@@ -52,7 +54,17 @@ public class Participation {
     //
     public void print() {
         // TODO: Implement this method
-        System.out.println(bibnumber + " " + racer + " (" + race + ")");
+        System.out.println(createPrintMessage());
+    }
+
+    // Creates the message to be printed
+    private String createPrintMessage() {
+        return bibnumber + " " + racer + " (" + race + ")";
+    }
+
+    // Method for testing the printed message
+    public String testPrint() {
+        return createPrintMessage();
     }
 
     // Question:
