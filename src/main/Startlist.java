@@ -1,5 +1,7 @@
 package main;
 
+import java.util.Arrays;
+
 /*
 This class will be used in future assignments.  It is highly
 recommended to solve Assignment 1.2.
@@ -122,15 +124,58 @@ public class Startlist {
     public void printPermutations() {
         // TODO: Implement this method using a recursive algorithm.
 
+        permutateParticipants(filledParticipants(), new Participation[0]);
     }
 
+    // returns a list of participations which are added
+    private Participation[] filledParticipants() {
+        return Arrays.copyOfRange(participations, 0, countParticipations);
+    }
 
+    // prints all given participations
+    private void printParticipantList(Participation[] participations) {
+        for (int i = 0; i < participations.length; i++) {
+            participations[i].print();
+        }
+        System.out.println();
+    }
+
+    // permutates all given participations
+    private void permutateParticipants(Participation[] left, Participation[] soFar) {
+        if (soFar.length == countParticipations) {
+            printParticipantList(soFar);
+        }
+
+        for (int i = 0; i < left.length; i++) {
+            Participation[] newLeft = new Participation[left.length - 1];
+
+            Participation removedValue = null;
+            int index = 0;
+            for (int j = 0; j < left.length; j++) {
+                if (j != i) {
+                    newLeft[index++] = left[j];
+                } else {
+                    removedValue = left[j];
+                }
+            }
+
+            Participation[] newSoFar = new Participation[soFar.length + 1];
+
+            for (int j = 0; j < soFar.length; j++) {
+                newSoFar[j] = soFar[j];
+            }
+            newSoFar[newSoFar.length - 1] = removedValue;
+
+            permutateParticipants(newLeft, newSoFar);
+        }
+    }
 
     // Question:
 
     // How many calls to your recursive method do you get when you
     // call printPermutations() on a start list with n filled entries?
 
+    // n*n!
 
     // This method is only for testing.
     // Alternatively, you can put the tests in additional classes.

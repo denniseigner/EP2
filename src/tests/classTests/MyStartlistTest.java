@@ -14,7 +14,8 @@ public class MyStartlistTest implements MyTestInterface {
     @Override
     public boolean run() {
         return testPrint()
-            && testPrintOrdered();
+            && testPrintOrdered()
+            && testPrintPermutations();
     }
 
     @Override
@@ -60,5 +61,40 @@ public class MyStartlistTest implements MyTestInterface {
             "\n" +
             "3 Benni Raich (Kitzbühel)" +
             "\n");
+    }
+
+    private boolean testPrintPermutations() {
+        print("testPrintPermutations()");
+        Startlist startlist = new Startlist(100);
+
+        startlist.add(new Participation("Kitzbühel", "Marcel Hirscher", 1));
+        startlist.add(new Participation("Kitzbühel", "Hermann Maier", 2));
+        startlist.add(new Participation("Kitzbühel", "Benni Raich", 3));
+
+        MyMiniTestSuite.changeOutToFile();
+        startlist.printPermutations();
+        return MyMiniTestSuite.assertOutContent("1 Marcel Hirscher (Kitzbühel)\n" +
+            "2 Hermann Maier (Kitzbühel)\n" +
+            "3 Benni Raich (Kitzbühel)\n" +
+            "\n" +
+            "1 Marcel Hirscher (Kitzbühel)\n" +
+            "3 Benni Raich (Kitzbühel)\n" +
+            "2 Hermann Maier (Kitzbühel)\n" +
+            "\n" +
+            "2 Hermann Maier (Kitzbühel)\n" +
+            "1 Marcel Hirscher (Kitzbühel)\n" +
+            "3 Benni Raich (Kitzbühel)\n" +
+            "\n" +
+            "2 Hermann Maier (Kitzbühel)\n" +
+            "3 Benni Raich (Kitzbühel)\n" +
+            "1 Marcel Hirscher (Kitzbühel)\n" +
+            "\n" +
+            "3 Benni Raich (Kitzbühel)\n" +
+            "1 Marcel Hirscher (Kitzbühel)\n" +
+            "2 Hermann Maier (Kitzbühel)\n" +
+            "\n" +
+            "3 Benni Raich (Kitzbühel)\n" +
+            "2 Hermann Maier (Kitzbühel)\n" +
+            "1 Marcel Hirscher (Kitzbühel)\n");
     }
 }
