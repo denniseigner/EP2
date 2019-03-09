@@ -10,6 +10,10 @@ public class Startlist {
     
     // TODO: The object variable 'participations', which is an array
     //  of Participation objects, shall be declared here.
+    private Participation[] participations;
+
+    // keeps track on how many participations there are
+    private int countParticipations = 0;
 
     // TODO: A constructor for this class shall be defined here.
     // A new object constructed by
@@ -17,10 +21,15 @@ public class Startlist {
     //   new Startlist(100)
     //  
     // has room for 100 participations (all 'null' at first)
+    public Startlist(int amountOfParticipations) {
+        participations = new Participation[amountOfParticipations];
+    }
     
     // adds p to 'this'
     public void add(Participation p) {
         // TODO: Implement this method
+        participations[countParticipations] = p;
+        countParticipations++;
     }
 
     // Print the filled entries in an arbitrary order; each
@@ -28,6 +37,10 @@ public class Startlist {
     // print() in Participation, followed by a newline.
     public void print() {
         // TODO: Implement this method
+        for (int i = 0; i < countParticipations; i++) {
+            participations[i].print();
+            System.out.println();
+        }
     }
     
     // Print the filled entries in the order of increasing bib
@@ -35,6 +48,43 @@ public class Startlist {
     // produced by print() in Participation, followed by a newline.
     public void printOrdered() {
         // TODO: Implement this method
+        Participation[] orderedParticipations = orderParticipations();
+        for (int i = 0; i < countParticipations; i++) {
+            orderedParticipations[i].print();
+            System.out.println();
+        }
+    }
+
+    // rudimentary sorting algorithm for sorting the participations
+    private Participation[] orderParticipations() {
+        Participation[] retParticipations = new Participation[countParticipations];
+        int[] insertedParticipants = new int[countParticipations];
+
+        for (int i = 0; i < countParticipations; i++) {
+            int min = Integer.MAX_VALUE;
+            int minParticipationIndex = 0;
+
+
+            for (int j = 0; j < countParticipations; j++) {
+                boolean isAlreadyIn = false;
+
+                for (int k = 0; k < i; k++) {
+                    if (j == insertedParticipants[k]) isAlreadyIn = true;
+                }
+
+                if (!isAlreadyIn) {
+                    if (participations[j].getBibnumber() < min) {
+                        min = participations[j].getBibnumber();
+                        minParticipationIndex = j;
+                    }
+                }
+            }
+
+            insertedParticipants[i] = minParticipationIndex;
+            retParticipations[i] = participations[minParticipationIndex];
+        }
+
+        return retParticipations;
     }
 
     // Questions:
@@ -55,6 +105,14 @@ public class Startlist {
     // 3) Another requirement for a start list is that all
     // participations are for the same race.  Do you check this?
     // What is a sensible way to react if this is violated?
+
+    // 1) make the return value of add to Boolean and return true or false, depending on if someone can be added or not
+    // In my current implementation the program will just crash with a nullpointerexception
+
+    // 2) I did not require it. It definitely would make it easier, since the ordering for printOrdered() is needed
+    // Currently nothing happens if it is inserted twice, but we could add a check in add()
+
+    // 3) I did not check for this, but again, this could easily be done in add()
 
 
     // Assignment 1.3:
