@@ -109,7 +109,7 @@ public class Startlist {
     // What is a sensible way to react if this is violated?
 
     // 1) make the return value of add to Boolean and return true or false, depending on if someone can be added or not
-    // In my current implementation the program will just crash with a nullpointerexception
+    // In my current implementation the program will just crash with an ArrayIndexOutOfBoundsException
 
     // 2) I did not require it. It definitely would make it easier, since the ordering for printOrdered() is needed
     // Currently nothing happens if it is inserted twice, but we could add a check in add()
