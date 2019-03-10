@@ -57,10 +57,10 @@ public class Startlist {
         }
     }
 
-    // rudimentary sorting algorithm for sorting the participations
+    // simple selection sort for ordering the participations
     private Participation[] orderParticipations() {
         Participation[] retParticipations = new Participation[countParticipations];
-        int[] insertedParticipants = new int[countParticipations];
+        int[] insertedParticipations = new int[countParticipations];
 
         for (int i = 0; i < countParticipations; i++) {
             int min = Integer.MAX_VALUE;
@@ -71,7 +71,7 @@ public class Startlist {
                 boolean isAlreadyIn = false;
 
                 for (int k = 0; k < i; k++) {
-                    if (j == insertedParticipants[k]) isAlreadyIn = true;
+                    if (j == insertedParticipations[k]) isAlreadyIn = true;
                 }
 
                 if (!isAlreadyIn) {
@@ -82,7 +82,7 @@ public class Startlist {
                 }
             }
 
-            insertedParticipants[i] = minParticipationIndex;
+            insertedParticipations[i] = minParticipationIndex;
             retParticipations[i] = participations[minParticipationIndex];
         }
 
@@ -124,16 +124,16 @@ public class Startlist {
     public void printPermutations() {
         // TODO: Implement this method using a recursive algorithm.
 
-        permutateParticipants(filledParticipants(), new Participation[0]);
+        permutateParticipations(filledParticipations(), new Participation[0]);
     }
 
     // returns a list of participations which are added
-    private Participation[] filledParticipants() {
+    private Participation[] filledParticipations() {
         return Arrays.copyOfRange(participations, 0, countParticipations);
     }
 
     // prints all given participations
-    private void printParticipantList(Participation[] participations) {
+    private void printParticipationList(Participation[] participations) {
         for (int i = 0; i < participations.length; i++) {
             participations[i].print();
         }
@@ -141,9 +141,9 @@ public class Startlist {
     }
 
     // permutates all given participations
-    private void permutateParticipants(Participation[] left, Participation[] soFar) {
+    private void permutateParticipations(Participation[] left, Participation[] soFar) {
         if (soFar.length == countParticipations) {
-            printParticipantList(soFar);
+            printParticipationList(soFar);
         }
 
         for (int i = 0; i < left.length; i++) {
@@ -166,7 +166,7 @@ public class Startlist {
             }
             newSoFar[newSoFar.length - 1] = removedValue;
 
-            permutateParticipants(newLeft, newSoFar);
+            permutateParticipations(newLeft, newSoFar);
         }
     }
 
