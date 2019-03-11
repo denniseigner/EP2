@@ -1,0 +1,21 @@
+Objektvariablen sollten private sein, verlangte Methoden und
+Konstruktoren public, Hilfsmethoden private.
+
+Falls Sie eine zusaetzliche Klasse definieren, verwenden Sie
+einen Klassennamen, der mit "My" beginnt, damit der
+Klassenname nicht mit Klassen in kuenftigen Angaben kollidieren.
+
+Schreiben Sie Tests fuer die Aufgaben, z.B. in einer
+zusaetzlichen Klasse.
+
+Fragen sollen in der Übung beantwortet werden können.
+
+Aufgabe 2.1 (20%) ist in der Klasse PartList zu finden.
+
+Aufgabe 2.2 (20%) ist in der Klasse PartList zu finden.
+
+Aufgabe 2.3 (20%) ist in der Klasse PartList zu finden.
+
+Aufgabe 2.4 (20%) ist in der Klasse PartList zu finden.
+
+Aufgabe 2.5 (20%) ist in der Klasse PartList zu finden.
