@@ -30,8 +30,7 @@ public class Startlist {
     // adds p to 'this'
     public void add(Participation p) {
         // TODO: Implement this method
-        participations[countParticipations] = p;
-        countParticipations++;
+        participations[countParticipations++] = p;
     }
 
     // Print the filled entries in an arbitrary order; each
@@ -129,7 +128,13 @@ public class Startlist {
 
     // returns a list of participations which are added
     private Participation[] filledParticipations() {
-        return Arrays.copyOfRange(participations, 0, countParticipations);
+        Participation[] retArray = new Participation[countParticipations];
+
+        for (int i = 0; i < countParticipations; i++) {
+            retArray[i] = participations[i];
+        }
+
+        return retArray;
     }
 
     // prints all given participations
