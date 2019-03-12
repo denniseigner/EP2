@@ -43,7 +43,6 @@ public class MyStartlistTest implements MyTestInterface {
             "\n");
     }
 
-    // TODO: find an automated way of thesting this
     private boolean testPrintOrdered() {
         print("testPrintOrdered()");
 
