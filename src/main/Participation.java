@@ -62,11 +62,6 @@ public class Participation {
         return bibnumber + " " + racer + " (" + race + ")";
     }
 
-    // Method for testing the printed message
-    public String testPrint() {
-        return createPrintMessage();
-    }
-
     // Question:
     
     // Should there also be setter methods for the object variables?

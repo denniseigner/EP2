@@ -149,6 +149,7 @@ public class Startlist {
     private void permutateParticipations(Participation[] left, Participation[] soFar) {
         if (soFar.length == countParticipations) {
             printParticipationList(soFar);
+            return;
         }
 
         for (int i = 0; i < left.length; i++) {
@@ -180,7 +181,7 @@ public class Startlist {
     // How many calls to your recursive method do you get when you
     // call printPermutations() on a start list with n filled entries?
 
-    // n*n!
+    // n! * Sum_{k=1..n} 1/k! times: (A002627) a(n) = n*a(n-1) + 1, a(0) = 0
 
     // This method is only for testing.
     // Alternatively, you can put the tests in additional classes.
