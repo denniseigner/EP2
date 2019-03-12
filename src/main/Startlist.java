@@ -124,6 +124,30 @@ public class Startlist {
         // TODO: Implement this method using a recursive algorithm.
 
         permutateParticipations(filledParticipations(), new Participation[0]);
+
+//        printParticipationList(filledParticipations());
+//        heapParticipation(filledParticipations(), filledParticipations().length);
+    }
+
+    // permutates all S using the heap alogirithm
+    private void heapParticipation(Participation[] S, int n) {
+        int i;
+        for (i = 0; ; i++) {
+            if (n > 2)
+                heapParticipation(S, n - 1);
+            if (i == n - 1)
+                break;
+            if (n % 2 == 0) {
+                Participation tmp = S[i];
+                S[i] = S[n - 1];
+                S[n - 1] = tmp;
+            } else {
+                Participation tmp = S[0];
+                S[0] = S[n - 1];
+                S[n - 1] = tmp;
+            }
+            printParticipationList(S);
+        }
     }
 
     // returns a list of participations which are added
