@@ -26,8 +26,7 @@ public class Startlist {
     
     // adds p to 'this'
     public void add(Participation p) {
-        participations[countParticipations] = p;
-        countParticipations++;
+        participations[countParticipations++] = p;
     }
 
     // Print the filled entries in an arbitrary order; each
