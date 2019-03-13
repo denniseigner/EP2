@@ -9,15 +9,12 @@ recommended to solve Assignment 1.2.
 public class Startlist {
 
     // Assignment 1.2:
-    
-    // TODO: The object variable 'participations', which is an array
-    //  of Participation objects, shall be declared here.
+
     private Participation[] participations;
 
     // keeps track on how many participations there are
     private int countParticipations = 0;
 
-    // TODO: A constructor for this class shall be defined here.
     // A new object constructed by
     //  
     //   new Startlist(100)
@@ -29,7 +26,6 @@ public class Startlist {
     
     // adds p to 'this'
     public void add(Participation p) {
-        // TODO: Implement this method
         participations[countParticipations++] = p;
     }
 
@@ -37,7 +33,6 @@ public class Startlist {
     // participation is printed in the same format as produced by
     // print() in Participation, followed by a newline.
     public void print() {
-        // TODO: Implement this method
         for (int i = 0; i < countParticipations; i++) {
             participations[i].print();
             System.out.println();
@@ -48,7 +43,6 @@ public class Startlist {
     // numbers; each participation is printed in the same format as
     // produced by print() in Participation, followed by a newline.
     public void printOrdered() {
-        // TODO: Implement this method
         Participation[] orderedParticipations = orderParticipations();
         for (int i = 0; i < countParticipations; i++) {
             orderedParticipations[i].print();
@@ -58,31 +52,18 @@ public class Startlist {
 
     // simple selection sort for ordering the participations
     private Participation[] orderParticipations() {
-        Participation[] retParticipations = new Participation[countParticipations];
-        int[] insertedParticipations = new int[countParticipations];
+        Participation[] retParticipations = filledParticipations();
 
-        for (int i = 0; i < countParticipations; i++) {
-            int min = Integer.MAX_VALUE;
-            int minParticipationIndex = 0;
-
-
-            for (int j = 0; j < countParticipations; j++) {
-                boolean isAlreadyIn = false;
-
-                for (int k = 0; k < i; k++) {
-                    if (j == insertedParticipations[k]) isAlreadyIn = true;
-                }
-
-                if (!isAlreadyIn) {
-                    if (participations[j].getBibnumber() < min) {
-                        min = participations[j].getBibnumber();
-                        minParticipationIndex = j;
-                    }
-                }
+        for (int i = 0; i < countParticipations - 1; i++) {
+            int smallest = i;
+            for (int j = i; j < countParticipations; j++) {
+                if (retParticipations[j].getBibnumber() < retParticipations[smallest].getBibnumber())
+                    smallest = j;
             }
 
-            insertedParticipations[i] = minParticipationIndex;
-            retParticipations[i] = participations[minParticipationIndex];
+            Participation tmp = retParticipations[i];
+            retParticipations[i] = retParticipations[smallest];
+            retParticipations[smallest] = tmp;
         }
 
         return retParticipations;
@@ -121,8 +102,6 @@ public class Startlist {
     // Print all the permutations of the start list, with each
     // permutation followed by an empty line.
     public void printPermutations() {
-        // TODO: Implement this method using a recursive algorithm.
-
         permutateParticipations(filledParticipations(), new Participation[0]);
 
 //        printParticipationList(filledParticipations());
