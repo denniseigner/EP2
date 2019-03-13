@@ -2,25 +2,20 @@ package tests.classTests;
 
 import main.Participation;
 import main.Startlist;
+import tests.miniTestSuite.MyClassTest;
 import tests.miniTestSuite.MyMiniTestSuite;
 import tests.miniTestSuite.MyTestInterface;
 
 import java.io.File;
 import java.io.PrintStream;
 
-public class MyStartlistTest implements MyTestInterface {
-    private static String classTested = "Startlist";
+public class MyStartlistTest extends MyClassTest implements MyTestInterface {
 
     @Override
     public boolean run() {
         return testPrint()
             && testPrintOrdered()
             && testPrintPermutations();
-    }
-
-    @Override
-    public void print(String testName) {
-        System.out.println("Testing " + classTested + " " + testName);
     }
 
     // TODO: find an automated way of thesting this
