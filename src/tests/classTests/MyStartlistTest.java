@@ -38,7 +38,6 @@ public class MyStartlistTest extends MyClassTest implements MyTestInterface {
             "\n");
     }
 
-    // TODO: find an automated way of thesting this
     private boolean testPrintOrdered() {
         print("testPrintOrdered()");
 
