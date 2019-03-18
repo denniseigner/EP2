@@ -10,12 +10,13 @@ zusaetzlichen Klasse.
 
 Fragen sollen in der Übung beantwortet werden können.
 
-Aufgabe 2.1 (20%) ist in der Klasse PartList zu finden.
+Aufgabe 2.1 (20%) ist in der Klasse Parse zu finden.
 
-Aufgabe 2.2 (20%) ist in der Klasse PartList zu finden.
+Aufgabe 2.2 (30%) ist in den Klassen CharStack und Parse zu finden.
+Diese Aufgabe wird in künftigen Angaben erweitert; wir empfehlen
+daher dringend, sie zu lösen.
 
-Aufgabe 2.3 (20%) ist in der Klasse PartList zu finden.
+Aufgabe 2.3 (30%) ist in der Klasse Participations zu finden.
 
-Aufgabe 2.4 (20%) ist in der Klasse PartList zu finden.
+Aufgabe 2.4 (20%) ist in der Klasse Participations zu finden.
 
-Aufgabe 2.5 (20%) ist in der Klasse PartList zu finden.
