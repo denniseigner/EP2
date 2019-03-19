@@ -12,7 +12,9 @@ public class MyParticipationTest extends MyClassTest implements MyTestInterface 
     @Override
     public boolean run() {
         return testGetters()
-            && testPrint();
+            && testExtendedGetters()
+            && testPrint()
+            && testPrint1();
     }
 
     private boolean testGetters() {
@@ -27,6 +29,22 @@ public class MyParticipationTest extends MyClassTest implements MyTestInterface 
             && MyMiniTestSuite.assertEquals(bibnumber, testParticipation.getBibnumber());
     }
 
+    private boolean testExtendedGetters() {
+        print("testExtendedGetters()");
+        String racer = "Mikaela Shiffrin";
+        String race = "Lienz 2011 Ladies' Slalom";
+        int bibnumber = 40;
+        int place = 3;
+        String runtime = "IncredibleTime";
+        Participation testParticipation = new Participation(race, racer, bibnumber, place, runtime);
+
+        return MyMiniTestSuite.assertEquals(racer, testParticipation.getRacer())
+            && MyMiniTestSuite.assertEquals(race, testParticipation.getRace())
+            && MyMiniTestSuite.assertEquals(bibnumber, testParticipation.getBibnumber())
+            && MyMiniTestSuite.assertEquals(place, testParticipation.getPlace())
+            && MyMiniTestSuite.assertEquals(runtime, testParticipation.getRuntime());
+    }
+
     private boolean testPrint() {
         print("testPrint()");
         String racer = "Mikaela Shiffrin";
@@ -37,5 +55,29 @@ public class MyParticipationTest extends MyClassTest implements MyTestInterface 
         MyMiniTestSuite.changeOutToFile();
         testParticipation.print();
         return MyMiniTestSuite.assertOutContent("40 Mikaela Shiffrin (Lienz 2011 Ladies\' Slalom)");
+    }
+
+    private boolean testPrint1() {
+        print("testPrint1()");
+
+        String racer = "Mikaela Shiffrin";
+        String race = "Lienz 2011 Ladies' Slalom";
+        int bibnumber = 40;
+        int place = 3;
+        String runtime = "IncredibleTime";
+        Participation testParticipation = new Participation(race, racer, bibnumber);
+        Participation testParticipation2 = new Participation(race, racer, bibnumber, place, runtime);
+
+        MyMiniTestSuite.changeOutToFile();
+        testParticipation.print();
+        boolean emptyElement = MyMiniTestSuite.assertOutContent("40 Mikaela Shiffrin (Lienz 2011 Ladies\' Slalom)");
+
+        MyMiniTestSuite.changeOutToFile();
+        testParticipation2.print1();
+        boolean filledElement = MyMiniTestSuite.assertOutContent("40 Mikaela Shiffrin (Lienz 2011 Ladies' Slalom); " +
+            "3; IncredibleTime");
+
+        return emptyElement
+            && filledElement;
     }
 }

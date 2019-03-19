@@ -11,10 +11,8 @@ public class Participation {
 
     // Assignment 1.1:
 
-    private String race, racer;
-    private int bibnumber;
-    private int place;
-    private String runtime;
+    private String race, racer, runtime;
+    private int bibnumber, place;
 
     // A new object constructed by
     //
@@ -28,14 +26,10 @@ public class Participation {
     }
 
     public Participation(String race, String racer, int bibnumber, int place, String runtime) {
-        this.race = race;
-        this.racer = racer;
-        this.bibnumber = bibnumber;
+        this(race, racer, bibnumber);
         this.place = place;
         this.runtime = runtime;
     }
-
-
 
     // Returns the 'race' of this participation.
     public String getRace() {
@@ -70,12 +64,12 @@ public class Participation {
     }
 
     public void print1() {
+        System.out.print(createPrintMessage());
         if(place == 0 && runtime == null) {
-            System.out.println(createPrintMessage());
             return;
         }
 
-        System.out.println(createPrintMessage() + "; " + place + "; " + runtime);
+        System.out.println("; " + place + "; " + runtime);
     }
 
     // Creates the message to be printed
