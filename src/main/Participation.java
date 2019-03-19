@@ -13,6 +13,8 @@ public class Participation {
 
     private String race, racer;
     private int bibnumber;
+    private int place;
+    private String runtime;
 
     // A new object constructed by
     //
@@ -24,6 +26,15 @@ public class Participation {
         this.racer = racer;
         this.bibnumber = bibnumber;
     }
+
+    public Participation(String race, String racer, int bibnumber, int place, String runtime) {
+        this.race = race;
+        this.racer = racer;
+        this.bibnumber = bibnumber;
+        this.place = place;
+        this.runtime = runtime;
+    }
+
 
 
     // Returns the 'race' of this participation.
@@ -41,6 +52,14 @@ public class Participation {
         return bibnumber;
     }
 
+    public int getPlace() {
+        return place;
+    }
+
+    public String getRuntime() {
+        return runtime;
+    }
+
     // Output the following (without newline at the start or end) for
     // the participation created by the constructor call above:
     //
@@ -48,6 +67,15 @@ public class Participation {
     //
     public void print() {
         System.out.println(createPrintMessage());
+    }
+
+    public void print1() {
+        if(place == 0 && runtime == null) {
+            System.out.println(createPrintMessage());
+            return;
+        }
+
+        System.out.println(createPrintMessage() + "; " + place + "; " + runtime);
     }
 
     // Creates the message to be printed
