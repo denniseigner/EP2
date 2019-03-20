@@ -6,15 +6,16 @@ public class Parse {
     // otherwise false.  The opening parenthesis '(' is closed with
     // ')', '[' with ']', '{' with '}', and '<' with '>'.  A properly
     // parenthesized string contains either nothing, or an opening
-    // parenthesis, a properly parenthesized string, a closing
-    // parenthesis matching the opening parenthesis, followed by a
-    // properly parenthesized string.  Examples are "", "()<>",
-    // "(([(<>)])){()}<{}>".
+    // parenthesis followed by a properly parenthesized string, then
+    // a closing parenthesis matching the opening parenthesis, then a
+    // properly parenthesized string.  Examples for properly
+    // parenthesized strings are "", "()<>", "(([(<>)])){()}<{}>".
+    // By contrast, "(", ")", "(a)", "(]" are not properly
+    // parenthesized.
     public static boolean parseRec(String s)
     {
         // TODO: implement this method using recursion
-        
-        // 
+        return false;
     }
 
     // Assignment 2.2 (partly also in CharStack.java)
@@ -23,7 +24,8 @@ public class Parse {
     // otherwise false.  See parseRec for details.
     public static boolean parseStack(String s)
     {
-      // TODO: implement this method using class 'CharStack', and no recursion
+        // TODO: implement this method using class 'CharStack', and no recursion
+        return false;
     }
 
     // Fragen:

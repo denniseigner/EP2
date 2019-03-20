@@ -1,11 +1,11 @@
+// Objects of CharStack are stacks holding chars.  The stack is
+// implemented using an array, not using other classes.
+// The array grows whenever the number of entries is insufficient.
 public class CharStack {
-
-    // introduce (private) object variables as needed
 
     // Assignment 2.2 (partly also in Parse.java)
 
-    // Use an array to implement the stack, and grow it as necessary
-    // if you run out of elements.
+    // introduce (private) object variables as needed
 
     // Create an empty stack
     public CharStack() {
@@ -21,11 +21,13 @@ public class CharStack {
     // popped yet
     public char pop() {
         // TODO: Implement this method
+        return ' ';
     }
 
     // returns true if all characters pushed on 'this' have been popped.
     public boolean isEmpty() {
         // TODO: Implement this method
+        return false;
     }
 
     // This method is only for testing.

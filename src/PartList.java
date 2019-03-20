@@ -13,7 +13,7 @@ public class PartList {
     // requirements compared to 'print' of 'Startlist'
 
     // creates an empty object of this class
-    public Startlist1(int n) {
+    public PartList(int n) {
         // TODO: implement this constructor
     }
 
@@ -56,6 +56,7 @@ public class PartList {
     // no such participation, return null.
     public Participation lookupRacer(String r) {
         // TODO: Implement this method
+        return null;
     }
 
     // Frage:

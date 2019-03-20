@@ -2,17 +2,15 @@
 This class will be used in future assignments and in the ad-hoc
 assignment.  It is recommended to solve Assignment 2.3 and 2.4
 */
+// Objects of class 'Participations' contain participations from
+// several races.  The implementation uses an array.
 public class Participations {
-
-    // introduce (private) object variables as needed
 
     // Assignment 2.3
 
-    // In general, Objects of class 'Participations' contain
-    // participations from many races.  Use an array to implement this
-    // class.
+    // introduce (private) object variables as needed
 
-    // creates an empty object of this class
+    // creates an empty object of this class with space for n entries
     public Participations(int n) {
         // TODO: implement this constructor
     }
@@ -38,11 +36,12 @@ public class Participations {
     // Gesamtsicht ausgezahlt?  Begründen Sie Ihre Antwort.
 
 
-    // returns the first participation (the one that was inserted
+    // Returns the first participation (the one that was inserted
     // earliest) in 'this' where the 'racer' equals 'r'.  If there is
     // no such participation, return null.
     public Participation lookupRacer(String r) {
         // TODO: Implement this method
+        return null;
     }
 
     // Frage:
@@ -53,9 +52,12 @@ public class Participations {
 
 
     // Assignment 2.4
-    
-    // create a startlist that contains all participations where the
-    // race >= r1 and where the race <= r2, in the same order.
+
+    // introduce additional object variables if needed
+
+    // Create a startlist that contains all participations where
+    // race.compareTo(r1) >= 0 and race.compareTo(r2) <= 0.
+    // The entries are in the same order as in l.
     public Participations(Participations l, String r1, String r2) {
         // TODO: Implement this constructor
     }
