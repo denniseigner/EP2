@@ -14,9 +14,12 @@ Aufgabe 2.1 (20%) ist in der Klasse Parse zu finden.
 
 Aufgabe 2.2 (30%) ist in den Klassen CharStack und Parse zu finden.
 Diese Aufgabe wird in künftigen Angaben erweitert; wir empfehlen
-daher dringend, sie zu lösen.
+daher, sie zu lösen.
 
 Aufgabe 2.3 (30%) ist in der Klasse Participations zu finden.
+Diese Aufgabe wird in künftigen Angaben erweitert; wir empfehlen
+daher, sie zu lösen.
 
-Aufgabe 2.4 (20%) ist in der Klasse Participations zu finden.
-
+Aufgabe 2.4 (20%) ist in der Klasse Participations zu finden.  Diese
+Aufgabe wird in der Adhoc-Aufgabe erweitert; wir empfehlen daher, sie
+zu lösen.
