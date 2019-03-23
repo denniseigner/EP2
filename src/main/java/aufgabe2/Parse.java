@@ -1,5 +1,7 @@
 package main.java.aufgabe2;
 
+import java.util.Arrays;
+
 public class Parse {
 
     // Assignment 2.1
@@ -19,6 +21,7 @@ public class Parse {
         // TODO: implement this method using recursion
 
         if (s.length() == 0) return true;
+        if (s.length() == 1) return false;
 
         char[][] pairs = {
             { '(', ')' },
@@ -26,20 +29,22 @@ public class Parse {
             { '{', '}' },
             { '<', '>' }
         };
-        boolean retVal = false;
-        String newSub = s;
+        String newSub = "";
 
-        for (int i = 0; i < pairs.length; i++) {
-            if (s.charAt(0) == pairs[i][0]) {
-                int subIndex = s.indexOf(pairs[i][1]);
-                if (subIndex > -1) {
-                    newSub = s.substring(1, subIndex) + s.substring(subIndex + 1);
-                    retVal = true;
-                }
-            }
+        int matchingPair = findMatchingPair(pairs, s, 0);
+        if (matchingPair == -1) return false;
+        newSub = s.substring(0, matchingPair) + s.substring(matchingPair + 2);
+
+        return parseRec(newSub);
+    }
+
+    private static int findMatchingPair(char[][] pairs, String s, int offset) {
+        if (s.length() < 2) return -1;
+        for (char[] pair : pairs) {
+            if (s.indexOf(pair[0]) + 1 == s.indexOf(pair[1])) return s.indexOf(pair[0]) + offset;
         }
 
-        return retVal && parseRec(newSub);
+        return findMatchingPair(pairs, s.substring(1), offset + 1);
     }
 
     // Assignment 2.2 (partly also in CharStack.java)
@@ -49,7 +54,52 @@ public class Parse {
     public static boolean parseStack(String s)
     {
         // TODO: implement this method using class 'CharStack', and no recursion
+
+        if (s.length() == 0) return true;
+
+        CharStack cs = new CharStack();
+        char[][] pairs = {
+            { '(', ')' },
+            { '[', ']' },
+            { '{', '}' },
+            { '<', '>' }
+        };
+
+        for (char c : s.toCharArray()) {
+            if (!contains(pairs, c))
+                return false;
+            if (isOpening(pairs, c))
+                cs.push(c);
+            if (isClosing(pairs, c) && cs.pop() != getPair(pairs, c))
+                return false;
+        }
+
+        return cs.isEmpty();
+    }
+
+    private static char getPair(char[][] pairs, char c) {
+        for (char[] pair : pairs) {
+            if (c == pair[1]) return pair[0];
+        }
+        return 0;
+    }
+
+    private static boolean isOpening(char[][] pairs, char c) {
+        for (char[] pair : pairs) {
+            if (c == pair[0]) return true;
+        }
         return false;
+    }
+
+    private static boolean isClosing(char[][] pairs, char c) {
+        for (char[] pair : pairs) {
+            if (c == pair[1]) return true;
+        }
+        return false;
+    }
+
+    private static boolean contains(char[][] pairs, char c) {
+        return isClosing(pairs, c) || isOpening(pairs, c);
     }
 
     // Fragen:
