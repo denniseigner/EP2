@@ -1,0 +1,33 @@
+Allgemein: Vorgegebene Programmteile dürfen nur an den Stellen
+verändert werden, die mit TODO markiert sind.
+Zusätzliche Klassen, Interfaces, Methoden und Variablen dürfen
+aber eingefügt werden.
+
+Objektvariablen sollten private sein, verlangte Methoden und
+Konstruktoren public, Hilfsmethoden private.
+
+Falls Sie eine zusaetzliche Klasse definieren, verwenden Sie
+einen Klassennamen, der mit "My" beginnt, damit der
+Klassenname nicht mit Klassen in künftigen Angaben kollidiert.
+
+Schreiben Sie Tests fuer die Aufgaben, z.B. in einer
+zusaetzlichen Klasse.
+
+Fragen sollen in der Übung beantwortet werden können.
+
+Aufgabe 2.1 (20%) ist in der Klasse Parse zu finden.
+
+Aufgabe 2.2 (30%) ist in den Klassen CharStack und Parse zu finden.
+Diese Aufgabe wird in künftigen Angaben erweitert; wir empfehlen
+daher, sie zu lösen.
+
+Aufgabe 2.3 (30%) ist in der Klasse Participations zu finden.
+(Achtung Participations != Participation)
+
+Diese Aufgabe wird in künftigen Angaben erweitert; wir empfehlen
+daher, sie zu lösen.
+
+Aufgabe 2.4 (20%) ist in der Klasse Participations zu finden.
+
+Diese Aufgabe wird in der Adhoc-Aufgabe erweitert; wir empfehlen
+daher, sie zu lösen.
