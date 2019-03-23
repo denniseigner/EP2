@@ -21,7 +21,6 @@ public class Parse {
         // TODO: implement this method using recursion
 
         if (s.length() == 0) return true;
-        if (s.length() == 1) return false;
 
         char[][] pairs = {
             { '(', ')' },
@@ -65,11 +64,9 @@ public class Parse {
         };
 
         for (char c : s.toCharArray()) {
-            if (!contains(pairs, c))
-                return false;
             if (isOpening(pairs, c))
                 cs.push(c);
-            if (isClosing(pairs, c) && cs.pop() != getPair(pairs, c))
+            if (isClosing(pairs, c) && cs.pop() != getPair(pairs, c) || !contains(pairs, c))
                 return false;
         }
 
