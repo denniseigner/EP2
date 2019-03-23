@@ -9,11 +9,8 @@ public class MyParseTest extends MyClassTest implements MyTestInterface {
 
     @Override
     public boolean run() {
-        return testParseRec();
-    }
-
-    private void exec(String s) {
-        System.out.println("Testing " + s + ": " + Parse.parseRec(s));
+        return testParseRec()
+            && testParseStack();
     }
 
     private boolean testParseRec() {
@@ -26,5 +23,17 @@ public class MyParseTest extends MyClassTest implements MyTestInterface {
             && MyMiniTestSuite.assertFalse(Parse.parseRec(")"))
             && MyMiniTestSuite.assertFalse(Parse.parseRec("(a)"))
             && MyMiniTestSuite.assertFalse(Parse.parseRec("(]"));
+    }
+
+    private boolean testParseStack() {
+        print("testParseStack()");
+
+        return MyMiniTestSuite.assertTrue(Parse.parseStack(""))
+            && MyMiniTestSuite.assertTrue(Parse.parseStack("()<>"))
+            && MyMiniTestSuite.assertTrue(Parse.parseStack("(([(<>)])){()}<{}>"))
+            && MyMiniTestSuite.assertFalse(Parse.parseStack("("))
+            && MyMiniTestSuite.assertFalse(Parse.parseStack(")"))
+            && MyMiniTestSuite.assertFalse(Parse.parseStack("(a)"))
+            && MyMiniTestSuite.assertFalse(Parse.parseStack("(]"));
     }
 }

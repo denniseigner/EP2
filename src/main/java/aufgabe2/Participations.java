@@ -2,6 +2,8 @@ package main.java.aufgabe2;
 
 import main.java.aufgabe1.Participation;
 
+import java.util.Arrays;
+
 /*
 This class will be used in future assignments and in the ad-hoc
 assignment.  It is recommended to solve Assignment 2.3 and 2.4
@@ -13,16 +15,22 @@ public class Participations {
     // Assignment 2.3
 
     // Introduce (private) object variables as needed.
+    private Participation[] participations;
+    private int countParticipations;
 
     // Creates an empty object of this class with space for n entries.
     public Participations(int n) {
         // TODO: implement this constructor
+
+        participations = new Participation[n];
+        countParticipations = 0;
     }
 
     // Adds p to 'this'.
     public void add(Participation p) {
         // TODO: Implement this method without using methods from
         //  other classes
+        participations[countParticipations++] = p;
     }
     
     // Print the filled entries in the order of insertion; each
@@ -30,6 +38,14 @@ public class Participations {
     // print() in Participation, followed by a newline.
     public void print() {
         // TODO: Implement this method
+        for (Participation participation : filledParticipations()) {
+            participation.print();
+            System.out.println();
+        }
+    }
+
+    private Participation[] filledParticipations() {
+        return Arrays.copyOfRange(participations, 0, countParticipations);
     }
 
     // Frage:
@@ -47,6 +63,9 @@ public class Participations {
     public Participation lookupRacer(String r) {
         // TODO: Implement this method without using methods from
         //  other classes
+        for (Participation participation : filledParticipations()) {
+            if (participation.getRacer().equals(r)) return participation;
+        }
         return null;
     }
 
@@ -70,6 +89,20 @@ public class Participations {
     // constructor.
     public Participations(Participations l, String r1, String r2) {
         // TODO: Implement this constructor
+        Participation[] tmp = new Participation[l.countParticipations];
+        int counter = 0;
+        for (Participation participation : l.filledParticipations()) {
+            if (participation.getRace().compareTo(r1) >= 0 && participation.getRace().compareTo(r2) <= 0){
+                tmp[counter++] = participation;
+            }
+        }
+
+        participations = new Participation[counter];
+        countParticipations = counter;
+
+        for (int i = 0; i < counter; i++) {
+            participations[i] = tmp[i];
+        }
     }
 
     // Frage:
