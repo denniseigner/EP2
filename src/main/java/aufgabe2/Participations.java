@@ -2,6 +2,8 @@ package main.java.aufgabe2;
 
 import main.java.aufgabe1.Participation;
 
+import java.util.Arrays;
+
 /*
 This class will be used in future assignments and in the ad-hoc
 assignment.  It is recommended to solve Assignment 2.3 and 2.4
@@ -13,8 +15,8 @@ public class Participations {
     // Assignment 2.3
 
     // Introduce (private) object variables as needed.
-    Participation[] participations;
-    int countParticipations;
+    private Participation[] participations;
+    private int countParticipations;
 
     // Creates an empty object of this class with space for n entries.
     public Participations(int n) {
@@ -36,10 +38,14 @@ public class Participations {
     // print() in Participation, followed by a newline.
     public void print() {
         // TODO: Implement this method
-        for (int i = 0; i < countParticipations; i++) {
-            participations[i].print();
+        for (Participation participation : filledParticipations()) {
+            participation.print();
             System.out.println();
         }
+    }
+
+    private Participation[] filledParticipations() {
+        return Arrays.copyOfRange(participations, 0, countParticipations);
     }
 
     // Frage:
@@ -57,6 +63,9 @@ public class Participations {
     public Participation lookupRacer(String r) {
         // TODO: Implement this method without using methods from
         //  other classes
+        for (Participation participation : filledParticipations()) {
+            if (participation.getRacer().equals(r)) return participation;
+        }
         return null;
     }
 
@@ -80,6 +89,7 @@ public class Participations {
     // constructor.
     public Participations(Participations l, String r1, String r2) {
         // TODO: Implement this constructor
+        
     }
 
     // Frage:

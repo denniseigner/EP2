@@ -16,7 +16,11 @@ public class MyMiniTestSuite {
         return is == should;
     }
 
-    public static boolean assertEqusls(char is, char should) {
+    public static boolean assertEquals(char is, char should) {
+        return is == should;
+    }
+
+    public static boolean assertEquals(Object is, Object should) {
         return is == should;
     }
 
