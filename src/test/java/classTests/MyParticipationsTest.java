@@ -51,6 +51,8 @@ public class MyParticipationsTest extends MyClassTest implements MyTestInterface
     }
 
     private boolean testModifiedConstructor() {
+        print("testModifiedConstructor()");
+
         Participations participations = new Participations(100);
 
         participations.add(new Participation("Kitzbühel1", "Marcel Hirscher", 1));
