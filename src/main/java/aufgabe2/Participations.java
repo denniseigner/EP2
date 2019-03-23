@@ -13,16 +13,22 @@ public class Participations {
     // Assignment 2.3
 
     // Introduce (private) object variables as needed.
+    Participation[] participations;
+    int countParticipations;
 
     // Creates an empty object of this class with space for n entries.
     public Participations(int n) {
         // TODO: implement this constructor
+
+        participations = new Participation[n];
+        countParticipations = 0;
     }
 
     // Adds p to 'this'.
     public void add(Participation p) {
         // TODO: Implement this method without using methods from
         //  other classes
+        participations[countParticipations++] = p;
     }
     
     // Print the filled entries in the order of insertion; each
@@ -30,6 +36,10 @@ public class Participations {
     // print() in Participation, followed by a newline.
     public void print() {
         // TODO: Implement this method
+        for (int i = 0; i < countParticipations; i++) {
+            participations[i].print();
+            System.out.println();
+        }
     }
 
     // Frage:

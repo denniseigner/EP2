@@ -29,13 +29,12 @@ public class Parse {
             { '{', '}' },
             { '<', '>' }
         };
-        String newSub = "";
 
         int matchingPair = findMatchingPair(pairs, s, 0);
         if (matchingPair == -1) return false;
-        newSub = s.substring(0, matchingPair) + s.substring(matchingPair + 2);
+        s = s.substring(0, matchingPair) + s.substring(matchingPair + 2);
 
-        return parseRec(newSub);
+        return parseRec(s);
     }
 
     private static int findMatchingPair(char[][] pairs, String s, int offset) {
