@@ -97,12 +97,8 @@ public class Participations {
             }
         }
 
-        participations = new Participation[counter];
+        participations = Arrays.copyOf(tmp, counter);
         countParticipations = counter;
-
-        for (int i = 0; i < counter; i++) {
-            participations[i] = tmp[i];
-        }
     }
 
     // Frage:
