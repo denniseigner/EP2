@@ -1,4 +1,4 @@
-package tests.miniTestSuite;
+package test.java.miniTestSuite;
 
 public class MyClassTest {
 

@@ -1,3 +1,5 @@
+package main.java.aufgabe2;
+
 // Objects of CharStack are stacks holding chars.  The stack is
 // implemented using an array, without using other classes.
 // The array grows whenever the number of entries is insufficient.

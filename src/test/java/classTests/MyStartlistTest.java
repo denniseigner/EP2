@@ -1,13 +1,10 @@
-package tests.classTests;
+package test.java.classTests;
 
-import main.Participation;
-import main.Startlist;
-import tests.miniTestSuite.MyClassTest;
-import tests.miniTestSuite.MyMiniTestSuite;
-import tests.miniTestSuite.MyTestInterface;
-
-import java.io.File;
-import java.io.PrintStream;
+import main.java.aufgabe1.Participation;
+import main.java.aufgabe1.Startlist;
+import test.java.miniTestSuite.MyClassTest;
+import test.java.miniTestSuite.MyMiniTestSuite;
+import test.java.miniTestSuite.MyTestInterface;
 
 public class MyStartlistTest extends MyClassTest implements MyTestInterface {
 

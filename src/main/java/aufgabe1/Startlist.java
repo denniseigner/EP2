@@ -1,6 +1,4 @@
-package main;
-
-import java.util.Arrays;
+package main.java.aufgabe1;
 
 /*
 This class will be used in future assignments.  It is highly

@@ -1,4 +1,4 @@
-package tests.miniTestSuite;
+package test.java.miniTestSuite;
 
 import java.io.File;
 import java.io.FileNotFoundException;

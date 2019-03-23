@@ -1,7 +1,7 @@
-package tests.miniTestSuite;
+package test.java.miniTestSuite;
 
-import tests.classTests.MyParticipationTest;
-import tests.classTests.MyStartlistTest;
+import test.java.classTests.MyParticipationTest;
+import test.java.classTests.MyStartlistTest;
 
 public class MyTestRunner {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package main;
+package main.java.aufgabe1;
 
 /*
 This class will be extended in the ad-hoc-assignment, and will be used
@@ -66,6 +66,7 @@ public class Participation {
     public void print1() {
         System.out.print(createPrintMessage());
         if(place == 0 && runtime == null) {
+            System.out.println();
             return;
         }
 

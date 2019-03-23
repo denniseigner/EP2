@@ -1,3 +1,5 @@
+package main.java.aufgabe2;
+
 public class Parse {
 
     // Assignment 2.1

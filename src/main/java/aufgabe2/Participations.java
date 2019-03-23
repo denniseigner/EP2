@@ -1,3 +1,7 @@
+package main.java.aufgabe2;
+
+import main.java.aufgabe1.Participation;
+
 /*
 This class will be used in future assignments and in the ad-hoc
 assignment.  It is recommended to solve Assignment 2.3 and 2.4
