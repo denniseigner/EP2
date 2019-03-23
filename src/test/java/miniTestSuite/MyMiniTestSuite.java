@@ -16,6 +16,14 @@ public class MyMiniTestSuite {
         return is == should;
     }
 
+    public static boolean assertTrue(boolean is) {
+        return is;
+    }
+
+    public static boolean assertFalse(boolean is) {
+        return !is;
+    }
+
     public static void changeOutToFile() {
         PrintStream o = null;
         try {

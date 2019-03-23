@@ -17,7 +17,29 @@ public class Parse {
     public static boolean parseRec(String s)
     {
         // TODO: implement this method using recursion
-        return false;
+
+        if (s.length() == 0) return true;
+
+        char[][] pairs = {
+            { '(', ')' },
+            { '[', ']' },
+            { '{', '}' },
+            { '<', '>' }
+        };
+        boolean retVal = false;
+        String newSub = s;
+
+        for (int i = 0; i < pairs.length; i++) {
+            if (s.charAt(0) == pairs[i][0]) {
+                int subIndex = s.indexOf(pairs[i][1]);
+                if (subIndex > -1) {
+                    newSub = s.substring(1, subIndex) + s.substring(subIndex + 1);
+                    retVal = true;
+                }
+            }
+        }
+
+        return retVal && parseRec(newSub);
     }
 
     // Assignment 2.2 (partly also in CharStack.java)
