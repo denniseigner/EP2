@@ -89,7 +89,20 @@ public class Participations {
     // constructor.
     public Participations(Participations l, String r1, String r2) {
         // TODO: Implement this constructor
-        
+        Participation[] tmp = new Participation[l.countParticipations];
+        int counter = 0;
+        for (Participation participation : l.filledParticipations()) {
+            if (participation.getRace().compareTo(r1) >= 0 && participation.getRace().compareTo(r2) <= 0){
+                tmp[counter++] = participation;
+            }
+        }
+
+        participations = new Participation[counter];
+        countParticipations = counter;
+
+        for (int i = 0; i < counter; i++) {
+            participations[i] = tmp[i];
+        }
     }
 
     // Frage:

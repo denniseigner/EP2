@@ -11,7 +11,8 @@ public class MyParticipationsTest extends MyClassTest implements MyTestInterface
     @Override
     public boolean run() {
         return testPrint()
-            && testLookupRacer();
+            && testLookupRacer()
+            && testModifiedConstructor();
     }
 
     private boolean testPrint() {
@@ -47,5 +48,22 @@ public class MyParticipationsTest extends MyClassTest implements MyTestInterface
 
         return MyMiniTestSuite.assertEquals(participations.lookupRacer(lookupName), lookupParticipation)
             && MyMiniTestSuite.assertEquals(participations.lookupRacer(lookupWrongName), null);
+    }
+
+    private boolean testModifiedConstructor() {
+        Participations participations = new Participations(100);
+
+        participations.add(new Participation("Kitzbühel1", "Marcel Hirscher", 1));
+        participations.add(new Participation("Kitzbühel2", "Hermann Maier", 2));
+        participations.add(new Participation("Kitzbühel3", "Benni Raich", 3));
+
+        Participations testParticipations = new Participations(participations, "Kitzbühel1", "Kitzbühel2");
+
+        MyMiniTestSuite.changeOutToFile();
+        testParticipations.print();
+        return MyMiniTestSuite.assertOutContent("1 Marcel Hirscher (Kitzbühel1)\n" +
+            "\n" +
+            "2 Hermann Maier (Kitzbühel2)\n");
+
     }
 }
