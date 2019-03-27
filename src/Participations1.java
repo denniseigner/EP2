@@ -4,7 +4,7 @@ assignment.  It is recommended to solve Assignment 3.1, 3.2 and 3.3
 */
 // Objects of class 'Participations1' contain participations from
 // several races.  The implementation uses a linked list.  It does not
-// use classes from the Collections Framework
+// use classes from the Collections Framework (e.g. LinkedList)
 // <https://docs.oracle.com/javase/8/docs/technotes/guides/collections/overview.html>.
 
 public class Participations1 {
@@ -39,8 +39,7 @@ public class Participations1 {
     // earliest) in 'this' where the 'racer' equals 'r'.  If there is
     // no such participation, return null.
     public Participation lookupRacer(String r) {
-        // TODO: Implement this method without using methods from
-        //  other classes
+        // TODO: Implement this method
         return null;
     }
 

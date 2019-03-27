@@ -4,10 +4,11 @@ assignment.  It is recommended to solve Assignment 3.2 and 3.3 (and
 this also requires 3.1)
 */
 // Objects of class 'Participations2' contain participations from
-// several races.  The implementation uses a binary search tree, using
-// the racer as key; the participations of the same racer are stored
-// in a 'Participations1' object.  This implementation does not use
-// classes from the Collections Framework
+// several races.  The implementation uses a binary search tree as
+// associative data structure, using 'racer' as key; the value
+// associated with the key is a 'Participations1' object containing
+// all participations of this racer.  This implementation does not use
+// classes from the Collections Framework (e.g., TreeMap)
 // <https://docs.oracle.com/javase/8/docs/technotes/guides/collections/overview.html>.
 
 public class Participations2 {
@@ -38,15 +39,14 @@ public class Participations2 {
     // insertion.  Each participation is printed in the same format as
     // produced by print() in Participation, followed by a newline.
     public void print() {
-        // TODO: Implement this method.
+        // TODO: Implement this method
     }
 
     // Returns the first participation (the one that was inserted
     // earliest) in 'this' where the 'racer' equals 'r'.  If there is
     // no such participation, return null.
     public Participation lookupRacer(String r) {
-        // TODO: Implement this method without using methods from
-        //  other classes
+        // TODO: Implement this method
         return null;
     }
 
@@ -59,7 +59,7 @@ public class Participations2 {
 
     // 2) Was sind die Vorteile der Verwendung von 'racer' als
     // Schlüssel?  Könnte man stattdessen auch 'race' oder 'bibnumber'
-    // verwenden?  In welchen Fällen waere das hilfreich?  Wie kann
+    // verwenden?  In welchen Fällen wäre das hilfreich?  Wie kann
     // man die Daten organisieren, wenn man die Vorteile von
     // verschiedenen Schlüsseln kombinieren will?  Und was wären die
     // Nachteile?
