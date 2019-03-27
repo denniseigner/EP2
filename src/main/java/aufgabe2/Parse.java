@@ -30,7 +30,7 @@ public class Parse {
         };
 
         int matchingPair = findMatchingPair(pairs, s, 0);
-        if (matchingPair == -1) return false;
+        if (matchingPair < 0) return false;
         s = s.substring(0, matchingPair) + s.substring(matchingPair + 2);
 
         return parseRec(s);

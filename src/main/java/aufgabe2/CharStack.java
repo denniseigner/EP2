@@ -34,6 +34,8 @@ public class CharStack {
     // popped yet
     public char pop() {
         // TODO: Implement this method
+        // return --countFilledChars < 0 ? (char) ++countFilledChars : thisCharStack[countFilledChars];
+
         if (--countFilledChars < 0) {
             countFilledChars = 0;
             return 0;
@@ -48,7 +50,7 @@ public class CharStack {
     // returns true if all characters pushed on 'this' have been popped.
     public boolean isEmpty() {
         // TODO: Implement this method
-        return (countFilledChars == 0);
+        return countFilledChars == 0;
     }
 
     // This method is only for testing.
