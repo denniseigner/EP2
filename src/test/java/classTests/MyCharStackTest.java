@@ -47,6 +47,9 @@ public class MyCharStackTest extends MyClassTest implements MyTestInterface {
         cs3.pop();
         cs3.pop();
         cs3.pop();
+        cs3.pop();
+        cs3.pop();
+        cs3.pop();
 
         return MyMiniTestSuite.assertTrue(cs1.isEmpty())
             && MyMiniTestSuite.assertFalse(cs2.isEmpty())

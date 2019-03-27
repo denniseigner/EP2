@@ -21,7 +21,6 @@ public class Participations {
     // Creates an empty object of this class with space for n entries.
     public Participations(int n) {
         // TODO: implement this constructor
-
         participations = new Participation[n];
         countParticipations = 0;
     }
