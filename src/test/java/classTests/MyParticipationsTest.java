@@ -26,12 +26,12 @@ public class MyParticipationsTest extends MyClassTest implements MyTestInterface
 
         MyMiniTestSuite.changeOutToFile();
         participations.print();
-        return MyMiniTestSuite.assertOutContent("1 Marcel Hirscher (Kitzbühel)\n" +
+        return testPassed(MyMiniTestSuite.assertOutContent("1 Marcel Hirscher (Kitzbühel)\n" +
             "\n" +
             "2 Hermann Maier (Kitzbühel)\n" +
             "\n" +
             "3 Benni Raich (Kitzbühel)" +
-            "\n");
+            "\n"));
     }
 
     private boolean testLookupRacer() {
@@ -46,8 +46,8 @@ public class MyParticipationsTest extends MyClassTest implements MyTestInterface
         participations.add(new Participation("Kitzbühel", "Hermann Maier", 2));
         participations.add(new Participation("Kitzbühel", "Benni Raich", 3));
 
-        return MyMiniTestSuite.assertEquals(participations.lookupRacer(lookupName), lookupParticipation)
-            && MyMiniTestSuite.assertEquals(participations.lookupRacer(lookupWrongName), null);
+        return testPassed(MyMiniTestSuite.assertEquals(participations.lookupRacer(lookupName), lookupParticipation)
+            && MyMiniTestSuite.assertEquals(participations.lookupRacer(lookupWrongName), null));
     }
 
     private boolean testModifiedConstructor() {
@@ -63,9 +63,9 @@ public class MyParticipationsTest extends MyClassTest implements MyTestInterface
 
         MyMiniTestSuite.changeOutToFile();
         testParticipations.print();
-        return MyMiniTestSuite.assertOutContent("1 Marcel Hirscher (Kitzbühel1)\n" +
+        return testPassed(MyMiniTestSuite.assertOutContent("1 Marcel Hirscher (Kitzbühel1)\n" +
             "\n" +
-            "2 Hermann Maier (Kitzbühel2)\n");
+            "2 Hermann Maier (Kitzbühel2)\n"));
 
     }
 }

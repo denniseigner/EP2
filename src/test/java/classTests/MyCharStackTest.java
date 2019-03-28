@@ -23,10 +23,10 @@ public class MyCharStackTest extends MyClassTest implements MyTestInterface {
         cs.push('h');
 
 
-        return MyMiniTestSuite.assertEquals(cs.pop(), 'h')
+        return testPassed(MyMiniTestSuite.assertEquals(cs.pop(), 'h')
             && MyMiniTestSuite.assertEquals(cs.pop(), 'e')
             && MyMiniTestSuite.assertEquals(cs.pop(), 'y')
-            && MyMiniTestSuite.assertEquals(cs.pop(), 0);
+            && MyMiniTestSuite.assertEquals(cs.pop(), 0));
     }
 
     private boolean testIsEmpty() {
@@ -51,9 +51,9 @@ public class MyCharStackTest extends MyClassTest implements MyTestInterface {
         cs3.pop();
         cs3.pop();
 
-        return MyMiniTestSuite.assertTrue(cs1.isEmpty())
+        return testPassed(MyMiniTestSuite.assertTrue(cs1.isEmpty())
             && MyMiniTestSuite.assertFalse(cs2.isEmpty())
-            && MyMiniTestSuite.assertTrue(cs3.isEmpty());
+            && MyMiniTestSuite.assertTrue(cs3.isEmpty()));
     }
 
 }
