@@ -44,18 +44,19 @@ public class MyMiniTestSuite {
 
     public static void changeOutToConsole() {
         System.setOut(console);
-        new File("A.txt").delete();
     }
 
     public static boolean assertOutContent(String is) {
-        String content = "";
+        String content;
+        changeOutToConsole();
         try {
             content = new Scanner(new File("A.txt")).useDelimiter("\\Z").next();
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            return false;
         }
 
-        changeOutToConsole();
+        new File("A.txt").delete();
+
         return assertEquals(is, content);
     }
 }
