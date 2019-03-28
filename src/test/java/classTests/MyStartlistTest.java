@@ -27,12 +27,12 @@ public class MyStartlistTest extends MyClassTest implements MyTestInterface {
 
         MyMiniTestSuite.changeOutToFile();
         startlist.print();
-        return MyMiniTestSuite.assertOutContent("1 Marcel Hirscher (Kitzbühel)\n" +
+        return testPassed(MyMiniTestSuite.assertOutContent("1 Marcel Hirscher (Kitzbühel)\n" +
             "\n" +
             "2 Hermann Maier (Kitzbühel)\n" +
             "\n" +
             "3 Benni Raich (Kitzbühel)" +
-            "\n");
+            "\n"));
     }
 
     private boolean testPrintOrdered() {
@@ -46,12 +46,12 @@ public class MyStartlistTest extends MyClassTest implements MyTestInterface {
 
         MyMiniTestSuite.changeOutToFile();
         startlist.printOrdered();
-        return MyMiniTestSuite.assertOutContent("1 Marcel Hirscher (Kitzbühel)\n" +
+        return testPassed(MyMiniTestSuite.assertOutContent("1 Marcel Hirscher (Kitzbühel)\n" +
             "\n" +
             "2 Hermann Maier (Kitzbühel)\n" +
             "\n" +
             "3 Benni Raich (Kitzbühel)" +
-            "\n");
+            "\n"));
     }
 
     private boolean testPrintPermutations() {
@@ -64,7 +64,7 @@ public class MyStartlistTest extends MyClassTest implements MyTestInterface {
 
         MyMiniTestSuite.changeOutToFile();
         startlist.printPermutations();
-        return MyMiniTestSuite.assertOutContent("1 Marcel Hirscher (Kitzbühel)\n" +
+        return testPassed(MyMiniTestSuite.assertOutContent("1 Marcel Hirscher (Kitzbühel)\n" +
             "2 Hermann Maier (Kitzbühel)\n" +
             "3 Benni Raich (Kitzbühel)\n" +
             "\n" +
@@ -86,6 +86,6 @@ public class MyStartlistTest extends MyClassTest implements MyTestInterface {
             "\n" +
             "3 Benni Raich (Kitzbühel)\n" +
             "2 Hermann Maier (Kitzbühel)\n" +
-            "1 Marcel Hirscher (Kitzbühel)\n");
+            "1 Marcel Hirscher (Kitzbühel)\n"));
     }
 }

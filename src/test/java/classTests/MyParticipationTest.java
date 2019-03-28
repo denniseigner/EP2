@@ -22,9 +22,9 @@ public class MyParticipationTest extends MyClassTest implements MyTestInterface 
         int bibnumber = 40;
         Participation testParticipation = new Participation(race, racer, bibnumber);
 
-        return MyMiniTestSuite.assertEquals(racer, testParticipation.getRacer())
+        return testPassed(MyMiniTestSuite.assertEquals(racer, testParticipation.getRacer())
             && MyMiniTestSuite.assertEquals(race, testParticipation.getRace())
-            && MyMiniTestSuite.assertEquals(bibnumber, testParticipation.getBibnumber());
+            && MyMiniTestSuite.assertEquals(bibnumber, testParticipation.getBibnumber()));
     }
 
     private boolean testExtendedGetters() {
@@ -36,11 +36,11 @@ public class MyParticipationTest extends MyClassTest implements MyTestInterface 
         String runtime = "IncredibleTime";
         Participation testParticipation = new Participation(race, racer, bibnumber, place, runtime);
 
-        return MyMiniTestSuite.assertEquals(racer, testParticipation.getRacer())
+        return testPassed(MyMiniTestSuite.assertEquals(racer, testParticipation.getRacer())
             && MyMiniTestSuite.assertEquals(race, testParticipation.getRace())
             && MyMiniTestSuite.assertEquals(bibnumber, testParticipation.getBibnumber())
             && MyMiniTestSuite.assertEquals(place, testParticipation.getPlace())
-            && MyMiniTestSuite.assertEquals(runtime, testParticipation.getRuntime());
+            && MyMiniTestSuite.assertEquals(runtime, testParticipation.getRuntime()));
     }
 
     private boolean testPrint() {
@@ -52,7 +52,7 @@ public class MyParticipationTest extends MyClassTest implements MyTestInterface 
 
         MyMiniTestSuite.changeOutToFile();
         testParticipation.print();
-        return MyMiniTestSuite.assertOutContent("40 Mikaela Shiffrin (Lienz 2011 Ladies\' Slalom)");
+        return testPassed(MyMiniTestSuite.assertOutContent("40 Mikaela Shiffrin (Lienz 2011 Ladies\' Slalom)"));
     }
 
     private boolean testPrint1() {
@@ -75,7 +75,7 @@ public class MyParticipationTest extends MyClassTest implements MyTestInterface 
         boolean filledElement = MyMiniTestSuite.assertOutContent("40 Mikaela Shiffrin (Lienz 2011 Ladies' Slalom); " +
             "3; IncredibleTime");
 
-        return emptyElement
-            && filledElement;
+        return testPassed(emptyElement
+            && filledElement);
     }
 }

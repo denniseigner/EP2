@@ -16,24 +16,24 @@ public class MyParseTest extends MyClassTest implements MyTestInterface {
     private boolean testParseRec() {
         print("testParseRec()");
 
-        return MyMiniTestSuite.assertTrue(Parse.parseRec(""))
+        return testPassed(MyMiniTestSuite.assertTrue(Parse.parseRec(""))
             && MyMiniTestSuite.assertTrue(Parse.parseRec("()<>"))
             && MyMiniTestSuite.assertTrue(Parse.parseRec("(([(<>)])){()}<{}>"))
             && MyMiniTestSuite.assertFalse(Parse.parseRec("("))
             && MyMiniTestSuite.assertFalse(Parse.parseRec(")"))
             && MyMiniTestSuite.assertFalse(Parse.parseRec("(a)"))
-            && MyMiniTestSuite.assertFalse(Parse.parseRec("(]"));
+            && MyMiniTestSuite.assertFalse(Parse.parseRec("(]")));
     }
 
     private boolean testParseStack() {
         print("testParseStack()");
 
-        return MyMiniTestSuite.assertTrue(Parse.parseStack(""))
+        return testPassed(MyMiniTestSuite.assertTrue(Parse.parseStack(""))
             && MyMiniTestSuite.assertTrue(Parse.parseStack("()<>"))
             && MyMiniTestSuite.assertTrue(Parse.parseStack("(([(<>)])){()}<{}>"))
             && MyMiniTestSuite.assertFalse(Parse.parseStack("("))
             && MyMiniTestSuite.assertFalse(Parse.parseStack(")"))
             && MyMiniTestSuite.assertFalse(Parse.parseStack("(a)"))
-            && MyMiniTestSuite.assertFalse(Parse.parseStack("(]"));
+            && MyMiniTestSuite.assertFalse(Parse.parseStack("(]")));
     }
 }
