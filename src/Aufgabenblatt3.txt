@@ -1,0 +1,36 @@
+Allgemein: Vorgegebene Programmteile dürfen nur an den Stellen
+verändert werden, die mit TODO markiert sind.
+Zusätzliche Klassen, Interfaces, Methoden und Variablen dürfen
+aber eingefügt werden.
+
+Objektvariablen sollten private sein, verlangte Methoden und
+Konstruktoren public, Hilfsmethoden private.
+
+Falls Sie eine zusaetzliche Klasse definieren, verwenden Sie
+einen Klassennamen, der mit "My" beginnt, damit der
+Klassenname nicht mit Klassen in künftigen Angaben kollidiert.
+
+Schreiben Sie Tests fuer die Aufgaben, z.B. in einer
+zusaetzlichen Klasse.
+
+Fragen sollen in der Übung beantwortet werden können.
+
+Aufgabe 3.1 (20%) ist in der Klasse Participations1 zu finden.
+
+Aufgabe 3.2 (40%) ist in den Klassen Participations1 und
+Participations2 zu finden.
+
+Aufgabe 3.3 (20%) ist in den Klassen Participations1 und
+Participations2 zu finden.
+
+Aufgabe 3.4 (20%) ist zum Teil in der Klasse CharStack1 zu finden.
+Der andere Teil ist: Fügen Sie zur Klasse Parse folgende Methode
+hinzu:
+
+    // returns true, if s is a properly parenthesized string,
+    // otherwise false.  See parseRec for details.
+    public static boolean parseStack1(String s)
+    {
+        // TODO: implement this method using class 'CharStack1', and no recursion
+        return false;
+    }
