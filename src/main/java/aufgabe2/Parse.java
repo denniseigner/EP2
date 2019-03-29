@@ -22,27 +22,19 @@ public class Parse {
 
         if (s.length() == 0) return true;
 
-        char[][] pairs = {
-            { '(', ')' },
-            { '[', ']' },
-            { '{', '}' },
-            { '<', '>' }
+        String[] pairS = {
+            "()",
+            "[]",
+            "{}",
+            "<>"
         };
 
-        int matchingPair = findMatchingPair(pairs, s, 0);
-        if (matchingPair < 0) return false;
-        s = s.substring(0, matchingPair) + s.substring(matchingPair + 2);
-
-        return parseRec(s);
-    }
-
-    private static int findMatchingPair(char[][] pairs, String s, int offset) {
-        if (s.length() < 2) return -1;
-        for (char[] pair : pairs) {
-            if (s.indexOf(pair[0]) + 1 == s.indexOf(pair[1])) return s.indexOf(pair[0]) + offset;
+        String oldS = s;
+        for (String pair : pairS) {
+            s = s.replace(pair, "");
         }
 
-        return findMatchingPair(pairs, s.substring(1), offset + 1);
+        return !s.equals(oldS) && parseRec(s);
     }
 
     // Assignment 2.2 (partly also in CharStack.java)
