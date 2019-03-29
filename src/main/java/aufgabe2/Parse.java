@@ -22,19 +22,19 @@ public class Parse {
 
         if (s.length() == 0) return true;
 
-        String[] pairS = {
+        String[] pairs = {
             "()",
             "[]",
             "{}",
             "<>"
         };
 
-        String oldS = s;
-        for (String pair : pairS) {
+        String old = s;
+        for (String pair : pairs) {
             s = s.replace(pair, "");
         }
 
-        return !s.equals(oldS) && parseRec(s);
+        return !s.equals(old) && parseRec(s);
     }
 
     // Assignment 2.2 (partly also in CharStack.java)
