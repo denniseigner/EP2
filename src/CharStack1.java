@@ -1,5 +1,5 @@
 // Objects of CharStack1 are stacks holding chars.  The stack is
-// implemented using a linked list.  .  It does not
+// implemented using a linked list.  It does not
 // use classes from the Collections Framework (e.g. LinkedList)
 // <https://docs.oracle.com/javase/8/docs/technotes/guides/collections/overview.html>.
 public class CharStack1 {
