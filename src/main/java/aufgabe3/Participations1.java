@@ -15,13 +15,14 @@ public class Participations1 {
 
     // Introduce (private) object variables and classes as needed.
     private Participation participation;
-    private Participations1 next;
+    private Participations1 next, last;
     private int iteration;
 
     // Creates an empty object of this class
     public Participations1(int n) {
         // TODO: implement this constructor
         iteration = n - 1;
+        last = this;
         if (iteration > 0) next = new Participations1(iteration);
     }
 
@@ -95,7 +96,7 @@ public class Participations1 {
     // null.
     public Participation first() {
         // TODO: Implement this method
-        return null;
+        return participation;
     }
 
 
