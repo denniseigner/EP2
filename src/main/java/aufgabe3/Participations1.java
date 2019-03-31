@@ -14,19 +14,21 @@ public class Participations1 {
     // Assignment 3.1
 
     // Introduce (private) object variables and classes as needed.
-    Participation participation;
-    Participations1 next;
+    private Participation participation;
+    private Participations1 next;
+    private int iteration;
 
     // Creates an empty object of this class
     public Participations1(int n) {
         // TODO: implement this constructor
-        // nothing to do
+        iteration = n - 1;
+        if (iteration > 0) next = new Participations1(iteration);
     }
 
     // Creates an empty object of this class
     public Participations1() {
         // TODO: implement this constructor
-        // nothing to do
+        iteration = -1;
     }
 
     // Adds p to 'this'.
@@ -37,7 +39,12 @@ public class Participations1 {
             return;
         }
 
-        if (next == null) next = new Participations1();
+        if (next == null) {
+            next = new Participations1();
+        }
+        if (iteration == 0) {
+            throw new IllegalArgumentException("Cannot add more Participations");
+        }
         next.add(p);
     }
 
@@ -56,7 +63,9 @@ public class Participations1 {
     // no such participation, return null.
     public Participation lookupRacer(String r) {
         // TODO: Implement this method
-        return null;
+        if (participation == null || next == null) return null;
+
+        return participation.getRacer().equals(r) ? participation : next.lookupRacer(r);
     }
 
     // Fragen:
