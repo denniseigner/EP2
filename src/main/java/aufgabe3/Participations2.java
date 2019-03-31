@@ -72,7 +72,16 @@ public class Participations2 {
     // no such participation, return null.
     public Participation lookupRacer(String r) {
         // TODO: Implement this method
-        return null;
+        if (participation == null) return null;
+
+        return participation.getRacer().equals(r) ? participation :
+            participation.getRacer().compareTo(r) < 0 ?
+            left != null ?
+                left.lookupRacer(r) :
+                null
+            : right != null ?
+                right.lookupRacer(r) :
+                null;
     }
 
     // Fragen:
