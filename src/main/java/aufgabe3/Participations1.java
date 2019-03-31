@@ -7,32 +7,48 @@ assignment.  It is recommended to solve Assignment 3.1, 3.2 and 3.3
 // use classes from the Collections Framework (e.g. LinkedList)
 // <https://docs.oracle.com/javase/8/docs/technotes/guides/collections/overview.html>.
 
+import main.java.aufgabe1.Participation;
+
 public class Participations1 {
 
     // Assignment 3.1
 
     // Introduce (private) object variables and classes as needed.
+    Participation participation;
+    Participations1 next;
 
     // Creates an empty object of this class
     public Participations1(int n) {
         // TODO: implement this constructor
+        // nothing to do
     }
 
     // Creates an empty object of this class
     public Participations1() {
         // TODO: implement this constructor
+        // nothing to do
     }
 
     // Adds p to 'this'.
     public void add(Participation p) {
         // TODO: Implement this method
+        if (participation == null) {
+            participation = p;
+            return;
+        }
+
+        if (next == null) next = new Participations1();
+        next.add(p);
     }
-    
+
     // Print the entries in the order of insertion; each participation
     // is printed in the same format as produced by print() in
     // Participation, followed by a newline.
     public void print() {
         // TODO: Implement this method
+        if (participation == null) return;
+        participation.print();
+        if (next != null) next.print();
     }
 
     // Returns the first participation (the one that was inserted

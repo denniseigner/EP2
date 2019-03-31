@@ -11,6 +11,8 @@ this also requires 3.1)
 // classes from the Collections Framework (e.g., TreeMap)
 // <https://docs.oracle.com/javase/8/docs/technotes/guides/collections/overview.html>.
 
+import main.java.aufgabe1.Participation;
+
 public class Participations2 {
 
     // Assignment 3.2 (continued from Participations1.java)
