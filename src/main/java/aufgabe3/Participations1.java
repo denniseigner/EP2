@@ -104,8 +104,11 @@ public class Participations1 {
     // print the entries with bibnumber<=x in the order of insertion;
     // each participation is printed in the same format as produced by
     // print() in Participation, followed by a newline.
-    void print(int x) {
+    public void print(int x) {
         // TODO: Implement this method
+        if (participation == null) return;
+        if (participation.getBibnumber() <= x) participation.print();
+        if (next != null) next.print(x);
     }
 
     // This method is only for testing.

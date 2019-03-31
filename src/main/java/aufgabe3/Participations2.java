@@ -74,14 +74,15 @@ public class Participations2 {
         // TODO: Implement this method
         if (participation == null) return null;
 
-        return participation.getRacer().equals(r) ? participation :
-            participation.getRacer().compareTo(r) < 0 ?
-            left != null ?
-                left.lookupRacer(r) :
-                null
-            : right != null ?
-                right.lookupRacer(r) :
-                null;
+        return participation.getRacer().equals(r)
+            ? participation
+            : participation.getRacer().compareTo(r) < 0
+                ? left != null
+                    ? left.lookupRacer(r)
+                    : null
+                : right != null
+                    ? right.lookupRacer(r)
+                    : null;
     }
 
     // Fragen:
@@ -105,8 +106,14 @@ public class Participations2 {
     // by print() in Participations2; each participation is printed in
     // the same format as produced by print() in Participation,
     // followed by a newline.
-    void print(int x) {
+    public void print(int x) {
         // TODO: Implement this method
+
+        if (participation == null) return;
+
+        if (left != null) left.print(x);
+        if (participation.getBibnumber() <= x) participation.print();
+        if (right != null) right.print(x);
     }
 
     // This method is only for testing.

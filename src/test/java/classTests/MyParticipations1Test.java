@@ -12,7 +12,8 @@ public class MyParticipations1Test extends MyClassTest implements MyTestInterfac
     public boolean run() {
         return testPrint()
             && testLookupRacer()
-            && testFirst();
+            && testFirst()
+            && testPrintWithConstraints();
     }
 
     private boolean testPrint() {
@@ -36,10 +37,12 @@ public class MyParticipations1Test extends MyClassTest implements MyTestInterfac
 
         MyMiniTestSuite.changeOutToFile();
         participations.print();
-        return testPassed(MyMiniTestSuite.assertOutContent("1 Marcel Hirscher (Kitzbühel)\n" +
+        return testPassed(
+            MyMiniTestSuite.assertOutContent("1 Marcel Hirscher (Kitzbühel)\n" +
             "2 Hermann Maier (Kitzbühel)\n" +
             "3 Benni Raich (Kitzbühel)")
-            && threwException);
+            && threwException
+        );
     }
 
     private boolean testLookupRacer() {
@@ -54,8 +57,10 @@ public class MyParticipations1Test extends MyClassTest implements MyTestInterfac
         participations.add(new Participation("Kitzbühel", "Hermann Maier", 2));
         participations.add(new Participation("Kitzbühel", "Benni Raich", 3));
 
-        return testPassed(MyMiniTestSuite.assertEquals(participations.lookupRacer(lookupName), lookupParticipation)
-            && MyMiniTestSuite.assertEquals(participations.lookupRacer(lookupWrongName), null));
+        return testPassed(
+            MyMiniTestSuite.assertEquals(participations.lookupRacer(lookupName), lookupParticipation)
+            && MyMiniTestSuite.assertEquals(participations.lookupRacer(lookupWrongName), null)
+        );
     }
 
     private boolean testFirst() {
@@ -69,7 +74,30 @@ public class MyParticipations1Test extends MyClassTest implements MyTestInterfac
         participations.add(new Participation("Kitzbühel", "Hermann Maier", 2));
         participations.add(new Participation("Kitzbühel", "Benni Raich", 3));
 
-        return testPassed(MyMiniTestSuite.assertEquals(participations.first(), first)
-            && MyMiniTestSuite.assertEquals(participationsEmpty.first(), null));
+        return testPassed(
+            MyMiniTestSuite.assertEquals(participations.first(), first)
+            && MyMiniTestSuite.assertEquals(participationsEmpty.first(), null)
+        );
+    }
+
+    private boolean testPrintWithConstraints() {
+        print("testPrintWithConstraints()");
+
+        Participations1 participations = new Participations1();
+
+        participations.add(new Participation("Kitzbühel", "Marcel Hirscher", 1));
+        participations.add(new Participation("Kitzbühel", "Hermann Maier", 2));
+        participations.add(new Participation("Kitzbühel", "Benni Raich", 3));
+        participations.add(new Participation("Schladming", "Benni Raich", 4));
+        participations.add(new Participation("Schladming", "Marcel Hirscher", 5));
+
+        MyMiniTestSuite.changeOutToFile();
+        participations.print(3);
+
+        return testPassed(
+            MyMiniTestSuite.assertOutContent("1 Marcel Hirscher (Kitzbühel)\n" +
+                "2 Hermann Maier (Kitzbühel)\n" +
+                "3 Benni Raich (Kitzbühel)")
+        );
     }
 }
