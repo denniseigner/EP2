@@ -1,3 +1,5 @@
+package main.java.aufgabe3;
+
 // Objects of CharStack1 are stacks holding chars.  The stack is
 // implemented using a linked list.  It does not
 // use classes from the Collections Framework (e.g. LinkedList)

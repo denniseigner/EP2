@@ -1,4 +1,4 @@
-/*
+package main.java.aufgabe3;/*
 This class will be used in future assignments and in the ad-hoc
 assignment.  It is recommended to solve Assignment 3.1, 3.2 and 3.3
 */
