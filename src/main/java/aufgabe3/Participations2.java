@@ -1,4 +1,4 @@
-/*
+package main.java.aufgabe3;/*
 This class will be used in future assignments and in the ad-hoc
 assignment.  It is recommended to solve Assignment 3.2 and 3.3 (and
 this also requires 3.1)
@@ -11,25 +11,45 @@ this also requires 3.1)
 // classes from the Collections Framework (e.g., TreeMap)
 // <https://docs.oracle.com/javase/8/docs/technotes/guides/collections/overview.html>.
 
+import main.java.aufgabe1.Participation;
+
 public class Participations2 {
 
     // Assignment 3.2 (continued from Participations1.java)
 
     // Introduce (private) object variables and classes as needed.
+    private Participations2 left, right;
+    private Participation participation;
+    private int iteration;
 
     // Creates an empty object of this class
     public Participations2(int n) {
         // TODO: implement this constructor
+        if (--n < 0) throw new IllegalArgumentException("Cannot add any more Participations");
+        iteration = n;
     }
 
     // Creates an empty object of this class
     public Participations2() {
         // TODO: implement this constructor
+        iteration = -1;
     }
 
     // Adds p to 'this'.
     public void add(Participation p) {
         // TODO: Implement this method
+        if (participation == null) {
+            participation = p;
+            return;
+        }
+
+        if (p.getRacer().compareTo(participation.getRacer()) < 0) {
+            if (left == null) left = iteration >= 0 ? new Participations2(iteration) : new Participations2();
+            left.add(p);
+        } else {
+            if (right == null) right = iteration >= 0 ? new Participations2(iteration) : new Participations2();
+            right.add(p);
+        }
     }
     
     // Print the entries in the following order: The participations of
@@ -40,6 +60,11 @@ public class Participations2 {
     // produced by print() in Participation, followed by a newline.
     public void print() {
         // TODO: Implement this method
+        if (participation == null) return;
+
+        if (left != null) left.print();
+        participation.print();
+        if (right != null) right.print();
     }
 
     // Returns the first participation (the one that was inserted
@@ -47,7 +72,17 @@ public class Participations2 {
     // no such participation, return null.
     public Participation lookupRacer(String r) {
         // TODO: Implement this method
-        return null;
+        if (participation == null) return null;
+
+        return participation.getRacer().equals(r)
+            ? participation
+            : participation.getRacer().compareTo(r) < 0
+                ? left != null
+                    ? left.lookupRacer(r)
+                    : null
+                : right != null
+                    ? right.lookupRacer(r)
+                    : null;
     }
 
     // Fragen:
@@ -71,8 +106,14 @@ public class Participations2 {
     // by print() in Participations2; each participation is printed in
     // the same format as produced by print() in Participation,
     // followed by a newline.
-    void print(int x) {
+    public void print(int x) {
         // TODO: Implement this method
+
+        if (participation == null) return;
+
+        if (left != null) left.print(x);
+        if (participation.getBibnumber() <= x) participation.print();
+        if (right != null) right.print(x);
     }
 
     // This method is only for testing.

@@ -8,8 +8,11 @@ public class MyTestRunner {
             && new MyStartlistTest().run()
             && new MyParseTest().run()
             && new MyCharStackTest().run()
-            && new MyParticipationsTest().run();
+            && new MyParticipationsTest().run()
+            && new MyParticipations1Test().run()
+            && new MyParticipations2Test().run()
+            && new MyCharStack1Test().run();
 
-        System.out.println(run ? "All Tests passed" : "Test failed");
+        System.out.println("All Tests succesfully run");
     }
 }
