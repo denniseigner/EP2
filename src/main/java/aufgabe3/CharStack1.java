@@ -41,7 +41,7 @@ public class CharStack1 {
     // returns true if all characters pushed on 'this' have been popped.
     public boolean isEmpty() {
         // TODO: Implement this method
-        return head == null || head.getNext() == null;
+        return head == null;
     }
 
     private class MyCharList {
