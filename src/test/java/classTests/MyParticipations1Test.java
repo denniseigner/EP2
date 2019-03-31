@@ -6,7 +6,7 @@ import test.java.miniTestSuite.MyClassTest;
 import test.java.miniTestSuite.MyMiniTestSuite;
 import test.java.miniTestSuite.MyTestInterface;
 
-public class MyParticipations1Text extends MyClassTest implements MyTestInterface {
+public class MyParticipations1Test extends MyClassTest implements MyTestInterface {
 
     @Override
     public boolean run() {

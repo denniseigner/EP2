@@ -21,9 +21,8 @@ public class Participations1 {
     // Creates an empty object of this class
     public Participations1(int n) {
         // TODO: implement this constructor
-        iteration = n - 1;
-        last = this;
-        if (iteration > 0) next = new Participations1(iteration);
+        if (--n < 0) throw new IllegalArgumentException("Cannot add any more Participations");
+        iteration = n;
     }
 
     // Creates an empty object of this class
@@ -41,7 +40,7 @@ public class Participations1 {
         }
 
         if (next == null) {
-            next = new Participations1();
+            next = iteration >= 0 ? new Participations1(iteration) : new Participations1();
         }
         if (iteration == 0) {
             throw new IllegalArgumentException("Cannot add more Participations");

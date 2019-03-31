@@ -9,7 +9,8 @@ public class MyTestRunner {
             && new MyParseTest().run()
             && new MyCharStackTest().run()
             && new MyParticipationsTest().run()
-            && new MyParticipations1Text().run();
+            && new MyParticipations1Test().run()
+            && new MyParticipations2Test().run();
 
         System.out.println("All Tests succesfully run");
     }

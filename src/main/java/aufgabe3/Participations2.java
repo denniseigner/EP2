@@ -18,20 +18,38 @@ public class Participations2 {
     // Assignment 3.2 (continued from Participations1.java)
 
     // Introduce (private) object variables and classes as needed.
+    private Participations2 left, right;
+    private Participation participation;
+    private int iteration;
 
     // Creates an empty object of this class
     public Participations2(int n) {
         // TODO: implement this constructor
+        if (--n < 0) throw new IllegalArgumentException("Cannot add any more Participations");
+        iteration = n;
     }
 
     // Creates an empty object of this class
     public Participations2() {
         // TODO: implement this constructor
+        iteration = -1;
     }
 
     // Adds p to 'this'.
     public void add(Participation p) {
         // TODO: Implement this method
+        if (participation == null) {
+            participation = p;
+            return;
+        }
+
+        if (p.getRacer().compareTo(participation.getRacer()) < 0) {
+            if (left == null) left = iteration >= 0 ? new Participations2(iteration) : new Participations2();
+            left.add(p);
+        } else {
+            if (right == null) right = iteration >= 0 ? new Participations2(iteration) : new Participations2();
+            right.add(p);
+        }
     }
     
     // Print the entries in the following order: The participations of
@@ -42,6 +60,11 @@ public class Participations2 {
     // produced by print() in Participation, followed by a newline.
     public void print() {
         // TODO: Implement this method
+        if (participation == null) return;
+
+        if (left != null) left.print();
+        participation.print();
+        if (right != null) right.print();
     }
 
     // Returns the first participation (the one that was inserted
