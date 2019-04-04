@@ -19,13 +19,12 @@ public class Participations2 {
 
     // Introduce (private) object variables and classes as needed.
     private Participations2 left, right;
-    private Participation participation;
+    private Participations1 participations;
     private int iteration;
 
     // Creates an empty object of this class
     public Participations2(int n) {
         // TODO: implement this constructor
-        if (--n < 0) throw new IllegalArgumentException("Cannot add any more Participations");
         iteration = n;
     }
 
@@ -38,16 +37,27 @@ public class Participations2 {
     // Adds p to 'this'.
     public void add(Participation p) {
         // TODO: Implement this method
-        if (participation == null) {
-            participation = p;
+        if (participations == null) {
+            participations = new Participations1();
+            participations.add(p);
             return;
         }
 
-        if (p.getRacer().compareTo(participation.getRacer()) < 0) {
-            if (left == null) left = iteration >= 0 ? new Participations2(iteration) : new Participations2();
+        if (p.getRacer().compareTo(participations.first().getRacer()) == 0) {
+            participations.add(p);
+            return;
+        }
+
+        if (iteration == 1) {
+            System.err.println("Cannot add any more Participations");
+            return;
+        }
+
+        if (p.getRacer().compareTo(participations.first().getRacer()) < 0) {
+            if (left == null) left = iteration > 1 ? new Participations2(iteration - 1) : new Participations2();
             left.add(p);
         } else {
-            if (right == null) right = iteration >= 0 ? new Participations2(iteration) : new Participations2();
+            if (right == null) right = iteration > 1 ? new Participations2(iteration - 1) : new Participations2();
             right.add(p);
         }
     }
@@ -60,10 +70,10 @@ public class Participations2 {
     // produced by print() in Participation, followed by a newline.
     public void print() {
         // TODO: Implement this method
-        if (participation == null) return;
+        if (participations == null) return;
 
         if (left != null) left.print();
-        participation.print();
+        participations.print();
         if (right != null) right.print();
     }
 
@@ -72,11 +82,11 @@ public class Participations2 {
     // no such participation, return null.
     public Participation lookupRacer(String r) {
         // TODO: Implement this method
-        if (participation == null) return null;
+        if (participations == null) return null;
 
-        return participation.getRacer().equals(r)
-            ? participation
-            : participation.getRacer().compareTo(r) < 0
+        return participations.first().getRacer().equals(r)
+            ? participations.lookupRacer(r)
+            : participations.first().getRacer().compareTo(r) < 0
                 ? left != null
                     ? left.lookupRacer(r)
                     : null
@@ -109,10 +119,10 @@ public class Participations2 {
     public void print(int x) {
         // TODO: Implement this method
 
-        if (participation == null) return;
+        if (participations == null) return;
 
         if (left != null) left.print(x);
-        if (participation.getBibnumber() <= x) participation.print();
+        participations.print(x);
         if (right != null) right.print(x);
     }
 

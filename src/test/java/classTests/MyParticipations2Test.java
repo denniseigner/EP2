@@ -10,31 +10,33 @@ public class MyParticipations2Test extends MyClassTest implements MyTestInterfac
 
     @Override
     public boolean run() {
-        return testPrint()
+        return testParticipations2Overload()
+            && testPrint()
             && testLookupRacer()
             && testPrintWithConstraints();
+    }
+
+    private boolean testParticipations2Overload() {
+        print("testParticipations2Overload()");
+        Participations2 participationsOverload = new Participations2(2);
+
+        participationsOverload.add(new Participation("Kitzbühel", "Marcel Hirscher", 1));
+        participationsOverload.add(new Participation("Kitzbühel", "Hermann Maier", 2));
+        participationsOverload.add(new Participation("Kitzbühel", "Benni Raich", 3));
+
+        return testPassed(true);
     }
 
     private boolean testPrint() {
         print("testPrint()");
 
         Participations2 participations = new Participations2();
-        Participations2 participationsOverload = new Participations2(2);
-        boolean threwException = false;
 
         participations.add(new Participation("Kitzbühel", "Marcel Hirscher", 1));
         participations.add(new Participation("Kitzbühel", "Hermann Maier", 2));
         participations.add(new Participation("Kitzbühel", "Benni Raich", 3));
         participations.add(new Participation("Schladming", "Benni Raich", 4));
         participations.add(new Participation("Schladming", "Marcel Hirscher", 5));
-
-        try {
-            participationsOverload.add(new Participation("Kitzbühel", "Marcel Hirscher", 1));
-            participationsOverload.add(new Participation("Kitzbühel", "Hermann Maier", 2));
-            participationsOverload.add(new Participation("Kitzbühel", "Benni Raich", 3));
-        } catch (Exception ex) {
-            threwException = true;
-        }
 
         MyMiniTestSuite.changeOutToFile();
         participations.print();
@@ -44,7 +46,7 @@ public class MyParticipations2Test extends MyClassTest implements MyTestInterfac
             "2 Hermann Maier (Kitzbühel)\n" +
             "1 Marcel Hirscher (Kitzbühel)\n" +
             "5 Marcel Hirscher (Schladming)")
-            && threwException);
+        );
     }
 
     private boolean testLookupRacer() {

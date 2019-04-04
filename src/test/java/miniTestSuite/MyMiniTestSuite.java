@@ -51,7 +51,7 @@ public class MyMiniTestSuite {
         changeOutToConsole();
         try {
             content = new Scanner(new File("A.txt")).useDelimiter("\\Z").next();
-        } catch (FileNotFoundException e) {
+        } catch (Exception e) {
             return false;
         }
 

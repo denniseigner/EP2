@@ -1,5 +1,7 @@
 package main.java.aufgabe2;
 
+import main.java.aufgabe3.CharStack1;
+
 import java.util.Arrays;
 
 public class Parse {
@@ -88,6 +90,29 @@ public class Parse {
 
     private static boolean contains(char[][] pairs, char c) {
         return isClosing(pairs, c) || isOpening(pairs, c);
+    }
+
+    public static boolean parseStack1(String s)
+    {
+
+        if (s.length() == 0) return true;
+
+        CharStack1 cs = new CharStack1();
+        char[][] pairs = {
+            { '(', ')' },
+            { '[', ']' },
+            { '{', '}' },
+            { '<', '>' }
+        };
+
+        for (char c : s.toCharArray()) {
+            if (isOpening(pairs, c))
+                cs.push(c);
+            if (isClosing(pairs, c) && cs.pop() != getPair(pairs, c) || !contains(pairs, c))
+                return false;
+        }
+
+        return cs.isEmpty();
     }
 
     // Fragen:
