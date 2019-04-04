@@ -15,13 +15,12 @@ public class Participations1 {
 
     // Introduce (private) object variables and classes as needed.
     private Participation participation;
-    private Participations1 next, last;
+    private Participations1 next;
     private int iteration;
 
     // Creates an empty object of this class
     public Participations1(int n) {
         // TODO: implement this constructor
-        if (--n < 0) throw new IllegalArgumentException("Cannot add any more Participations");
         iteration = n;
     }
 
@@ -40,10 +39,11 @@ public class Participations1 {
         }
 
         if (next == null) {
-            next = iteration >= 0 ? new Participations1(iteration) : new Participations1();
-        }
-        if (iteration == 0) {
-            throw new IllegalArgumentException("Cannot add more Participations");
+            if (iteration == 1) {
+                System.err.println("Cannot add any more Participations");
+                return;
+            }
+            next = iteration > 1 ? new Participations1(iteration - 1) : new Participations1();
         }
         next.add(p);
     }

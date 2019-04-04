@@ -10,30 +10,32 @@ public class MyParticipations1Test extends MyClassTest implements MyTestInterfac
 
     @Override
     public boolean run() {
-        return testPrint()
+        return testParticipations1Overload()
+            && testPrint()
             && testLookupRacer()
             && testFirst()
             && testPrintWithConstraints();
+    }
+
+    private boolean testParticipations1Overload() {
+        print("testParticipations1Overload()");
+        Participations1 participationsOverload = new Participations1(2);
+
+        participationsOverload.add(new Participation("Kitzbühel", "Marcel Hirscher", 1));
+        participationsOverload.add(new Participation("Kitzbühel", "Hermann Maier", 2));
+        participationsOverload.add(new Participation("Kitzbühel", "Benni Raich", 3));
+
+        return testPassed(true);
     }
 
     private boolean testPrint() {
         print("testPrint()");
 
         Participations1 participations = new Participations1();
-        Participations1 participationsOverload = new Participations1(2);
-        boolean threwException = false;
 
         participations.add(new Participation("Kitzbühel", "Marcel Hirscher", 1));
         participations.add(new Participation("Kitzbühel", "Hermann Maier", 2));
         participations.add(new Participation("Kitzbühel", "Benni Raich", 3));
-
-        try {
-            participationsOverload.add(new Participation("Kitzbühel", "Marcel Hirscher", 1));
-            participationsOverload.add(new Participation("Kitzbühel", "Hermann Maier", 2));
-            participationsOverload.add(new Participation("Kitzbühel", "Benni Raich", 3));
-        } catch (Exception ex) {
-            threwException = true;
-        }
 
         MyMiniTestSuite.changeOutToFile();
         participations.print();
@@ -41,7 +43,6 @@ public class MyParticipations1Test extends MyClassTest implements MyTestInterfac
             MyMiniTestSuite.assertOutContent("1 Marcel Hirscher (Kitzbühel)\n" +
             "2 Hermann Maier (Kitzbühel)\n" +
             "3 Benni Raich (Kitzbühel)")
-            && threwException
         );
     }
 
