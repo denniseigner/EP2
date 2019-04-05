@@ -1,10 +1,18 @@
 Diese Datei dokumentiert die bisher in EP2 erreichten Punkte.
 
+-- Übung 1
 In der Vorbeurteilung wurde Ihre Abgabe mit +++ kategorisiert.
+
+Sie haben dann in der ersten Übung 5 von 5 Punkte bekommen.
+Sie haben bei der Ad-hoc Aufgabe 4 von 4 Punkte bekommen.
+
+-- Übung 2
+In der Vorbeurteilung wurde Ihre Abgabe mit ++~+ kategorisiert.
+
+Sie haben folgendes Feedback bekommen:  Participants add ueberlauf 
 Sie haben dann in der ersten Übung 5 von 5 Punkte bekommen.
 Sie haben bei der Ad-hoc Aufgabe 4 von 4 Punkte bekommen.
 
 
-
-Sie haben insgesamt 9 Punkte.
+Sie haben insgesamt 18 Punkte.
 
