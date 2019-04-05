@@ -116,6 +116,9 @@ public class Participations2 {
     // by print() in Participations2; each participation is printed in
     // the same format as produced by print() in Participation,
     // followed by a newline.
+
+    // Anmerkung: Methodenheader auf public geändert
+    // Siehe https://tuwel.tuwien.ac.at/mod/forum/discuss.php?d=136099
     public void print(int x) {
         // TODO: Implement this method
 
