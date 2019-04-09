@@ -9,10 +9,11 @@ public class Participations3 {
     // classes from the Collections Framework (e.g., TreeMap)
     // <https://docs.oracle.com/javase/8/docs/technotes/guides/collections/overview.html>.
 
+
     // Assignment 4.2, also in PartTreeNodable.java, PartTreeNull.java
     // and PartTreeBinary.java
 
-    // Introduce (private) object variables, methods and classes as needed.
+    // TODO: Introduce (private) object variables, methods and classes as needed.
 
     // Creates an empty object of this class
     public Participations3() {
