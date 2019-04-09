@@ -113,6 +113,13 @@ public class Participations1 {
         if (participation.getBibnumber() <= x) participation.print();
         if (next != null) next.print(x);
     }
+    // adhoc 3
+    public void print(String x, int y) {
+        // TODO: Implement this method
+        if (participation == null) return;
+        if (participation.getBibnumber() < y && participation.getRacer().compareTo(x) >= 0) participation.print();
+        if (next != null) next.print(x,y);
+    }
 
     // This method is only for testing.
     // Alternatively, you can put the tests in additional classes.
