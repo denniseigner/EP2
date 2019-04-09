@@ -41,6 +41,7 @@ finden.
 
 Aufgabe 4.3 (20%) ist in der Klasse Participations3 zu finden.
 
+
 Aufgabe 4.1 ist eine typische Aufgabe, die auch zu Test 1 kommen könnte.
 Daher empfehlen wir die Lösung dieser Aufgabe dringend.
 

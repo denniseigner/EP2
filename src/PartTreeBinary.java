@@ -1,16 +1,16 @@
-// An object of class 'PartTreeBinary' represents a nonempty node in a
-// binary search tree, using 'racer' as key.
-
-// Variables and expressions of type 'PartTreeNodable' and its subtypes
-// are never null.  Instead, an empty subtree is represented by a
-// 'PartTreeNull' object.
-
-// Do not use 'if', 'while', or '? :' to check whether a node is empty
-// or not; instead, call the appropriate method implementation with
-// dynamic binding.
-
 public class PartTreeBinary implements PartTreeNodable {
-    // ToDo: define object variables, constructors and methods as needed
+    // An object of class 'PartTreeBinary' represents a nonempty node
+    // in a binary search tree, using 'racer' as key.
+    
+    // Variables and expressions of type 'PartTreeNodable' and its
+    // subtypes are never null.  Instead, an empty subtree is
+    // represented by a 'PartTreeNull' object.
+    
+    // Do not use 'if', 'while', or '? :' to check whether a node is
+    // empty or not; instead, call the appropriate method
+    // implementation with dynamic binding.
+
+    // TODO: define object variables, constructors and methods as needed
 
     @Override
     public PartTreeNodable add(Participation p) {

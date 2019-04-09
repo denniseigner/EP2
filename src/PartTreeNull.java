@@ -1,16 +1,16 @@
-// Objects of class 'PartTreeNull' represent an empty node in a binary
-// search tree, using 'racer' as key.
-
-// Variables and expressions of type 'PartTreeNodable' and its subtypes
-// are never null.  Instead, an empty subtree is represented by a
-// 'PartTreeNull' object.
-
-// Do not use 'if', 'while', or '? :' to check whether a node is empty
-// or not; instead, call the appropriate method implementation with
-// dynamic binding.
-
 public class PartTreeNull implements PartTreeNodable {
-    // ToDo: define object variables, constructors and methods as needed
+    // Objects of class 'PartTreeNull' represent an empty node in a binary
+    // search tree, using 'racer' as key.
+    
+    // Variables and expressions of type 'PartTreeNodable' and its subtypes
+    // are never null.  Instead, an empty subtree is represented by a
+    // 'PartTreeNull' object.
+    
+    // Do not use 'if', 'while', or '? :' to check whether a node is empty
+    // or not; instead, call the appropriate method implementation with
+    // dynamic binding.
+
+    // TODO: define object variables, constructors and methods as needed
 
     // 'NIL' is the only object of type 'PartTreeNull'.
     // Appropriate visibility and use of the constructor of 'PartTreeNull'

@@ -1,19 +1,13 @@
-/*
-This class will be used in future assignments and in the ad-hoc
-assignment.  It is strongly recommended to solve Assignment 4.2 and 4.3.
-The ad-hoc assignment will be solved by each participant on their own.
-*/
-// Objects of class 'Participations3' contain participations from
-// several races.  The implementation uses a binary search tree as
-// associative data structure, using nodes that implement
-// 'PartTreeNodable'.  The tree uses 'racer' as key, and a
-// 'Participations1' object as value (as does Participations2).
-
-// This implementation does not use
-// classes from the Collections Framework (e.g., TreeMap)
-// <https://docs.oracle.com/javase/8/docs/technotes/guides/collections/overview.html>.
-
 public class Participations3 {
+    // Objects of class 'Participations3' contain participations from
+    // several races.  The implementation uses a binary search tree as
+    // associative data structure, using nodes that implement
+    // 'PartTreeNodable'.  The tree uses 'racer' as key, and a
+    // 'Participations1' object as value (as does Participations2).
+    
+    // This implementation does not use
+    // classes from the Collections Framework (e.g., TreeMap)
+    // <https://docs.oracle.com/javase/8/docs/technotes/guides/collections/overview.html>.
 
     // Assignment 4.2, also in PartTreeNodable.java, PartTreeNull.java
     // and PartTreeBinary.java
