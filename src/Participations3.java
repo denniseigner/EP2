@@ -1,13 +1,13 @@
 /*
 This class will be used in future assignments and in the ad-hoc
-assignment.  It is recommended to solve Assignment 3.2 and 3.3 (and
-this also requires 3.1)
+assignment.  It is strongly recommended to solve Assignment 4.2 and 4.3.
+The ad-hoc assignment will be solved by each participant on their own.
 */
 // Objects of class 'Participations3' contain participations from
 // several races.  The implementation uses a binary search tree as
 // associative data structure, using nodes that implement
-// PartTreeNodable.  The tree uses 'racer' as key, and a
-// 'Participations1' object as value (like Participations2).
+// 'PartTreeNodable'.  The tree uses 'racer' as key, and a
+// 'Participations1' object as value (as does Participations2).
 
 // This implementation does not use
 // classes from the Collections Framework (e.g., TreeMap)
@@ -15,9 +15,10 @@ this also requires 3.1)
 
 public class Participations3 {
 
-    // Assignment 4.2
+    // Assignment 4.2, also in PartTreeNodable.java, PartTreeNull.java
+    // and PartTreeBinary.java
 
-    // Introduce (private) object variables and classes as needed.
+    // Introduce (private) object variables, methods and classes as needed.
 
     // Creates an empty object of this class
     public Participations3() {
@@ -50,10 +51,11 @@ public class Participations3 {
     // Participations2?  Welche Vor- und Nachteile haben die
     // Implementierungen im Vergleich?
 
-    // 2) Wozu ist der Rückgabewert des add in SongTreeNodable gut?
-    // Wäre es auch möglich, mit einem add , das den Unterbaum nicht
-    // zurückgibt, das Einfügen in den Baum zu implementieren, ohne
-    // mehr ifs zu verwenden?
+    // 2) Wozu ist der Rückgabewert des add in PartTreeNodable gut?
+    // Wäre es auch möglich, mit einem 'add', das den Unterbaum nicht
+    // zurückgibt (auch nicht auf andere Art als mit 'return'), das
+    // Einfügen in den Baum zu implementieren, ohne mehr ifs zu
+    // verwenden?
 
     // 3) Wo werden während dieser Aufgabe tatsächlich zur Laufzeit
     // unterschiedliche Implementierungen derselben Methode von der
@@ -66,6 +68,7 @@ public class Participations3 {
     // order and format as produced by 'print()'.  In other words,
     // print() can be implemented by just outputting the string
     // produced by toString().
+    @Override
     public String toString() {
         // TODO: Implement this method.  Add toString() methods in
         //  related classes as appropriate; observe the restrictions
@@ -75,13 +78,14 @@ public class Participations3 {
 
     // Fragen:
 
-    // 1) Muss man dafür toString zu SongTreeNodable hinzufügen? Darf
-    // man es? Begründen Sie Ihre Antwort.
+    // 1) Muss man dafür toString() zu 'PartTreeNodable' hinzufügen?
+    // Darf man es? Begründen Sie Ihre Antwort.
 
     // 2) Vergleichen Sie die Implementierung von toString() von
     // Participations3 mit einer (hypothetischen oder tatsächlichen)
     // Implementierung von print(), die toString() nicht aufruft.  Was
     // sind die Unterschiede und Gemeinsamkeiten?
+
 
     // This method is only for testing.
     // Alternatively, you can put the tests in additional classes.
