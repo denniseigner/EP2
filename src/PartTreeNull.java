@@ -33,4 +33,11 @@ public class PartTreeNull implements PartTreeNodable {
         // TODO: Implement this method
         return null;
     }
+
+
+    // This method is only for testing.
+    // Alternatively, you can put the tests in additional classes.
+    public static void main(String[] args) {
+        // TODO: write your own test cases here if necessary.
+    }
 }
