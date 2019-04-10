@@ -15,6 +15,8 @@ zusaetzlichen Klasse.
 
 Fragen sollen in der Übung beantwortet werden können.
 
+Der Abgabetermin für dieses Aufgabenblatt ist Fr., 10.5.2019, 13h.
+
 Aufgabe 4.1 (40%) Fügen Sie folgende Methoden zur Klasse Participations1
 hinzu:
 
@@ -35,9 +37,16 @@ public void remove(String r) {
     // TODO: implement this method
 }
 
+Frage:
+
+Wäre diese Aufgabe mit Arrays (also in Participations) leichter zu
+lösen?  Was hätte so eine Variante für andere Vor- und Nachteile?
+
+
 Aufgabe 4.2 (40%) ist in der Klasse Participations3, im Interface
 PartTreeNodable, und in den Klassen PartTreeNull und PartTreeBinary zu
 finden.
+
 
 Aufgabe 4.3 (20%) ist in der Klasse Participations3 zu finden.
 
