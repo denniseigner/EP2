@@ -17,6 +17,7 @@ Fragen sollen in der Übung beantwortet werden können.
 
 Der Abgabetermin für dieses Aufgabenblatt ist Fr., 10.5.2019, 13h.
 
+
 Aufgabe 4.1 (40%) Fügen Sie folgende Methoden zur Klasse Participations1
 hinzu:
 
