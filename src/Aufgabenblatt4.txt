@@ -1,0 +1,63 @@
+Allgemein: Vorgegebene Programmteile dürfen nur an den Stellen
+verändert werden, die mit TODO markiert sind.
+Zusätzliche Klassen, Interfaces, Methoden und Variablen dürfen
+aber eingefügt werden.
+
+Objektvariablen sollten private sein, verlangte Methoden und
+Konstruktoren public, Hilfsmethoden private.
+
+Falls Sie eine zusaetzliche Klasse definieren, verwenden Sie
+einen Klassennamen, der mit "My" beginnt, damit der
+Klassenname nicht mit Klassen in künftigen Angaben kollidiert.
+
+Schreiben Sie Tests fuer die Aufgaben, z.B. in einer
+zusaetzlichen Klasse.
+
+Fragen sollen in der Übung beantwortet werden können.
+
+Der Abgabetermin für dieses Aufgabenblatt ist Fr., 10.5.2019, 13h.
+
+
+Aufgabe 4.1 (40%) Fügen Sie folgende Methoden zur Klasse Participations1
+hinzu:
+
+// Insert p immediately after the last entry in 'this' where race is equal to r.
+// If there is no such entry, insert p before the first entry.
+public void addAfter(String r, Participation p) {
+    // TODO: implement this method
+}
+
+// Insert p immediately before the first entry in 'this' where race is equal to r.
+// If there is no such entry, insert p after the last entry.
+public void addBefore(String r, Participation p) {
+    // TODO: implement this method
+}
+
+// Delete every entry in 'this' where race is equal to r.
+public void remove(String r) {
+    // TODO: implement this method
+}
+
+Frage:
+
+Wäre diese Aufgabe mit Arrays (also in Participations) leichter zu
+lösen?  Was hätte so eine Variante für andere Vor- und Nachteile?
+
+
+Aufgabe 4.2 (40%) ist in der Klasse Participations3, im Interface
+PartTreeNodable, und in den Klassen PartTreeNull und PartTreeBinary zu
+finden.
+
+
+Aufgabe 4.3 (20%) ist in der Klasse Participations3 zu finden.
+
+
+Aufgabe 4.1 ist eine typische Aufgabe, die auch zu Test 1 kommen könnte.
+Daher empfehlen wir die Lösung dieser Aufgabe dringend.
+
+Die Ad-hoc-Aufgabe wird auf Aufgabe 4.2 bzw. Aufgabe 4.3 aufbauen.
+Außerdem werden künftige Aufgaben auf 4.2 und 4.3 aufbauen, sodass
+dringend empfohlen wird, auch diese Aufgaben zu lösen.
+
+Die Ad-hoc-Aufgabe in der 4. Übungseinheit wird einzeln gelöst
+(keine Gruppenarbeit).
