@@ -14,7 +14,8 @@ public class MyParticipations1Test extends MyClassTest implements MyTestInterfac
             && testPrint()
             && testLookupRacer()
             && testFirst()
-            && testPrintWithConstraints();
+            && testPrintWithConstraints()
+            && testAddAfter();
     }
 
     private boolean testParticipations1Overload() {
@@ -102,6 +103,36 @@ public class MyParticipations1Test extends MyClassTest implements MyTestInterfac
             MyMiniTestSuite.assertOutContent("1 Marcel Hirscher (Kitzbühel)\n" +
                 "2 Hermann Maier (Kitzbühel)\n" +
                 "3 Benni Raich (Kitzbühel)")
+        );
+    }
+
+    private boolean testAddAfter() {
+        print("testAddAfter()");
+
+        Participations1 participations = new Participations1();
+
+        participations.add(new Participation("Kitzbühel", "Marcel Hirscher", 1));
+        participations.add(new Participation("Kitzbühel", "Hermann Maier", 2));
+        participations.add(new Participation("Kitzbühel", "Benni Raich", 3));
+        participations.add(new Participation("Schladming", "Marcel Hirscher", 4));
+        participations.add(new Participation("Schladming", "Benni Raich", 5));
+
+        participations.addAfter("Lindsey Vonn", new Participation("Schladming", "Lindsey Vonn", 15));
+        participations.addAfter("Marcel Hirscher", new Participation("Kitzbühel", "Lindsey Vonn", 10));
+
+        MyMiniTestSuite.changeOutToFile();
+        participations.print();
+
+        return testPassed(
+            MyMiniTestSuite.assertOutContent(
+                "15 Lindsey Vonn (Schladming)\n" +
+                    "1 Marcel Hirscher (Kitzbühel)\n" +
+                    "2 Hermann Maier (Kitzbühel)\n" +
+                    "3 Benni Raich (Kitzbühel)\n" +
+                    "4 Marcel Hirscher (Schladming)\n" +
+                    "10 Lindsey Vonn (Kitzbühel)\n" +
+                    "5 Benni Raich (Schladming)"
+            )
         );
     }
 }

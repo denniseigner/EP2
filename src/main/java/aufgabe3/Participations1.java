@@ -104,7 +104,7 @@ public class Participations1 {
     // If there is no such entry, insert p before the first entry.
     public void addAfter(String r, Participation p) {
         // TODO: implement this method
-
+        partList.addAfter(r, p);
     }
 
     private class MyList {
@@ -135,39 +135,39 @@ public class Participations1 {
             last.setNext(last = new MyListNode(p, null));
         }
 
-        private Participation poll() {
+        private MyListNode poll() {
             if (head == null) return null;
-            Participation p = head.getP();
+            MyListNode mln = head;
             head = head.getNext();
             if (head == null) {
                 last = null;
             }
-            return p;
+            return mln;
         }
 
         private void print() {
-            Participation p = poll();
-            while (p != null) {
-                p.print();
-                p = poll();
+            MyListNode mln = poll();
+            while (mln != null) {
+                mln.getP().print();
+                mln = poll();
             }
         }
 
         private void print(int x) {
-            Participation p = poll();
-            while (p != null) {
-                if (p.getBibnumber() <= x) {
-                    p.print();
+            MyListNode mln = poll();
+            while (mln != null) {
+                if (mln.getP().getBibnumber() <= x) {
+                    mln.getP().print();
                 }
-                p = poll();
+                mln = poll();
             }
         }
 
         private Participation lookupRacer(String r) {
-            Participation p = poll();
-            while (p != null) {
-                if (p.getRacer().equals(r)) return p;
-                p = poll();
+            MyListNode mln = poll();
+            while (mln != null) {
+                if (mln.getP().getRacer().equals(r)) return mln.getP();
+                mln = poll();
             }
             head = first;
             return null;
@@ -179,7 +179,22 @@ public class Participations1 {
         }
 
         private void addAfter(String r, Participation p) {
+            MyListNode mln = poll();
+            MyListNode tmpListNode = first;
 
+            while (mln != null) {
+                if (mln.getP().getRacer().equals(r)) tmpListNode = mln;
+                mln = poll();
+            }
+            head = first;
+
+            if (tmpListNode == first) {
+                MyListNode newFirst = new MyListNode(p, first);
+                first = newFirst;
+                return;
+            }
+
+            tmpListNode.setNext(new MyListNode(p, tmpListNode.getNext()));
         }
 
         private class MyListNode {
