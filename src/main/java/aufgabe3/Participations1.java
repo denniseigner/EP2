@@ -14,38 +14,24 @@ public class Participations1 {
     // Assignment 3.1
 
     // Introduce (private) object variables and classes as needed.
-    private Participation participation;
-    private Participations1 next;
-    private int iteration;
+    private MyList partList;
 
     // Creates an empty object of this class
     public Participations1(int n) {
         // TODO: implement this constructor
-        iteration = n;
+        partList = new MyList(n);
     }
 
     // Creates an empty object of this class
     public Participations1() {
         // TODO: implement this constructor
-        iteration = -1;
+        partList = new MyList();
     }
 
     // Adds p to 'this'.
     public void add(Participation p) {
         // TODO: Implement this method
-        if (participation == null) {
-            participation = p;
-            return;
-        }
-
-        if (next == null) {
-            if (iteration == 1) {
-                System.err.println("Cannot add any more Participations");
-                return;
-            }
-            next = iteration > 1 ? new Participations1(iteration - 1) : new Participations1();
-        }
-        next.add(p);
+        partList.addParticipation(p);
     }
 
     // Print the entries in the order of insertion; each participation
@@ -53,9 +39,11 @@ public class Participations1 {
     // Participation, followed by a newline.
     public void print() {
         // TODO: Implement this method
-        if (participation == null) return;
-        participation.print();
-        if (next != null) next.print();
+        Participation p = partList.poll();
+        while (p != null) {
+            p.print();
+            p = partList.poll();
+        }
     }
 
     // Returns the first participation (the one that was inserted
@@ -63,9 +51,7 @@ public class Participations1 {
     // no such participation, return null.
     public Participation lookupRacer(String r) {
         // TODO: Implement this method
-        if (participation == null || next == null) return null;
-
-        return participation.getRacer().equals(r) ? participation : next.lookupRacer(r);
+        return partList.lookupRacer(r);
     }
 
     // Fragen:
@@ -95,7 +81,7 @@ public class Participations1 {
     // null.
     public Participation first() {
         // TODO: Implement this method
-        return participation;
+        return partList.first();
     }
 
 
@@ -109,16 +95,101 @@ public class Participations1 {
     // Siehe https://tuwel.tuwien.ac.at/mod/forum/discuss.php?d=136099
     public void print(int x) {
         // TODO: Implement this method
-        if (participation == null) return;
-        if (participation.getBibnumber() <= x) participation.print();
-        if (next != null) next.print(x);
+        Participation p = partList.poll();
+        while (p != null) {
+            if (p.getBibnumber() <= x) {
+                p.print();
+            }
+            p = partList.poll();
+        }
     }
+
     // adhoc 3
     public void print(String x, int y) {
         // TODO: Implement this method
-        if (participation == null) return;
-        if (participation.getBibnumber() < y && participation.getRacer().compareTo(x) >= 0) participation.print();
-        if (next != null) next.print(x,y);
+
+    }
+
+    // Insert p immediately after the last entry in 'this' where race is equal to r.
+    // If there is no such entry, insert p before the first entry.
+    public void addAfter(String r, Participation p) {
+        // TODO: implement this method
+    }
+
+    private class MyList {
+
+        MyListNode head, last;
+        int counter, maxCount;
+        boolean limited = false;
+
+        private MyList() {
+
+        }
+
+        private MyList(int maxCount) {
+            counter = 0;
+            this.maxCount = maxCount;
+            limited = true;
+        }
+
+        private void addParticipation(Participation p) {
+            if (++counter > maxCount && limited) {
+                System.err.println("Cannot add any more Participations");
+            }
+
+            if (head == null) {
+                head = last = new MyListNode(p, null);
+                return;
+            }
+            last.setNext(last = new MyListNode(p, null));
+        }
+
+        private Participation poll() {
+            if (head == null) return null;
+            Participation p = head.getP();
+            head = head.getNext();
+            if (head == null) {
+                last = null;
+            }
+            return p;
+        }
+
+        private Participation lookupRacer(String r) {
+            Participation p = poll();
+            while (p != null) {
+                if (p.getRacer().equals(r)) return p;
+                p = poll();
+            }
+            return null;
+        }
+
+        private Participation first() {
+            if (head == null) return null;
+            return head.getP();
+        }
+
+        private class MyListNode {
+
+            private MyListNode next;
+            private Participation p;
+
+            private MyListNode(Participation p, MyListNode next) {
+                this.next = next;
+                this.p = p;
+            }
+
+            private void setNext(MyListNode next) {
+                this.next = next;
+            }
+
+            private MyListNode getNext() {
+                return next;
+            }
+
+            private Participation getP() {
+                return p;
+            }
+        }
     }
 
     // This method is only for testing.

@@ -129,6 +129,17 @@ public class Participations2 {
         if (right != null) right.print(x);
     }
 
+    //adhoc 3
+    public void print(String x, int y) {
+        // TODO: Implement this method
+
+        if (participations == null) return;
+
+        if (left != null) left.print(x, y);
+        participations.print(x, y);
+        if (right != null) right.print(x, y);
+    }
+
     // This method is only for testing.
     // Alternatively, you can put the tests in additional classes.
     public static void main(String[] args) {
