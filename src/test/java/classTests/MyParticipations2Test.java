@@ -20,11 +20,13 @@ public class MyParticipations2Test extends MyClassTest implements MyTestInterfac
         print("testParticipations2Overload()");
         Participations2 participationsOverload = new Participations2(2);
 
+        MyMiniTestSuite.changeErrToFile();
+
         participationsOverload.add(new Participation("Kitzbühel", "Marcel Hirscher", 1));
         participationsOverload.add(new Participation("Kitzbühel", "Hermann Maier", 2));
         participationsOverload.add(new Participation("Kitzbühel", "Benni Raich", 3));
 
-        return testPassed(true);
+        return testPassed(MyMiniTestSuite.assertOutContent("Cannot add any more Participations"));
     }
 
     private boolean testPrint() {

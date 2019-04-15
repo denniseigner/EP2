@@ -1,3 +1,7 @@
+package main.java.aufgabe4;
+
+import main.java.aufgabe1.Participation;
+
 public class PartTreeNull implements PartTreeNodable {
     // Objects of class 'PartTreeNull' represent an empty node in a binary
     // search tree, using 'racer' as key.

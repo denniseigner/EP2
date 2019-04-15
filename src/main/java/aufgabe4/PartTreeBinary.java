@@ -1,3 +1,7 @@
+package main.java.aufgabe4;
+
+import main.java.aufgabe1.Participation;
+
 public class PartTreeBinary implements PartTreeNodable {
     // An object of class 'PartTreeBinary' represents a nonempty node
     // in a binary search tree, using 'racer' as key.

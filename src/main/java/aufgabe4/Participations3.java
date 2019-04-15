@@ -1,3 +1,7 @@
+package main.java.aufgabe4;
+
+import main.java.aufgabe1.Participation;
+
 public class Participations3 {
     // Objects of class 'Participations3' contain participations from
     // several races.  The implementation uses a binary search tree as

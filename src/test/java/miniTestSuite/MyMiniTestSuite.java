@@ -42,13 +42,28 @@ public class MyMiniTestSuite {
         System.setOut(o);
     }
 
-    public static void changeOutToConsole() {
+    private static void changeOutToConsole() {
         System.setOut(console);
+    }
+
+    public static void changeErrToFile() {
+        PrintStream o = null;
+        try {
+            o = new PrintStream(new File("A.txt"));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        System.setErr(o);
+    }
+
+    private static void changeErrToConsole() {
+        System.setErr(console);
     }
 
     public static boolean assertOutContent(String is) {
         String content;
         changeOutToConsole();
+        changeErrToConsole();
         try {
             content = new Scanner(new File("A.txt")).useDelimiter("\\Z").next();
         } catch (Exception e) {
