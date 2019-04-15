@@ -63,6 +63,7 @@ public class MyParticipations1Test extends MyClassTest implements MyTestInterfac
         return testPassed(
             MyMiniTestSuite.assertEquals(participations.lookupRacer(lookupName), lookupParticipation)
             && MyMiniTestSuite.assertEquals(participations.lookupRacer(lookupWrongName), null)
+            && MyMiniTestSuite.assertEquals(participations.lookupRacer(lookupName), lookupParticipation)
         );
     }
 

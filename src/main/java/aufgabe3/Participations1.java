@@ -39,11 +39,7 @@ public class Participations1 {
     // Participation, followed by a newline.
     public void print() {
         // TODO: Implement this method
-        Participation p = partList.poll();
-        while (p != null) {
-            p.print();
-            p = partList.poll();
-        }
+        partList.print();
     }
 
     // Returns the first participation (the one that was inserted
@@ -95,13 +91,7 @@ public class Participations1 {
     // Siehe https://tuwel.tuwien.ac.at/mod/forum/discuss.php?d=136099
     public void print(int x) {
         // TODO: Implement this method
-        Participation p = partList.poll();
-        while (p != null) {
-            if (p.getBibnumber() <= x) {
-                p.print();
-            }
-            p = partList.poll();
-        }
+        partList.print(x);
     }
 
     // adhoc 3
@@ -114,13 +104,14 @@ public class Participations1 {
     // If there is no such entry, insert p before the first entry.
     public void addAfter(String r, Participation p) {
         // TODO: implement this method
+
     }
 
     private class MyList {
 
-        MyListNode head, last;
+        MyListNode head, last, first;
         int counter, maxCount;
-        boolean limited = false;
+        boolean limited;
 
         private MyList() {
 
@@ -138,7 +129,7 @@ public class Participations1 {
             }
 
             if (head == null) {
-                head = last = new MyListNode(p, null);
+                head = last = first =  new MyListNode(p, null);
                 return;
             }
             last.setNext(last = new MyListNode(p, null));
@@ -154,18 +145,41 @@ public class Participations1 {
             return p;
         }
 
+        private void print() {
+            Participation p = poll();
+            while (p != null) {
+                p.print();
+                p = poll();
+            }
+        }
+
+        private void print(int x) {
+            Participation p = poll();
+            while (p != null) {
+                if (p.getBibnumber() <= x) {
+                    p.print();
+                }
+                p = poll();
+            }
+        }
+
         private Participation lookupRacer(String r) {
             Participation p = poll();
             while (p != null) {
                 if (p.getRacer().equals(r)) return p;
                 p = poll();
             }
+            head = first;
             return null;
         }
 
         private Participation first() {
             if (head == null) return null;
             return head.getP();
+        }
+
+        private void addAfter(String r, Participation p) {
+
         }
 
         private class MyListNode {
