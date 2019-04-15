@@ -107,6 +107,13 @@ public class Participations1 {
         partList.addAfter(r, p);
     }
 
+    // Insert p immediately before the first entry in 'this' where race is equal to r.
+    // If there is no such entry, insert p after the last entry.
+    public void addBefore(String r, Participation p) {
+        // TODO: implement this method
+        partList.addBefore(r, p);
+    }
+
     private class MyList {
 
         MyListNode head, last, first;
@@ -129,7 +136,7 @@ public class Participations1 {
             }
 
             if (head == null) {
-                head = last = first =  new MyListNode(p, null);
+                head = last = first = new MyListNode(p, null);
                 return;
             }
             last.setNext(last = new MyListNode(p, null));
@@ -189,8 +196,28 @@ public class Participations1 {
             head = first;
 
             if (tmpListNode == first) {
-                MyListNode newFirst = new MyListNode(p, first);
-                first = newFirst;
+                first = new MyListNode(p, first);
+                return;
+            }
+
+            tmpListNode.setNext(new MyListNode(p, tmpListNode.getNext()));
+        }
+
+        private void addBefore(String r, Participation p) {
+            MyListNode mln = poll();
+            MyListNode tmpListNode = null;
+
+            while (mln != null) {
+                if (mln.getP().getRacer().equals(r)) {
+                    break;
+                }
+                tmpListNode = mln;
+                mln = poll();
+            }
+            head = first;
+
+            if (tmpListNode == null) {
+                head = first = new MyListNode(p, first);
                 return;
             }
 
