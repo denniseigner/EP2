@@ -50,11 +50,13 @@ public class PartTreeBinary implements PartTreeNodable {
     @Override
     public void print() {
         // TODO: Implement this method
-        if (partList == null) return;
-
         left.print();
         partList.print();
         right.print();
+    }
+
+    @Override public String toString() {
+        return left.toString() + partList.toString() + right.toString();
     }
 
     @Override

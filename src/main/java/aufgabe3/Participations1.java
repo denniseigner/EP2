@@ -123,6 +123,11 @@ public class Participations1 {
         partList.remove(r);
     }
 
+    @Override
+    public String toString() {
+        return partList.toString();
+    }
+
     private class MyList {
 
         MyListNode head, last, first;
@@ -167,6 +172,20 @@ public class Participations1 {
                 mln.getP().print();
                 mln = poll();
             }
+            head = first;
+        }
+
+        @Override
+        public String toString() {
+            StringBuilder retString = new StringBuilder();
+            MyListNode mln = poll();
+            while (mln != null) {
+                retString.append(mln.getP().toString());
+                retString.append('\n');
+                mln = poll();
+            }
+            head = first;
+            return retString.toString();
         }
 
         private void print(int x) {
@@ -177,6 +196,7 @@ public class Participations1 {
                 }
                 mln = poll();
             }
+            head = first;
         }
 
         private Participation lookupRacer(String r) {

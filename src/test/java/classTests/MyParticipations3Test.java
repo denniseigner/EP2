@@ -10,7 +10,8 @@ public class MyParticipations3Test extends MyClassTest implements MyTestInterfac
     @Override
     public boolean run() {
         return testPrint()
-            && testLookupRacer();
+            && testLookupRacer()
+            && testToString();
     }
 
     private boolean testPrint() {
@@ -51,5 +52,27 @@ public class MyParticipations3Test extends MyClassTest implements MyTestInterfac
 
         return testPassed(MyMiniTestSuite.assertEquals(participations.lookupRacer(lookupName), lookupParticipation)
             && MyMiniTestSuite.assertEquals(participations.lookupRacer(lookupWrongName), null));
+    }
+
+    private boolean testToString() {
+        print("testToString()");
+
+        Participations3 participations = new Participations3();
+
+        participations.add(new Participation("Kitzbühel", "Marcel Hirscher", 1));
+        participations.add(new Participation("Kitzbühel", "Hermann Maier", 2));
+        participations.add(new Participation("Kitzbühel", "Benni Raich", 3));
+        participations.add(new Participation("Schladming", "Benni Raich", 4));
+        participations.add(new Participation("Schladming", "Marcel Hirscher", 5));
+
+        MyMiniTestSuite.changeOutToFile();
+        System.out.println(participations);
+
+        return testPassed(MyMiniTestSuite.assertOutContent("3 Benni Raich (Kitzbühel)\n" +
+            "4 Benni Raich (Schladming)\n" +
+            "2 Hermann Maier (Kitzbühel)\n" +
+            "1 Marcel Hirscher (Kitzbühel)\n" +
+            "5 Marcel Hirscher (Schladming)")
+        );
     }
 }

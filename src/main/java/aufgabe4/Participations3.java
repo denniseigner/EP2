@@ -76,7 +76,9 @@ public class Participations3 {
         // TODO: Implement this method.  Add toString() methods in
         //  related classes as appropriate; observe the restrictions
         //  of PartTreeNodable and the classes that implement it.
-        return "";
+        String retString = partTree.toString();
+        // remove that last newline
+        return retString.length() > 0 ? retString.substring(0, retString.length() - 1) : retString;
     }
 
     // Fragen:

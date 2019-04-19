@@ -39,6 +39,11 @@ public class PartTreeNull implements PartTreeNodable {
         return null;
     }
 
+    @Override
+    public String toString() {
+        return "";
+    }
+
 
     // This method is only for testing.
     // Alternatively, you can put the tests in additional classes.
