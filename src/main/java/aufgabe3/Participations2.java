@@ -82,17 +82,17 @@ public class Participations2 {
     // no such participation, return null.
     public Participation lookupRacer(String r) {
         // TODO: Implement this method
-        if (participations == null) return null;
-
-        return participations.first().getRacer().equals(r)
-            ? participations.lookupRacer(r)
-            : participations.first().getRacer().compareTo(r) < 0
-                ? left != null
-                    ? left.lookupRacer(r)
-                    : null
-                : right != null
-                    ? right.lookupRacer(r)
-                    : null;
+        return participations == null
+            ? null
+            : participations.first().getRacer().equals(r)
+                ? participations.lookupRacer(r)
+                : participations.first().getRacer().compareTo(r) < 0
+                    ? left != null
+                        ? left.lookupRacer(r)
+                        : null
+                    : right != null
+                        ? right.lookupRacer(r)
+                        : null;
     }
 
     // Fragen:

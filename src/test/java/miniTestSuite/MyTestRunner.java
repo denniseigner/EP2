@@ -11,7 +11,8 @@ public class MyTestRunner {
             && new MyParticipationsTest().run()
             && new MyParticipations1Test().run()
             && new MyParticipations2Test().run()
-            && new MyCharStack1Test().run();
+            && new MyCharStack1Test().run()
+            && new MyParticipations3Test().run();
 
         System.out.println("All Tests succesfully run");
     }

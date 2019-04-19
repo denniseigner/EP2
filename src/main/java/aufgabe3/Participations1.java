@@ -241,6 +241,9 @@ public class Participations1 {
                     if (mln == first) {
                         first = mln.next;
                     }
+                    if (mln == last) {
+                        last = mln.previous;
+                    }
                     mln.remove();
                 }
                 mln = poll();

@@ -24,12 +24,13 @@ public class PartTreeNull implements PartTreeNodable {
     @Override
     public PartTreeNodable add(Participation p) {
         // TODO: Implement this method
-        return NIL;
+        return new PartTreeBinary().add(p);
     }
 
     @Override
     public void print() {
         // TODO: Implement this method
+        // nothing to do
     }
 
     @Override
