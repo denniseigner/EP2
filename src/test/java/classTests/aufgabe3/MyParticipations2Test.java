@@ -1,4 +1,4 @@
-package test.java.classTests;
+package test.java.classTests.aufgabe3;
 
 import main.java.aufgabe1.Participation;
 import main.java.aufgabe3.Participations2;

@@ -1,11 +1,11 @@
-package test.java.classTests;
+package test.java.classTests.aufgabe3;
 
-import main.java.aufgabe2.CharStack;
+import main.java.aufgabe3.CharStack1;
 import test.java.miniTestSuite.MyClassTest;
 import test.java.miniTestSuite.MyMiniTestSuite;
 import test.java.miniTestSuite.MyTestInterface;
 
-public class MyCharStackTest extends MyClassTest implements MyTestInterface {
+public class MyCharStack1Test extends MyClassTest implements MyTestInterface {
 
     @Override
     public boolean run() {
@@ -16,12 +16,11 @@ public class MyCharStackTest extends MyClassTest implements MyTestInterface {
     private boolean testPop() {
         print("testPop()");
 
-        CharStack cs = new CharStack();
+        CharStack1 cs = new CharStack1();
 
         cs.push('y');
         cs.push('e');
         cs.push('h');
-
 
         return testPassed(MyMiniTestSuite.assertEquals(cs.pop(), 'h')
             && MyMiniTestSuite.assertEquals(cs.pop(), 'e')
@@ -32,9 +31,9 @@ public class MyCharStackTest extends MyClassTest implements MyTestInterface {
     private boolean testIsEmpty() {
         print("testIsEmpty()");
 
-        CharStack cs1 = new CharStack();
-        CharStack cs2 = new CharStack();
-        CharStack cs3 = new CharStack();
+        CharStack1 cs1 = new CharStack1();
+        CharStack1 cs2 = new CharStack1();
+        CharStack1 cs3 = new CharStack1();
 
         cs2.push('y');
         cs2.push('e');
