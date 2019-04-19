@@ -8,6 +8,9 @@ assignment.  It is recommended to solve Assignment 3.1, 3.2 and 3.3
 // <https://docs.oracle.com/javase/8/docs/technotes/guides/collections/overview.html>.
 
 import main.java.aufgabe1.Participation;
+import test.java.miniTestSuite.MyMiniTestSuite;
+
+import java.util.ArrayList;
 
 public class Participations1 {
 
@@ -114,6 +117,12 @@ public class Participations1 {
         partList.addBefore(r, p);
     }
 
+    // Delete every entry in 'this' where race is equal to r.
+    public void remove(String r) {
+        // TODO: implement this method
+        partList.remove(r);
+    }
+
     private class MyList {
 
         MyListNode head, last, first;
@@ -136,10 +145,10 @@ public class Participations1 {
             }
 
             if (head == null) {
-                head = last = first = new MyListNode(p, null);
+                head = last = first = new MyListNode(p, null, null);
                 return;
             }
-            last.setNext(last = new MyListNode(p, null));
+            last.setNext(last = new MyListNode(p, null, last));
         }
 
         private MyListNode poll() {
@@ -196,11 +205,11 @@ public class Participations1 {
             head = first;
 
             if (tmpListNode == first) {
-                first = new MyListNode(p, first);
+                first = new MyListNode(p, first, null);
                 return;
             }
 
-            tmpListNode.setNext(new MyListNode(p, tmpListNode.getNext()));
+            tmpListNode.setNext(new MyListNode(p, tmpListNode.getNext(), tmpListNode));
         }
 
         private void addBefore(String r, Participation p) {
@@ -217,20 +226,36 @@ public class Participations1 {
             head = first;
 
             if (tmpListNode == null) {
-                head = first = new MyListNode(p, first);
+                head = first = new MyListNode(p, first, null);
                 return;
             }
 
-            tmpListNode.setNext(new MyListNode(p, tmpListNode.getNext()));
+            tmpListNode.setNext(new MyListNode(p, tmpListNode.getNext(), tmpListNode));
+        }
+
+        private void remove(String r) {
+            MyListNode mln = poll();
+
+            while (mln != null) {
+                if (mln.getP().getRacer().equals(r)) {
+                    if (mln == first) {
+                        first = mln.next;
+                    }
+                    mln.remove();
+                }
+                mln = poll();
+            }
+            head = first;
         }
 
         private class MyListNode {
 
-            private MyListNode next;
+            private MyListNode next, previous;
             private Participation p;
 
-            private MyListNode(Participation p, MyListNode next) {
+            private MyListNode(Participation p, MyListNode next, MyListNode previous) {
                 this.next = next;
+                this.previous = previous;
                 this.p = p;
             }
 
@@ -238,12 +263,22 @@ public class Participations1 {
                 this.next = next;
             }
 
+
             private MyListNode getNext() {
                 return next;
             }
 
             private Participation getP() {
                 return p;
+            }
+
+            private void remove() {
+                if (previous != null) {
+                    previous.next = next;
+                }
+                if (next != null) {
+                    next.previous = previous;
+                }
             }
         }
     }
