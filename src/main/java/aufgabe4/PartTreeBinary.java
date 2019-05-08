@@ -16,8 +16,8 @@ public class PartTreeBinary implements PartTreeNodable {
     // implementation with dynamic binding.
 
     // TODO: define object variables, constructors and methods as needed
-    PartTreeNodable left, right;
-    Participations1 partList;
+    private PartTreeNodable left, right;
+    private Participations1 partList;
 
     public PartTreeBinary() {
         left = right = PartTreeNull.NIL;
