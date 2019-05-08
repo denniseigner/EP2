@@ -8,33 +8,52 @@ assignment.  It is recommended to solve Assignment 3.1, 3.2 and 3.3
 // <https://docs.oracle.com/javase/8/docs/technotes/guides/collections/overview.html>.
 
 import main.java.aufgabe1.Participation;
-import test.java.miniTestSuite.MyMiniTestSuite;
-
-import java.util.ArrayList;
 
 public class Participations1 {
 
     // Assignment 3.1
 
     // Introduce (private) object variables and classes as needed.
-    private MyList partList;
+    MyListNode head, last, first;
+    int counter, maxCount;
+    boolean limited;
+
+    private MyListNode poll() {
+        if (head == null) return null;
+        MyListNode mln = head;
+        head = head.getNext();
+        if (head == null) {
+            last = null;
+        }
+        return mln;
+    }
 
     // Creates an empty object of this class
     public Participations1(int n) {
         // TODO: implement this constructor
-        partList = new MyList(n);
+        counter = 0;
+        this.maxCount = n;
+        limited = true;
     }
 
     // Creates an empty object of this class
     public Participations1() {
         // TODO: implement this constructor
-        partList = new MyList();
+
     }
 
     // Adds p to 'this'.
     public void add(Participation p) {
         // TODO: Implement this method
-        partList.addParticipation(p);
+        if (++counter > maxCount && limited) {
+            System.err.println("Cannot add any more Participations");
+        }
+
+        if (head == null) {
+            head = last = first = new MyListNode(p, null, null);
+            return;
+        }
+        last.setNext(last = new MyListNode(p, null, last));
     }
 
     // Print the entries in the order of insertion; each participation
@@ -42,7 +61,12 @@ public class Participations1 {
     // Participation, followed by a newline.
     public void print() {
         // TODO: Implement this method
-        partList.print();
+        MyListNode mln = poll();
+        while (mln != null) {
+            mln.getP().print();
+            mln = poll();
+        }
+        head = first;
     }
 
     // Returns the first participation (the one that was inserted
@@ -50,7 +74,13 @@ public class Participations1 {
     // no such participation, return null.
     public Participation lookupRacer(String r) {
         // TODO: Implement this method
-        return partList.lookupRacer(r);
+        MyListNode mln = poll();
+        while (mln != null) {
+            if (mln.getP().getRacer().equals(r)) return mln.getP();
+            mln = poll();
+        }
+        head = first;
+        return null;
     }
 
     // Fragen:
@@ -80,7 +110,8 @@ public class Participations1 {
     // null.
     public Participation first() {
         // TODO: Implement this method
-        return partList.first();
+        if (head == null) return null;
+        return head.getP();
     }
 
 
@@ -94,7 +125,14 @@ public class Participations1 {
     // Siehe https://tuwel.tuwien.ac.at/mod/forum/discuss.php?d=136099
     public void print(int x) {
         // TODO: Implement this method
-        partList.print(x);
+        MyListNode mln = poll();
+        while (mln != null) {
+            if (mln.getP().getBibnumber() <= x) {
+                mln.getP().print();
+            }
+            mln = poll();
+        }
+        head = first;
     }
 
     // adhoc 3
@@ -107,201 +145,110 @@ public class Participations1 {
     // If there is no such entry, insert p before the first entry.
     public void addAfter(String r, Participation p) {
         // TODO: implement this method
-        partList.addAfter(r, p);
+        MyListNode mln = poll();
+        MyListNode tmpListNode = first;
+
+        while (mln != null) {
+            if (mln.getP().getRacer().equals(r)) tmpListNode = mln;
+            mln = poll();
+        }
+        head = first;
+
+        if (tmpListNode == first) {
+            first = new MyListNode(p, first, null);
+            return;
+        }
+
+        tmpListNode.setNext(new MyListNode(p, tmpListNode.getNext(), tmpListNode));
     }
 
     // Insert p immediately before the first entry in 'this' where race is equal to r.
     // If there is no such entry, insert p after the last entry.
     public void addBefore(String r, Participation p) {
         // TODO: implement this method
-        partList.addBefore(r, p);
+        MyListNode mln = poll();
+        MyListNode tmpListNode = null;
+
+        while (mln != null) {
+            if (mln.getP().getRacer().equals(r)) {
+                break;
+            }
+            tmpListNode = mln;
+            mln = poll();
+        }
+        head = first;
+
+        if (tmpListNode == null) {
+            head = first = new MyListNode(p, first, null);
+            return;
+        }
+
+        tmpListNode.setNext(new MyListNode(p, tmpListNode.getNext(), tmpListNode));
     }
 
     // Delete every entry in 'this' where race is equal to r.
     public void remove(String r) {
         // TODO: implement this method
-        partList.remove(r);
+        MyListNode mln = poll();
+
+        while (mln != null) {
+            if (mln.getP().getRacer().equals(r)) {
+                if (mln == first) {
+                    first = mln.next;
+                }
+                if (mln == last) {
+                    last = mln.previous;
+                }
+                mln.remove();
+            }
+            mln = poll();
+        }
+        head = first;
     }
 
     @Override
     public String toString() {
-        return partList.toString();
+        StringBuilder retString = new StringBuilder();
+        MyListNode mln = poll();
+        while (mln != null) {
+            retString.append(mln.getP().toString());
+            retString.append('\n');
+            mln = poll();
+        }
+        head = first;
+        return retString.toString();
     }
 
-    private class MyList {
+    private class MyListNode {
 
-        MyListNode head, last, first;
-        int counter, maxCount;
-        boolean limited;
+        private MyListNode next, previous;
+        private Participation p;
 
-        private MyList() {
-
+        private MyListNode(Participation p, MyListNode next, MyListNode previous) {
+            this.next = next;
+            this.previous = previous;
+            this.p = p;
         }
 
-        private MyList(int maxCount) {
-            counter = 0;
-            this.maxCount = maxCount;
-            limited = true;
+        private void setNext(MyListNode next) {
+            this.next = next;
         }
 
-        private void addParticipation(Participation p) {
-            if (++counter > maxCount && limited) {
-                System.err.println("Cannot add any more Participations");
-            }
 
-            if (head == null) {
-                head = last = first = new MyListNode(p, null, null);
-                return;
-            }
-            last.setNext(last = new MyListNode(p, null, last));
+        private MyListNode getNext() {
+            return next;
         }
 
-        private MyListNode poll() {
-            if (head == null) return null;
-            MyListNode mln = head;
-            head = head.getNext();
-            if (head == null) {
-                last = null;
-            }
-            return mln;
+        private Participation getP() {
+            return p;
         }
 
-        private void print() {
-            MyListNode mln = poll();
-            while (mln != null) {
-                mln.getP().print();
-                mln = poll();
+        private void remove() {
+            if (previous != null) {
+                previous.next = next;
             }
-            head = first;
-        }
-
-        @Override
-        public String toString() {
-            StringBuilder retString = new StringBuilder();
-            MyListNode mln = poll();
-            while (mln != null) {
-                retString.append(mln.getP().toString());
-                retString.append('\n');
-                mln = poll();
-            }
-            head = first;
-            return retString.toString();
-        }
-
-        private void print(int x) {
-            MyListNode mln = poll();
-            while (mln != null) {
-                if (mln.getP().getBibnumber() <= x) {
-                    mln.getP().print();
-                }
-                mln = poll();
-            }
-            head = first;
-        }
-
-        private Participation lookupRacer(String r) {
-            MyListNode mln = poll();
-            while (mln != null) {
-                if (mln.getP().getRacer().equals(r)) return mln.getP();
-                mln = poll();
-            }
-            head = first;
-            return null;
-        }
-
-        private Participation first() {
-            if (head == null) return null;
-            return head.getP();
-        }
-
-        private void addAfter(String r, Participation p) {
-            MyListNode mln = poll();
-            MyListNode tmpListNode = first;
-
-            while (mln != null) {
-                if (mln.getP().getRacer().equals(r)) tmpListNode = mln;
-                mln = poll();
-            }
-            head = first;
-
-            if (tmpListNode == first) {
-                first = new MyListNode(p, first, null);
-                return;
-            }
-
-            tmpListNode.setNext(new MyListNode(p, tmpListNode.getNext(), tmpListNode));
-        }
-
-        private void addBefore(String r, Participation p) {
-            MyListNode mln = poll();
-            MyListNode tmpListNode = null;
-
-            while (mln != null) {
-                if (mln.getP().getRacer().equals(r)) {
-                    break;
-                }
-                tmpListNode = mln;
-                mln = poll();
-            }
-            head = first;
-
-            if (tmpListNode == null) {
-                head = first = new MyListNode(p, first, null);
-                return;
-            }
-
-            tmpListNode.setNext(new MyListNode(p, tmpListNode.getNext(), tmpListNode));
-        }
-
-        private void remove(String r) {
-            MyListNode mln = poll();
-
-            while (mln != null) {
-                if (mln.getP().getRacer().equals(r)) {
-                    if (mln == first) {
-                        first = mln.next;
-                    }
-                    if (mln == last) {
-                        last = mln.previous;
-                    }
-                    mln.remove();
-                }
-                mln = poll();
-            }
-            head = first;
-        }
-
-        private class MyListNode {
-
-            private MyListNode next, previous;
-            private Participation p;
-
-            private MyListNode(Participation p, MyListNode next, MyListNode previous) {
-                this.next = next;
-                this.previous = previous;
-                this.p = p;
-            }
-
-            private void setNext(MyListNode next) {
-                this.next = next;
-            }
-
-
-            private MyListNode getNext() {
-                return next;
-            }
-
-            private Participation getP() {
-                return p;
-            }
-
-            private void remove() {
-                if (previous != null) {
-                    previous.next = next;
-                }
-                if (next != null) {
-                    next.previous = previous;
-                }
+            if (next != null) {
+                next.previous = previous;
             }
         }
     }
