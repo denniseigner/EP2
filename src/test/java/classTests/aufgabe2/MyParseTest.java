@@ -1,4 +1,4 @@
-package test.java.classTests;
+package test.java.classTests.aufgabe2;
 
 import main.java.aufgabe2.Parse;
 import test.java.miniTestSuite.MyClassTest;

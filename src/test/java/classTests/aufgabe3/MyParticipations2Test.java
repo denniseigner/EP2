@@ -1,55 +1,60 @@
-package test.java.classTests;
+package test.java.classTests.aufgabe3;
 
 import main.java.aufgabe1.Participation;
-import main.java.aufgabe3.Participations1;
+import main.java.aufgabe3.Participations2;
 import test.java.miniTestSuite.MyClassTest;
 import test.java.miniTestSuite.MyMiniTestSuite;
 import test.java.miniTestSuite.MyTestInterface;
 
-public class MyParticipations1Test extends MyClassTest implements MyTestInterface {
+public class MyParticipations2Test extends MyClassTest implements MyTestInterface {
 
     @Override
     public boolean run() {
-        return testParticipations1Overload()
+        return testParticipations2Overload()
             && testPrint()
             && testLookupRacer()
-            && testFirst()
             && testPrintWithConstraints();
     }
 
-    private boolean testParticipations1Overload() {
-        print("testParticipations1Overload()");
-        Participations1 participationsOverload = new Participations1(2);
+    private boolean testParticipations2Overload() {
+        print("testParticipations2Overload()");
+        Participations2 participationsOverload = new Participations2(2);
+
+        MyMiniTestSuite.changeErrToFile();
 
         participationsOverload.add(new Participation("Kitzbühel", "Marcel Hirscher", 1));
         participationsOverload.add(new Participation("Kitzbühel", "Hermann Maier", 2));
         participationsOverload.add(new Participation("Kitzbühel", "Benni Raich", 3));
 
-        return testPassed(true);
+        return testPassed(MyMiniTestSuite.assertOutContent("Cannot add any more Participations"));
     }
 
     private boolean testPrint() {
         print("testPrint()");
 
-        Participations1 participations = new Participations1();
+        Participations2 participations = new Participations2();
 
         participations.add(new Participation("Kitzbühel", "Marcel Hirscher", 1));
         participations.add(new Participation("Kitzbühel", "Hermann Maier", 2));
         participations.add(new Participation("Kitzbühel", "Benni Raich", 3));
+        participations.add(new Participation("Schladming", "Benni Raich", 4));
+        participations.add(new Participation("Schladming", "Marcel Hirscher", 5));
 
         MyMiniTestSuite.changeOutToFile();
         participations.print();
-        return testPassed(
-            MyMiniTestSuite.assertOutContent("1 Marcel Hirscher (Kitzbühel)\n" +
+
+        return testPassed(MyMiniTestSuite.assertOutContent("3 Benni Raich (Kitzbühel)\n" +
+            "4 Benni Raich (Schladming)\n" +
             "2 Hermann Maier (Kitzbühel)\n" +
-            "3 Benni Raich (Kitzbühel)")
+            "1 Marcel Hirscher (Kitzbühel)\n" +
+            "5 Marcel Hirscher (Schladming)")
         );
     }
 
     private boolean testLookupRacer() {
         print("testLookupRacer()");
 
-        Participations1 participations = new Participations1();
+        Participations2 participations = new Participations2();
         String lookupName = "Marcel Hirscher";
         Participation lookupParticipation = new Participation("Kitzbühel", lookupName, 1);
         String lookupWrongName = "aldskjfhalsdhflajhsdf";
@@ -57,34 +62,17 @@ public class MyParticipations1Test extends MyClassTest implements MyTestInterfac
         participations.add(lookupParticipation);
         participations.add(new Participation("Kitzbühel", "Hermann Maier", 2));
         participations.add(new Participation("Kitzbühel", "Benni Raich", 3));
+        participations.add(new Participation("Schladming", "Benni Raich", 4));
+        participations.add(new Participation("Schladming", lookupName, 5));
 
-        return testPassed(
-            MyMiniTestSuite.assertEquals(participations.lookupRacer(lookupName), lookupParticipation)
-            && MyMiniTestSuite.assertEquals(participations.lookupRacer(lookupWrongName), null)
-        );
-    }
-
-    private boolean testFirst() {
-        print("testFirst()");
-
-        Participations1 participations = new Participations1();
-        Participations1 participationsEmpty = new Participations1();
-        Participation first = new Participation("Kitzbühel", "Marcel Hirscher", 1);
-
-        participations.add(first);
-        participations.add(new Participation("Kitzbühel", "Hermann Maier", 2));
-        participations.add(new Participation("Kitzbühel", "Benni Raich", 3));
-
-        return testPassed(
-            MyMiniTestSuite.assertEquals(participations.first(), first)
-            && MyMiniTestSuite.assertEquals(participationsEmpty.first(), null)
-        );
+        return testPassed(MyMiniTestSuite.assertEquals(participations.lookupRacer(lookupName), lookupParticipation)
+            && MyMiniTestSuite.assertEquals(participations.lookupRacer(lookupWrongName), null));
     }
 
     private boolean testPrintWithConstraints() {
         print("testPrintWithConstraints()");
 
-        Participations1 participations = new Participations1();
+        Participations2 participations = new Participations2();
 
         participations.add(new Participation("Kitzbühel", "Marcel Hirscher", 1));
         participations.add(new Participation("Kitzbühel", "Hermann Maier", 2));
@@ -96,9 +84,9 @@ public class MyParticipations1Test extends MyClassTest implements MyTestInterfac
         participations.print(3);
 
         return testPassed(
-            MyMiniTestSuite.assertOutContent("1 Marcel Hirscher (Kitzbühel)\n" +
+            MyMiniTestSuite.assertOutContent("3 Benni Raich (Kitzbühel)\n" +
                 "2 Hermann Maier (Kitzbühel)\n" +
-                "3 Benni Raich (Kitzbühel)")
+                "1 Marcel Hirscher (Kitzbühel)")
         );
     }
 }

@@ -1,3 +1,7 @@
+package main.java.aufgabe4;
+
+import main.java.aufgabe1.Participation;
+
 public interface PartTreeNodable {
     // An objects of a class implementing 'PartTreeNodable' represent a
     // node in a binary search tree, using 'racer' as key.  The value

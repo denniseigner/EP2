@@ -1,3 +1,7 @@
+package main.java.aufgabe4;
+
+import main.java.aufgabe1.Participation;
+
 public class Participations3 {
     // Objects of class 'Participations3' contain participations from
     // several races.  The implementation uses a binary search tree as
@@ -14,21 +18,25 @@ public class Participations3 {
     // and PartTreeBinary.java
 
     // TODO: Introduce (private) object variables, methods and classes as needed.
+    private PartTreeNodable partTree;
 
     // Creates an empty object of this class
     public Participations3() {
         // TODO: implement this constructor
+        partTree = PartTreeNull.NIL;
     }
 
     // Adds p to 'this'.
     public void add(Participation p) {
         // TODO: Implement this method
+        partTree = partTree.add(p);
     }
     
     // Print the participations in the same order and format as in
     // Participations2.
     public void print() {
         // TODO: Implement this method
+        partTree.print();
     }
 
     // Returns the first participation (the one that was inserted
@@ -36,7 +44,7 @@ public class Participations3 {
     // no such participation, return null.
     public Participation lookupRacer(String r) {
         // TODO: Implement this method
-        return null;
+        return partTree.lookupRacer(r);
     }
 
     // Fragen:
@@ -68,7 +76,9 @@ public class Participations3 {
         // TODO: Implement this method.  Add toString() methods in
         //  related classes as appropriate; observe the restrictions
         //  of PartTreeNodable and the classes that implement it.
-        return "";
+        String retString = partTree.toString();
+        // remove that last newline
+        return retString.length() > 0 ? retString.substring(0, retString.length() - 1) : retString;
     }
 
     // Fragen:

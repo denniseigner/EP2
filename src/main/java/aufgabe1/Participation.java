@@ -60,22 +60,22 @@ public class Participation {
     // 40 Mikaela Shiffrin (Lienz 2011 Ladies' Slalom)
     //
     public void print() {
-        System.out.println(createPrintMessage());
+        System.out.println(this);
+    }
+
+    @Override
+    public String toString() {
+        return bibnumber + " " + racer + " (" + race + ")";
     }
 
     public void print1() {
-        System.out.print(createPrintMessage());
+        System.out.print(this);
         if(place == 0 && runtime == null) {
             System.out.println();
             return;
         }
 
         System.out.println("; " + place + "; " + runtime);
-    }
-
-    // Creates the message to be printed
-    private String createPrintMessage() {
-        return bibnumber + " " + racer + " (" + race + ")";
     }
 
     // Question:

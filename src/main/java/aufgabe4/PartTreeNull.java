@@ -1,3 +1,7 @@
+package main.java.aufgabe4;
+
+import main.java.aufgabe1.Participation;
+
 public class PartTreeNull implements PartTreeNodable {
     // Objects of class 'PartTreeNull' represent an empty node in a binary
     // search tree, using 'racer' as key.
@@ -20,18 +24,24 @@ public class PartTreeNull implements PartTreeNodable {
     @Override
     public PartTreeNodable add(Participation p) {
         // TODO: Implement this method
-        return NIL;
+        return new PartTreeBinary().add(p);
     }
 
     @Override
     public void print() {
         // TODO: Implement this method
+        // nothing to do
     }
 
     @Override
     public Participation lookupRacer(String r) {
         // TODO: Implement this method
         return null;
+    }
+
+    @Override
+    public String toString() {
+        return "";
     }
 
 
