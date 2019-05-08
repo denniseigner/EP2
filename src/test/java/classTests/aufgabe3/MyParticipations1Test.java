@@ -119,21 +119,23 @@ public class MyParticipations1Test extends MyClassTest implements MyTestInterfac
         participations.add(new Participation("Schladming", "Marcel Hirscher", 4));
         participations.add(new Participation("Schladming", "Benni Raich", 5));
 
-        participations.addAfter("Lindsey Vonn", new Participation("Schladming", "Lindsey Vonn", 15));
-        participations.addAfter("Marcel Hirscher", new Participation("Kitzbühel", "Lindsey Vonn", 10));
+        participations.addAfter("Lindsey Vonn", new Participation("Schladming", "Lindsey Vonn", 10));
+        participations.addAfter("Marcel Hirscher", new Participation("Kitzbühel", "Lindsey Vonn", 15));
+        participations.addAfter("Benni Raich", new Participation("Planai", "Lindsey Vonn", 20));
 
         MyMiniTestSuite.changeOutToFile();
         participations.print();
 
         return testPassed(
             MyMiniTestSuite.assertOutContent(
-                "15 Lindsey Vonn (Schladming)\n" +
+                "10 Lindsey Vonn (Schladming)\n" +
                     "1 Marcel Hirscher (Kitzbühel)\n" +
                     "2 Hermann Maier (Kitzbühel)\n" +
                     "3 Benni Raich (Kitzbühel)\n" +
                     "4 Marcel Hirscher (Schladming)\n" +
-                    "10 Lindsey Vonn (Kitzbühel)\n" +
-                    "5 Benni Raich (Schladming)"
+                    "15 Lindsey Vonn (Kitzbühel)\n" +
+                    "5 Benni Raich (Schladming)\n" +
+                    "20 Lindsey Vonn (Planai)"
             )
         );
     }
@@ -149,21 +151,23 @@ public class MyParticipations1Test extends MyClassTest implements MyTestInterfac
         participations.add(new Participation("Schladming", "Marcel Hirscher", 4));
         participations.add(new Participation("Schladming", "Benni Raich", 5));
 
-        participations.addBefore("Lindsey Vonn", new Participation("Schladming", "Lindsey Vonn", 15));
-        participations.addBefore("Hermann Maier", new Participation("Kitzbühel", "Lindsey Vonn", 10));
+        participations.addBefore("Lindsey Vonn", new Participation("Schladming", "Lindsey Vonn", 20));
+        participations.addBefore("Hermann Maier", new Participation("Kitzbühel", "Lindsey Vonn", 15));
+        participations.addBefore("Marcel Hirscher", new Participation("Kitzbühel", "Lindsey Vonn", 10));
 
         MyMiniTestSuite.changeOutToFile();
         participations.print();
 
         return testPassed(
             MyMiniTestSuite.assertOutContent(
+            "10 Lindsey Vonn (Kitzbühel)\n" +
                 "1 Marcel Hirscher (Kitzbühel)\n" +
-                    "10 Lindsey Vonn (Kitzbühel)\n" +
-                    "2 Hermann Maier (Kitzbühel)\n" +
-                    "3 Benni Raich (Kitzbühel)\n" +
-                    "4 Marcel Hirscher (Schladming)\n" +
-                    "5 Benni Raich (Schladming)\n" +
-                    "15 Lindsey Vonn (Schladming)"
+                "15 Lindsey Vonn (Kitzbühel)\n" +
+                "2 Hermann Maier (Kitzbühel)\n" +
+                "3 Benni Raich (Kitzbühel)\n" +
+                "4 Marcel Hirscher (Schladming)\n" +
+                "5 Benni Raich (Schladming)\n" +
+                "20 Lindsey Vonn (Schladming)"
             )
         );
     }
