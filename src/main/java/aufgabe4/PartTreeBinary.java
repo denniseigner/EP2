@@ -20,7 +20,7 @@ public class PartTreeBinary implements PartTreeNodable {
     Participations1 partList;
 
     public PartTreeBinary() {
-        left = right = new PartTreeNull();
+        left = right = PartTreeNull.NIL;
     }
 
     @Override

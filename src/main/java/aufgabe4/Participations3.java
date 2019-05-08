@@ -18,12 +18,12 @@ public class Participations3 {
     // and PartTreeBinary.java
 
     // TODO: Introduce (private) object variables, methods and classes as needed.
-    PartTreeNodable partTree;
+    private PartTreeNodable partTree;
 
     // Creates an empty object of this class
     public Participations3() {
         // TODO: implement this constructor
-        partTree = new PartTreeNull();
+        partTree = PartTreeNull.NIL;
     }
 
     // Adds p to 'this'.
