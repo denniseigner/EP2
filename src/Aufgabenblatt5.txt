@@ -53,6 +53,7 @@ Aufgabe 5.3 (20%) Sehen Sie sich die Interfaces PartIterable und
 Frage: Ist der Platz für den Iterator abhängig von der Anzahl der
    Elemente im entsprechenden Partitions-Objekt?
 
+
 Aufgabe 5.4 (40%) Implementieren Sie die Methoden der Klasse
    Participations4Iter.  Ändern Sie die Klasse Participations4 so, dass sie
    das Interface PartIterable implementiert.
