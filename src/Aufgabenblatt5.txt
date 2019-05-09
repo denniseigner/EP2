@@ -22,7 +22,7 @@ Participation hinzu:
 
 // In addition to the standard requirements for equals, a
 // participation is equal to another object of class Participation if
-// the racers are equal and the races are equal.
+// and only if the 'racer's are equal and the 'race's are equal.
 public boolean equals(Object o) {
     // TODO: implement this method
 }
@@ -35,10 +35,10 @@ int hashCode() {
 
 Fragen: 
 
-1) Wäre es sinnvoll, in equals auch noch bibnumer zu vergleichen?
+1) Wäre es sinnvoll, in equals auch noch 'bibnumer' zu vergleichen?
    Warum bzw. warum nicht?
 
-2) Darf hashCode() auch die bibnumber einbeziehen?  Begründen Sie Ihre
+2) Darf hashCode() auch 'bibnumber' einbeziehen?  Begründen Sie Ihre
    Antwort.
 
 
@@ -46,27 +46,27 @@ Aufgabe 5.2 (20%) ist in der Klasse Participations4 zu finden.
 
 
 Aufgabe 5.3 (20%) Sehen Sie sich die Interfaces PartIterable und
-   PartIterator an.  Implementieren Sie die Methoden der Klasse
+   PartIterator an.  Vervollständigen Sie die Klasse
    ParticipationsIter.  Ändern Sie die die Klasse Participations so,
    dass sie das Interface PartIterable implementiert.
 
-Frage: Ist der Platz für den Iterator abhängig von der Anzahl der
-   Elemente im entsprechenden Partitions-Objekt?
+Frage: Ist der Speicherbedarf für den Iterator abhängig von der
+   Anzahl der Elemente im entsprechenden Partitions-Objekt?
 
 
-Aufgabe 5.4 (40%) Implementieren Sie die Methoden der Klasse
-   Participations4Iter.  Ändern Sie die Klasse Participations4 so, dass sie
-   das Interface PartIterable implementiert.
+Aufgabe 5.4 (40%) Vervollständigen Sie die Klasse Participations4Iter.
+   Ändern Sie die Klasse Participations4 so, dass sie das
+   Interface PartIterable implementiert.
 
 Fragen:
 
 1) Vergleichen Sie ParticipationsIter und Participations4Iter.  Was
    sind die Gemeinsamkeiten, was die Unterschiede?
 
-2) Ist der Platz für den Iterator abhängig von der Anzahl der
-   Elemente im entsprechenden Partitions4-Objekt?
+2) Ist der Speicherbedarf für den Iterator abhängig von der Anzahl
+   der Elemente im entsprechenden Partitions4-Objekt?
 
 
 Die Ad-hoc-Aufgabe wird auf Aufgabe 5.3 aufbauen.
-Außerdem werden künftige Aufgaben auf 5.2, sodass
+Außerdem werden künftige Aufgaben auf 5.2 aufbauen, sodass
 dringend empfohlen wird, auch diese Aufgabe zu lösen.

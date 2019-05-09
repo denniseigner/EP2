@@ -1,14 +1,14 @@
 public class Participations4 {
     // Objects of class 'Participations3' contain participations from
-    // several races.  The implementation uses a hash table with
-    // external chaining as associative data structure; the keys of
-    // the hash table is the tuple ('racer','race') as key (i.e., what
-    // is implemented by the 'equals' method of 'Participation'); the
-    // values of the hash table are 'Participations' objects.
+    // several races.  The implementation uses a hash table as follows:
+    //   - the tuple ('racer','race') is the key (i.e., what the 'equals'
+    //     method of 'Participation' implements);
+    //   - the values of the hash table are 'Participations' objects.
     // However, the array of the hash table contains 'Participations1'
     // objects.  'Participation' objects with the same index in the
     // array are inserted in the same 'Participations1' object.
-    
+    // This variant of hash table implementation is known as separate chaining.
+
     // This implementation does not use classes from the Collections
     // Framework (e.g., HashMap)
     // <https://docs.oracle.com/javase/8/docs/technotes/guides/collections/overview.html>.
@@ -16,6 +16,7 @@ public class Participations4 {
     // Assignment 5.2
 
     // TODO: Introduce (private) object variables, methods and classes as needed.
+
     // Creates an empty hash table with room for n 'Participation1' objects
     public Participations4(int n) {
         // TODO: implement this constructor
@@ -64,7 +65,7 @@ public class Participations4 {
     // Skriptum gezeigten. Was sind die Vor- und Nachteile der Methoden?
 
     // 3) Vergleichen Sie die Klassen
-    // 'Participations'-'Participations4'.  Was sind die
+    // 'Participations' bis 'Participations4'.  Was sind die
     // Gemeinsamkeiten und Unterschiede im Verhalten (nicht in der
     // Implementierung). Überlegen Sie sich, wie Sie diese drei
     // Klassen in einer Typhierarchie organisieren würden; welche
