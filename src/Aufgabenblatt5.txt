@@ -1,0 +1,69 @@
+Allgemein: Vorgegebene Programmteile dürfen nur an den Stellen
+verändert werden, die mit TODO markiert sind.
+Zusätzliche Klassen, Interfaces, Methoden und Variablen dürfen
+aber eingefügt werden.
+
+Objektvariablen sollten private sein, verlangte Methoden und
+Konstruktoren public, Hilfsmethoden private.
+
+Falls Sie eine zusaetzliche Klasse definieren, verwenden Sie
+einen Klassennamen, der mit "My" beginnt, damit der
+Klassenname nicht mit Klassen in künftigen Angaben kollidiert.
+
+Schreiben Sie Tests fuer die Aufgaben, z.B. in einer zusätzlichen
+Klasse.
+
+Fragen sollen in der Übung beantwortet werden können.
+
+Der Abgabetermin für dieses Aufgabenblatt ist Fr., 17.5.2019, 13h.
+
+Aufgabe 5.1 (20%) Fügen Sie die folgenden Methoden zur Klasse
+Participation hinzu:
+
+// In addition to the standard requirements for equals, a
+// participation is equal to another object of class Participation if
+// the racers are equal and the races are equal.
+public boolean equals(Object o) {
+    // TODO: implement this method
+}
+
+// Computes a hash code for 'this' that satisfies the requirements for
+// hash codes (see Section 3.1.3 in the Skriptum).
+int hashCode() {
+    // TODO: implement this method
+}
+
+Fragen: 
+
+1) Wäre es sinnvoll, in equals auch noch bibnumer zu vergleichen?
+   Warum bzw. warum nicht?
+
+2) Darf hashCode() auch die bibnumber einbeziehen?  Begründen Sie Ihre
+   Antwort.
+
+
+Aufgabe 5.2 (20%) ist in der Klasse Participations4 zu finden.
+
+
+Aufgabe 5.3 (20%) Sehen Sie sich die Interfaces PartIterable und
+   PartIterator an.  Implementieren Sie die Methoden der Klasse
+   ParticipationsIter.  Ändern Sie die die Klasse Participations so,
+   dass sie das Interface PartIterable implementiert.
+
+Frage: Wieviel Platz braucht ein Iterator?
+
+Aufgabe 5.4 (40%) Implementieren Sie die Methoden der Klasse
+   Participations4Iter.  Ändern Sie die Klasse Participations4 so, dass sie
+   das Interface PartIterable implementiert.
+
+Fragen:
+
+1) Vergleichen Sie ParticipationsIter und Participations4Iter.  Was
+   sind die Gemeinsamkeiten, was die Unterschiede?
+
+2) Wieviel Platz braucht ein Iterator der Klasse Participations4Iter?  
+
+
+Die Ad-hoc-Aufgabe wird auf Aufgabe 5.3 aufbauen.
+Außerdem werden künftige Aufgaben auf 5.2, sodass
+dringend empfohlen wird, auch diese Aufgabe zu lösen.
