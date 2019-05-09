@@ -14,9 +14,9 @@ public class Participations1 {
     // Assignment 3.1
 
     // Introduce (private) object variables and classes as needed.
-    MyListNode head, last, first;
-    int counter, maxCount;
-    boolean limited;
+    private MyListNode head, last, first;
+    private int counter, maxCount;
+    private boolean limited;
 
     private MyListNode poll() {
         if (head == null) return null;
