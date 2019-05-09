@@ -50,7 +50,8 @@ Aufgabe 5.3 (20%) Sehen Sie sich die Interfaces PartIterable und
    ParticipationsIter.  Ändern Sie die die Klasse Participations so,
    dass sie das Interface PartIterable implementiert.
 
-Frage: Wieviel Platz braucht ein Iterator?
+Frage: Ist der Platz für den Iterator abhängig von der Anzahl der
+   Elemente im entsprechenden Partitions-Objekt?
 
 Aufgabe 5.4 (40%) Implementieren Sie die Methoden der Klasse
    Participations4Iter.  Ändern Sie die Klasse Participations4 so, dass sie
@@ -61,7 +62,8 @@ Fragen:
 1) Vergleichen Sie ParticipationsIter und Participations4Iter.  Was
    sind die Gemeinsamkeiten, was die Unterschiede?
 
-2) Wieviel Platz braucht ein Iterator der Klasse Participations4Iter?  
+2) Ist der Platz für den Iterator abhängig von der Anzahl der
+   Elemente im entsprechenden Partitions4-Objekt?
 
 
 Die Ad-hoc-Aufgabe wird auf Aufgabe 5.3 aufbauen.
