@@ -70,7 +70,7 @@ public class Participation {
 
     // adhoc4
     public String toString(String x, int y) {
-        if (race.compareTo(x) <= 0 && bibnumber < y){
+        if (race.compareTo(x) <= 0 && bibnumber > y){
             return bibnumber + " " + racer + " (" + race + ")";
         }
         return "";
