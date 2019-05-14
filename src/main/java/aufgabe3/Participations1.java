@@ -47,6 +47,7 @@ public class Participations1 {
         // TODO: Implement this method
         if (++counter > maxCount && limited) {
             System.err.println("Cannot add any more Participations");
+            return;
         }
 
         if (head == null) {
@@ -141,6 +142,8 @@ public class Participations1 {
 
     }
 
+
+
     // Insert p immediately after the last entry in 'this' where race is equal to r.
     // If there is no such entry, insert p before the first entry.
     public void addAfter(String r, Participation p) {
@@ -212,6 +215,18 @@ public class Participations1 {
         MyListNode mln = poll();
         while (mln != null) {
             retString.append(mln.getP().toString());
+            retString.append('\n');
+            mln = poll();
+        }
+        head = first;
+        return retString.toString();
+    }
+
+    public String toString(String x, int y) {
+        StringBuilder retString = new StringBuilder();
+        MyListNode mln = poll();
+        while (mln != null) {
+            retString.append(mln.getP().toString(x, y));
             retString.append('\n');
             mln = poll();
         }

@@ -60,6 +60,11 @@ public class PartTreeBinary implements PartTreeNodable {
     }
 
     @Override
+    public String toString(String x, int y) {
+        return left.toString(x, y) + partList.toString(x, y) + right.toString(x, y);
+    }
+
+    @Override
     public Participation lookupRacer(String r) {
         // TODO: Implement this method
         if (partList.first().getRacer().equals(r)) {

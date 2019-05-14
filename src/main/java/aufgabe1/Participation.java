@@ -68,6 +68,13 @@ public class Participation {
         return bibnumber + " " + racer + " (" + race + ")";
     }
 
+    public String toString(String x, int y) {
+        if (race.compareTo(x) <= 0 && bibnumber < y){
+            return bibnumber + " " + racer + " (" + race + ")";
+        }
+        return "";
+    }
+
     public void print1() {
         System.out.print(this);
         if(place == 0 && runtime == null) {
