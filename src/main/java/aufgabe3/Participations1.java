@@ -47,6 +47,7 @@ public class Participations1 {
         // TODO: Implement this method
         if (++counter > maxCount && limited) {
             System.err.println("Cannot add any more Participations");
+            return;
         }
 
         if (head == null) {
