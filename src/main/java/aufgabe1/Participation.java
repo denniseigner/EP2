@@ -68,6 +68,7 @@ public class Participation {
         return bibnumber + " " + racer + " (" + race + ")";
     }
 
+    // adhoc4
     public String toString(String x, int y) {
         if (race.compareTo(x) <= 0 && bibnumber < y){
             return bibnumber + " " + racer + " (" + race + ")";
