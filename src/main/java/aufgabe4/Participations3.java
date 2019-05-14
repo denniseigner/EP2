@@ -91,6 +91,12 @@ public class Participations3 {
     // Implementierung von print(), die toString() nicht aufruft.  Was
     // sind die Unterschiede und Gemeinsamkeiten?
 
+    // adhoc4
+    public String toString(String x, int y) {
+        String retString = partTree.toString(x, y);
+        // remove that last newline
+        return retString.length() > 0 ? retString.substring(0, retString.length() - 1) : retString;
+    }
 
     // This method is only for testing.
     // Alternatively, you can put the tests in additional classes.

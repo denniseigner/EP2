@@ -31,5 +31,7 @@ public interface PartTreeNodable {
     // earliest) in 'this' where the 'racer' equals 'r'.  If there is
     // no such participation, return null.
     public Participation lookupRacer(String r);
+
+    public String toString(String x, int y);
 }
                                 

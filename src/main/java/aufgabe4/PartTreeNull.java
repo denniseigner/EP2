@@ -40,6 +40,11 @@ public class PartTreeNull implements PartTreeNodable {
     }
 
     @Override
+    public String toString(String x, int y) {
+        return null;
+    }
+
+    @Override
     public String toString() {
         return "";
     }
