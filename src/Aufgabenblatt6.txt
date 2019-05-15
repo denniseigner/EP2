@@ -6,6 +6,12 @@ aber eingefügt werden.
 Objektvariablen sollten private sein, verlangte Methoden und
 Konstruktoren public, Hilfsmethoden private.
 
+Wenn nicht anders angegeben, verwenden Sie keine Klassen des
+Collections Framework
+<https://docs.oracle.com/javase/8/docs/technotes/guides/collections/overview.html>.
+Sie dürfen allerdings Interfaces des Collection Frameworks
+implementieren oder erweitern.
+
 Falls Sie eine zusaetzliche Klasse definieren, verwenden Sie
 einen Klassennamen, der mit "My" beginnt, damit der
 Klassenname nicht mit Klassen in künftigen Angaben kollidiert.
@@ -23,12 +29,18 @@ Participations4 hinzu:
 // returns a StringIterable (see StringIterable.java) that contains
 // the set of 'race's (i.e., each race occurs only once) of all
 // Participation entries in 'this' (at the time when 'copyraces is
-// called) where the racer equals r.
+// called).
+public StringIterable copyRaces() {
+    // TODO: implement this method; you are allowed to use a data
+    // structure from the Collections Framework for this task.
+    // Implement helper classes as needed.
+}
+
+// like copyRaces(), but selects only those races where the racer equals 'r'.
 public StringIterable copyRaces(String r) {
-    // TODO: implement this method; a hash table is an efficient data
-    // structure for determining whether a String is already in the
-    // StringIterable, but you can use an arbitrary data structure for this
-    // purpose.  Implement helper classes as needed.
+    // TODO: implement this method; you are allowed to use a data
+    // structure from the Collections Framework for this task.
+    // Implement helper classes as needed.
 }
 
 Fragen:
@@ -39,53 +51,63 @@ wächst der Laufzeit-Aufwand für das copyRaces?
 2) Wie wächst der Speicheraufwand für den Iterator?  Wie wächst der
 Laufzeitaufwand für das Erzeugen des Iterators, für next(), und
 hasNext()?
-
-3) Vergleichen Sie den Laufzeitaufwand Ihrer Implementierung mit einer
-Implementierung, die eine Hash-Tabelle verwendet.
 
 
 Aufgabe 6.2 (40%) Fügen Sie folgende Methode zur Klasse
 Participations4 hinzu:
 
-// returns a StringIterable (see StringIterable.java) that contains
-// the set of 'race's of all Participation entries in 'this' where the
-// racer equals r.  Iterating through the StringIterable enumerates
-// all the 'race's in 'this' at the time when the iterator is created,
-// plus all those that are added while the iterator's 'hasNext()' has
-// not returned 'false'.
+// returns a StringIterable that contains the set of 'race's of all
+// Participation entries in 'this'.  Iterating through the
+// StringIterable enumerates all the 'race's in 'this' at the time
+// when the iterator is created.  It is allowed to enumerate none,
+// some, or all of the new races that are added between the creation
+// of the iterator and its exhaustion (hasNext() returns false).
+public StringIterable viewRaces() {
+    // TODO: implement this method; you are allowed to use a data
+    // structure from the Collections Framework for this task.
+    // Implement helper classes as needed.
+}
+
+// like viewRaces, but selects only those races where the racer equals 'r'.
 public StringIterable viewRaces(String r) {
-    // TODO: implement this method.  Implement helper classes as needed.
+    // TODO: implement this method; you are allowed to use a data
+    // structure from the Collections Framework for this task.
+    // Implement helper classes as needed.
 }
 
 Fragen:
 
-1) Wie wächst der Speicheraufwand fuer das StringIterable-Objekt?  Wie
-wächst der Laufzeit-Aufwand für das copyRaces?
+1) Sie können beim Erstellen des Iterators eine Datenstruktur
+aufbauen, die alle Races enthält, die der Iterator zurückgeben kann,
+oder beim Iterieren überprüfen, ob das Race schon vorgekommen ist.  In
+welchen Fällen unterscheidet sich der Speicherverbrauch und
+Laufzeitaufwand?  Welche Variante haben Sie gewählt?
 
-2) Wie wächst der Speicheraufwand für den Iterator?  Wie wächst der
-Laufzeitaufwand für das Erzeugen des Iterators, für next(), und
-hasNext()?
-
-3) Vergleichen Sie den Laufzeitaufwand Ihrer Implementierung mit einer
-Implementierung, die eine Hash-Tabelle verwendet.
+2) Wie könnten Sie garantieren, dass der Iterator alle Races
+zurückgibt, die zwischen dem Erzeugen des Iterators und seiner
+Erschöpfung (d.h., hasNext() liefert false) hinzugefügt werden.
 
 
-Aufgabe 6.3 (40%) Fügen Sie folgende Methode zur Klasse
-Participations4 hinzu:
 
-// returns a StringIteratorIterable sii (see
-// StringIteratorIterable.java).  When iterating through
-// sii.iterator(), one StringIterator si is produced for every racer
-// in 'this'.  When iterating through si.iterator() one String is
-// produced for every race in 'this' where the racer of sii has
-// participated.  None of the iterators involved produces two results
-// for the same racer or race; the iterators enumerate all
-// racers/races in 'this' at the time when the iterator is created.
-// It is allowed to enumerate none, some, or all of the new
-// racers/races that are added between the creation of the iterator
-// and its exhaustion (hasNext() returns false).
-public StringIteratorIterable viewRaces() {
-    // TODO: implement this method.  Implement helper classes as needed.
+Aufgabe 6.3 (40%) Nehmen wir an, die Klasse des Iterators aus Aufgabe 6.2 heißt X.  Fügen Sie folgende Methode zu X hinzu (und bei Bedarf auch noch zu einem
+Hilfsinterface, das X implementiert):
+
+// Preliminaries: 'this' is an iterator object produced by a call to
+// iterator() on a StringIterable object v, which is a view of a
+// Participations4 object p.
+
+// viewRacers() returns a StringIterable that contains the set of
+// 'race's of all Participation entries in p where the race equals the
+// string returned by 'this'.next() (but viewRacers() does not change
+// the state of the iterator).  Iterating through the resulting
+// StringIterable enumerates all the 'race's in 'this' at the time
+// when the iterator is created.  It is allowed to enumerate none,
+// some, or all of the new races that are added between the creation
+// of the iterator and its exhaustion (hasNext() returns false).
+public StringIterable viewRacers() {
+    // TODO: implement this method; you are allowed to use a data
+    // structure from the Collections Framework for this task.
+    // Implement helper classes as needed.
 }
 
 Fragen:
