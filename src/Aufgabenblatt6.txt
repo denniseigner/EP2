@@ -33,14 +33,14 @@ Participations4 hinzu:
 public StringIterable copyRaces() {
     // TODO: implement this method; you are allowed to use a data
     //  structure from the Collections Framework for this task.
-    // Implement helper classes as needed.
+    //  Implement helper classes as needed.
 }
 
 // like copyRaces(), but selects only those races where the racer equals 'r'.
 public StringIterable copyRaces(String r) {
     // TODO: implement this method; you are allowed to use a data
     //  structure from the Collections Framework for this task.
-    // Implement helper classes as needed.
+    //  Implement helper classes as needed.
 }
 
 Fragen:
@@ -64,15 +64,15 @@ Participations4 hinzu:
 // of the iterator and its exhaustion (hasNext() returns false).
 public StringIterable viewRaces() {
     // TODO: implement this method; you are allowed to use a data
-    // structure from the Collections Framework for this task.
-    // Implement helper classes as needed.
+    //  structure from the Collections Framework for this task.
+    //  Implement helper classes as needed.
 }
 
 // like viewRaces, but selects only those races where the racer equals 'r'.
 public StringIterable viewRaces(String r) {
     // TODO: implement this method; you are allowed to use a data
-    // structure from the Collections Framework for this task.
-    // Implement helper classes as needed.
+    //  structure from the Collections Framework for this task.
+    //  Implement helper classes as needed.
 }
 
 Fragen:
@@ -108,7 +108,7 @@ zu einem Hilfsinterface, das X implementiert):
 public StringIterable viewRacers() {
     // TODO: implement this method; you are allowed to use a data
     //  structure from the Collections Framework for this task.
-    // Implement helper classes as needed.
+    //  Implement helper classes as needed.
 }
 
 Fragen:
