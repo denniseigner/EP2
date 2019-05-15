@@ -28,7 +28,7 @@ Participations4 hinzu:
 
 // returns a StringIterable (see StringIterable.java) that contains
 // the set of 'race's (i.e., each race occurs only once) of all
-// Participation entries in 'this' (at the time when 'copyraces is
+// Participation entries in 'this' (at the time when copyraces() is
 // called).
 public StringIterable copyRaces() {
     // TODO: implement this method; you are allowed to use a data
@@ -45,8 +45,8 @@ public StringIterable copyRaces(String r) {
 
 Fragen:
 
-1) Wie wächst der Speicheraufwand fuer das StringIterable-Objekt?  Wie
-wächst der Laufzeit-Aufwand für copyRaces?
+1) Wie wächst der Speicheraufwand für das StringIterable-Objekt?  Wie
+wächst der Laufzeit-Aufwand für copyRaces()?
 
 2) Wie wächst der Speicheraufwand für den Iterator?  Wie wächst der
 Laufzeitaufwand für das Erzeugen des Iterators, für next(), und
@@ -61,7 +61,7 @@ Participations4 hinzu:
 // StringIterable enumerates all the 'race's in 'this' at the time
 // when the iterator is created.  It is allowed to enumerate none,
 // some, or all of the new races that are added between the creation
-// of the iterator and its exhaustion (hasNext() returns false).
+// of the iterator and its exhaustion (i.e., hasNext() returns false).
 public StringIterable viewRaces() {
     // TODO: implement this method; you are allowed to use a data
     //  structure from the Collections Framework for this task.
@@ -91,20 +91,22 @@ Erschöpfung (d.h., hasNext() liefert false) hinzugefügt werden?
 
 Aufgabe 6.3 (40%) Nehmen wir an, die Klasse des Iterators aus Aufgabe 6.2
 heißt X.  Fügen Sie folgende Methode zu X hinzu (und bei Bedarf auch noch
-zu einem Hilfsinterface, das X implementiert):
+zu einem Hilfsinterface, das von X implementiert wird):
 
-// Preliminaries: 'this' is an iterator object produced by a call to
-// iterator() on a StringIterable object v, which is a view of a
-// Participations4 object p.
+// Preliminaries: 'this' is an iterator object of class X produced by
+// a call to iterator() on a StringIterable object v, which is
+// returned by p.viewRaces() (or p.viewRaces(r)), where p is a
+// Participations4 object.
 
 // viewRacers() returns a StringIterable that contains the set of
-// 'race's of all Participation entries in p where the race equals the
-// string returned by 'this'.next() (but viewRacers() does not change
-// the state of the iterator).  Iterating through the resulting
-// StringIterable enumerates all the 'race's in 'this' at the time
-// when the iterator is created.  It is allowed to enumerate none,
-// some, or all of the new races that are added between the creation
-// of the iterator and its exhaustion (hasNext() returns false).
+// 'racer's of all Participation entries in p where the race equals
+// the string returned by 'this'.next() (unlike next(), viewRacers()
+// does not change the state of the iterator).  Iterating through the
+// resulting StringIterable enumerates all the 'racer's in 'this' at
+// the time when the iterator is created.  It is allowed to enumerate
+// none, some, or all of the new racers that are added between the
+// creation of the iterator and its exhaustion (hasNext() returns
+// false).
 public StringIterable viewRacers() {
     // TODO: implement this method; you are allowed to use a data
     //  structure from the Collections Framework for this task.
@@ -113,7 +115,7 @@ public StringIterable viewRacers() {
 
 Fragen:
 
-1) Warum darf man 'this' nicht in einer statischen Variable in einer
+1) Warum darf man p nicht in einer statischen Variable in einer
 der beteiligten Klassen speichern, sondern muss stattdessen eine
 Objektvariable benutzen?  Ueberlegen Sie ein Beispiel, wo die
 Verwendung einer statischen Variable das falsche Ergebnis liefern
