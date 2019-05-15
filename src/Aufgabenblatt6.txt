@@ -32,21 +32,21 @@ Participations4 hinzu:
 // called).
 public StringIterable copyRaces() {
     // TODO: implement this method; you are allowed to use a data
-    // structure from the Collections Framework for this task.
+    //  structure from the Collections Framework for this task.
     // Implement helper classes as needed.
 }
 
 // like copyRaces(), but selects only those races where the racer equals 'r'.
 public StringIterable copyRaces(String r) {
     // TODO: implement this method; you are allowed to use a data
-    // structure from the Collections Framework for this task.
+    //  structure from the Collections Framework for this task.
     // Implement helper classes as needed.
 }
 
 Fragen:
 
 1) Wie wächst der Speicheraufwand fuer das StringIterable-Objekt?  Wie
-wächst der Laufzeit-Aufwand für das copyRaces?
+wächst der Laufzeit-Aufwand für copyRaces?
 
 2) Wie wächst der Speicheraufwand für den Iterator?  Wie wächst der
 Laufzeitaufwand für das Erzeugen des Iterators, für next(), und
@@ -85,12 +85,13 @@ Laufzeitaufwand?  Welche Variante haben Sie gewählt?
 
 2) Wie könnten Sie garantieren, dass der Iterator alle Races
 zurückgibt, die zwischen dem Erzeugen des Iterators und seiner
-Erschöpfung (d.h., hasNext() liefert false) hinzugefügt werden.
+Erschöpfung (d.h., hasNext() liefert false) hinzugefügt werden?
 
 
 
-Aufgabe 6.3 (40%) Nehmen wir an, die Klasse des Iterators aus Aufgabe 6.2 heißt X.  Fügen Sie folgende Methode zu X hinzu (und bei Bedarf auch noch zu einem
-Hilfsinterface, das X implementiert):
+Aufgabe 6.3 (40%) Nehmen wir an, die Klasse des Iterators aus Aufgabe 6.2
+heißt X.  Fügen Sie folgende Methode zu X hinzu (und bei Bedarf auch noch
+zu einem Hilfsinterface, das X implementiert):
 
 // Preliminaries: 'this' is an iterator object produced by a call to
 // iterator() on a StringIterable object v, which is a view of a
@@ -106,7 +107,7 @@ Hilfsinterface, das X implementiert):
 // of the iterator and its exhaustion (hasNext() returns false).
 public StringIterable viewRacers() {
     // TODO: implement this method; you are allowed to use a data
-    // structure from the Collections Framework for this task.
+    //  structure from the Collections Framework for this task.
     // Implement helper classes as needed.
 }
 
