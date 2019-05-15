@@ -1,0 +1,101 @@
+Allgemein: Vorgegebene Programmteile dürfen nur an den Stellen
+verändert werden, die mit TODO markiert sind.
+Zusätzliche Klassen, Interfaces, Methoden und Variablen dürfen
+aber eingefügt werden.
+
+Objektvariablen sollten private sein, verlangte Methoden und
+Konstruktoren public, Hilfsmethoden private.
+
+Falls Sie eine zusaetzliche Klasse definieren, verwenden Sie
+einen Klassennamen, der mit "My" beginnt, damit der
+Klassenname nicht mit Klassen in künftigen Angaben kollidiert.
+
+Schreiben Sie Tests fuer die Aufgaben, z.B. in einer zusätzlichen
+Klasse.
+
+Fragen sollen in der Übung beantwortet werden können.
+
+Der Abgabetermin für dieses Aufgabenblatt ist Fr., 24.5.2019, 13h.
+
+Aufgabe 6.1 (20%) Fügen Sie folgende Methode zur Klasse
+Participations4 hinzu:
+
+// returns a StringIterable (see StringIterable.java) that contains
+// the set of 'race's (i.e., each race occurs only once) of all
+// Participation entries in 'this' (at the time when 'copyraces is
+// called) where the racer equals r.
+public StringIterable copyRaces(String r) {
+    // TODO: implement this method; a hash table is an efficient data
+    // structure for determining whether a String is already in the
+    // StringIterable, but you can use an arbitrary data structure for this
+    // purpose.  Implement helper classes as needed.
+}
+
+Fragen:
+
+1) Wie wächst der Speicheraufwand fuer das StringIterable-Objekt?  Wie
+wächst der Laufzeit-Aufwand für das copyRaces?
+
+2) Wie wächst der Speicheraufwand für den Iterator?  Wie wächst der
+Laufzeitaufwand für das Erzeugen des Iterators, für next(), und
+hasNext()?
+
+3) Vergleichen Sie den Laufzeitaufwand Ihrer Implementierung mit einer
+Implementierung, die eine Hash-Tabelle verwendet.
+
+
+Aufgabe 6.2 (40%) Fügen Sie folgende Methode zur Klasse
+Participations4 hinzu:
+
+// returns a StringIterable (see StringIterable.java) that contains
+// the set of 'race's of all Participation entries in 'this' where the
+// racer equals r.  Iterating through the StringIterable enumerates
+// all the 'race's in 'this' at the time when the iterator is created,
+// plus all those that are added while the iterator's 'hasNext()' has
+// not returned 'false'.
+public StringIterable viewRaces(String r) {
+    // TODO: implement this method.  Implement helper classes as needed.
+}
+
+Fragen:
+
+1) Wie wächst der Speicheraufwand fuer das StringIterable-Objekt?  Wie
+wächst der Laufzeit-Aufwand für das copyRaces?
+
+2) Wie wächst der Speicheraufwand für den Iterator?  Wie wächst der
+Laufzeitaufwand für das Erzeugen des Iterators, für next(), und
+hasNext()?
+
+3) Vergleichen Sie den Laufzeitaufwand Ihrer Implementierung mit einer
+Implementierung, die eine Hash-Tabelle verwendet.
+
+
+Aufgabe 6.3 (40%) Fügen Sie folgende Methode zur Klasse
+Participations4 hinzu:
+
+// returns a StringIteratorIterable sii (see
+// StringIteratorIterable.java).  When iterating through
+// sii.iterator(), one StringIterator si is produced for every racer
+// in 'this'.  When iterating through si.iterator() one String is
+// produced for every race in 'this' where the racer of sii has
+// participated.  None of the iterators involved produces two results
+// for the same racer or race; the iterators enumerate all
+// racers/races in 'this' at the time when the iterator is created.
+// It is allowed to enumerate none, some, or all of the new
+// racers/races that are added between the creation of the iterator
+// and its exhaustion (hasNext() returns false).
+public StringIteratorIterable viewRaces() {
+    // TODO: implement this method.  Implement helper classes as needed.
+}
+
+Fragen:
+
+1) Warum darf man 'this' nicht in einer statischen Variable in einer
+der beteiligten Klassen speichern, sondern muss stattdessen eine
+Objektvariable benutzen?  Ueberlegen Sie ein Beispiel, wo die
+Verwendung einer statischen Variable das falsche Ergebnis liefern
+würde.
+
+
+
+Die Ad-hoc-Aufgabe wird auf Aufgabe 6.2 aufbauen.
