@@ -1,6 +1,9 @@
 package main.java.aufgabe2;
 
 import main.java.aufgabe1.Participation;
+import main.java.aufgabe5.PartIterable;
+import main.java.aufgabe5.PartIterator;
+import main.java.aufgabe5.ParticipationsIter;
 
 import java.util.Arrays;
 
@@ -10,7 +13,7 @@ assignment.  It is recommended to solve Assignment 2.3 and 2.4
 */
 // Objects of class 'Participations' contain participations from
 // several races.  The implementation uses an array.
-public class Participations {
+public class Participations implements PartIterable {
 
     // Assignment 2.3
 
@@ -111,5 +114,10 @@ public class Participations {
     // Alternatively, you can put the tests in additional classes.
     public static void main(String[] args) {
         // TODO: write your own test cases here if necessary.
+    }
+
+    @Override
+    public PartIterator iterator() {
+        return new ParticipationsIter(participations, countParticipations);
     }
 }

@@ -6,12 +6,23 @@ public class ParticipationsIter implements PartIterator {
     // This class implements an iterator for the class Participations
     
     // TODO: Introduce (private) object variables as needed.
-    
+    private Participation[] participations;
+    private int countParticipations, index;
+
+    public ParticipationsIter(Participation[] participations, int countParticipations) {
+        this.participations = participations;
+        this.countParticipations = countParticipations;
+        index = 0;
+    }
+
     // returns the next 'Participation' object in the container that
     // 'this' iterates over.
     @Override
     public Participation next() {
         // TODO: Implement this method
+        if (hasNext()) {
+            return participations[index++];
+        }
         return null;
     }
 
@@ -20,6 +31,6 @@ public class ParticipationsIter implements PartIterator {
     @Override
     public boolean hasNext() {
         // TODO: Implement this method
-        return false;
+        return (index < countParticipations);
     }
 }

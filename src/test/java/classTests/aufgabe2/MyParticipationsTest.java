@@ -6,13 +6,16 @@ import test.java.miniTestSuite.MyClassTest;
 import test.java.miniTestSuite.MyMiniTestSuite;
 import test.java.miniTestSuite.MyTestInterface;
 
+import java.util.Iterator;
+
 public class MyParticipationsTest extends MyClassTest implements MyTestInterface {
 
     @Override
     public boolean run() {
         return testPrint()
             && testLookupRacer()
-            && testModifiedConstructor();
+            && testModifiedConstructor()
+            && testIterator();
     }
 
     private boolean testPrint() {
@@ -66,6 +69,28 @@ public class MyParticipationsTest extends MyClassTest implements MyTestInterface
         return testPassed(MyMiniTestSuite.assertOutContent("1 Marcel Hirscher (Kitzbühel1)\n" +
             "\n" +
             "2 Hermann Maier (Kitzbühel2)\n"));
+    }
 
+    private boolean testIterator() {
+        print("testIterator()");
+
+        Participations participations = new Participations(100);
+
+        Participation a = new Participation("Kitzbühel1", "Marcel Hirscher", 1);
+        Participation b = new Participation("Kitzbühel2", "Hermann Maier", 2);
+        Participation c = new Participation("Kitzbühel3", "Benni Raich", 3);
+
+        participations.add(a);
+        participations.add(b);
+        participations.add(c);
+
+        Iterator partIterator = participations.iterator();
+
+        return testPassed(
+            MyMiniTestSuite.assertTrue(partIterator.next().equals(a))
+            && MyMiniTestSuite.assertTrue(partIterator.next().equals(b))
+            && MyMiniTestSuite.assertTrue(partIterator.next().equals(c))
+            && MyMiniTestSuite.assertFalse(partIterator.hasNext())
+        );
     }
 }

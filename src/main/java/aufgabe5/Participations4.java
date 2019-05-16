@@ -21,7 +21,7 @@ public class Participations4 {
     // Assignment 5.2
 
     // TODO: Introduce (private) object variables, methods and classes as needed.
-    Participations1[] participations;
+    private Participations1[] participations;
 
     // Creates an empty hash table with room for n 'Participation1' objects
     public Participations4(int n) {
