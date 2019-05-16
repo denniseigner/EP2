@@ -3,7 +3,7 @@ package main.java.aufgabe5;
 import main.java.aufgabe1.Participation;
 import main.java.aufgabe3.Participations1;
 
-public class Participations4 {
+public class Participations4 implements PartIterable {
     // Objects of class 'Participations3' contain participations from
     // several races.  The implementation uses a hash table as follows:
     //   - the tuple ('racer','race') is the key (i.e., what the 'equals'
@@ -98,5 +98,10 @@ public class Participations4 {
     // Alternatively, you can put the tests in additional classes.
     public static void main(String[] args) {
         // TODO: write your own test cases here if necessary.
+    }
+
+    @Override
+    public PartIterator iterator() {
+        return new Participations4Iter(participations);
     }
 }

@@ -20,10 +20,10 @@ public class ParticipationsIter implements PartIterator {
     @Override
     public Participation next() {
         // TODO: Implement this method
-        if (hasNext()) {
-            return participations[index++];
+        if (!hasNext()) {
+            return null;
         }
-        return null;
+        return participations[index++];
     }
 
     // returns true if there is another 'Participation' object that
