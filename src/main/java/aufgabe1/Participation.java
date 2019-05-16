@@ -86,6 +86,19 @@ public class Participation {
         System.out.println("; " + place + "; " + runtime);
     }
 
+    // In addition to the standard requirements for equals, a
+    // participation is equal to another object of class Participation if
+    // and only if the 'racer's are equal and the 'race's are equal.
+    public boolean equals(Object o) {
+        // TODO: implement this method
+        if (this == o) return true;
+        if (o == null || o.getClass() != Participation.class) return false;
+
+        Participation cmp = (Participation) o;
+
+        return (race.equals(cmp.race) && racer.equals(cmp.racer) && bibnumber == cmp.bibnumber);
+    }
+
     // Question:
     
     // Should there also be setter methods for the object variables?

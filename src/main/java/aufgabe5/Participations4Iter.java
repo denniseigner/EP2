@@ -1,3 +1,7 @@
+package main.java.aufgabe5;
+
+import main.java.aufgabe1.Participation;
+
 public class Participations4Iter implements PartIterator {
     // This class implements an iterator for the class Participations4
     

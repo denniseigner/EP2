@@ -1,3 +1,7 @@
+package main.java.aufgabe5;
+
+import main.java.aufgabe1.Participation;
+
 public class Participations4 {
     // Objects of class 'Participations3' contain participations from
     // several races.  The implementation uses a hash table as follows:

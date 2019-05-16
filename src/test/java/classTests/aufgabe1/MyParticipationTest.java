@@ -12,7 +12,8 @@ public class MyParticipationTest extends MyClassTest implements MyTestInterface 
         return testGetters()
             && testExtendedGetters()
             && testPrint()
-            && testPrint1();
+            && testPrint1()
+            && testEquals();
     }
 
     private boolean testGetters() {
@@ -77,5 +78,26 @@ public class MyParticipationTest extends MyClassTest implements MyTestInterface 
 
         return testPassed(emptyElement
             && filledElement);
+    }
+
+    private boolean testEquals() {
+        print("testEquals()");
+        String racer = "Mikaela Shiffrin";
+        String race = "Lienz 2011 Ladies' Slalom";
+        String racer2 = "Hermann Meier";
+        int bibnumber = 40;
+        Participation x = new Participation(race, racer, bibnumber);
+        Participation y = new Participation(race, racer, bibnumber);
+        Participation z = new Participation(race, racer, bibnumber);
+        Participation a = new Participation(race, racer2, bibnumber);
+
+        return testPassed(
+            MyMiniTestSuite.assertFalse(x.equals(null))
+            && MyMiniTestSuite.assertTrue(x.equals(x))
+            && MyMiniTestSuite.assertTrue(x.equals(y))
+            && MyMiniTestSuite.assertTrue(y.equals(z))
+            && MyMiniTestSuite.assertTrue(x.equals(z))
+            && MyMiniTestSuite.assertFalse(x.equals(a))
+        );
     }
 }
