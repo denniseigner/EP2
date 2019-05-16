@@ -96,7 +96,7 @@ public class Participation {
 
         Participation cmp = (Participation) o;
 
-        return (race.equals(cmp.race) && racer.equals(cmp.racer) && bibnumber == cmp.bibnumber);
+        return (race.equals(cmp.race) && racer.equals(cmp.racer));
     }
 
     // Computes a hash code for 'this' that satisfies the requirements for
@@ -105,7 +105,7 @@ public class Participation {
         // TODO: implement this method
         int m = Integer.MAX_VALUE;
         double A = (Math.sqrt(5) - 1) / 2;
-        int k = bibnumber;
+        int k = 0;
         for (char c : (race + racer).toCharArray()) {
             k += c;
         }

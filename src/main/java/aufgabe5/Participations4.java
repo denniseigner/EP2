@@ -1,6 +1,7 @@
 package main.java.aufgabe5;
 
 import main.java.aufgabe1.Participation;
+import main.java.aufgabe3.Participations1;
 
 public class Participations4 {
     // Objects of class 'Participations3' contain participations from
@@ -20,15 +21,19 @@ public class Participations4 {
     // Assignment 5.2
 
     // TODO: Introduce (private) object variables, methods and classes as needed.
+    Participations1[] participations;
 
     // Creates an empty hash table with room for n 'Participation1' objects
     public Participations4(int n) {
         // TODO: implement this constructor
+        participations = new Participations1[n];
     }
 
     // Adds p to 'this'.
     public void add(Participation p) {
         // TODO: Implement this method
+        if (participations[hash(p)] == null) participations[hash(p)] = new Participations1();
+        participations[hash(p)].add(p);
     }
     
     // returns a string that contains the participations in arbitrary
@@ -37,12 +42,19 @@ public class Participations4 {
     @Override
     public String toString() {
         // TODO: Implement this method.
-        return "";
+        StringBuilder retString = new StringBuilder();
+
+        for (Participations1 participation : participations) {
+            if (participation != null) retString.append(participation);
+        }
+
+        return retString.toString();
     }
 
     // Print the participations in the format produced by 'toString()'.
     public void print() {
         // TODO: Implement this method
+        System.out.println(this);
     }
 
     // Returns the first participation (the one that was inserted
@@ -50,7 +62,12 @@ public class Participations4 {
     // participation, return null.
     public Participation lookupRacer(Participation p) {
         // TODO: Implement this method
-        return null;
+        if (participations[hash(p)] == null) return null;
+        return participations[hash(p)].first();
+    }
+
+    private int hash(Participation p) {
+        return p.hashCode() % participations.length;
     }
 
     // Fragen:

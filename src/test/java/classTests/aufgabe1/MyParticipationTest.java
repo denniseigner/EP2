@@ -87,9 +87,10 @@ public class MyParticipationTest extends MyClassTest implements MyTestInterface 
         String race = "Lienz 2011 Ladies' Slalom";
         String racer2 = "Hermann Meier";
         int bibnumber = 40;
+        int bibnumber2 = 50;
         Participation x = new Participation(race, racer, bibnumber);
         Participation y = new Participation(race, racer, bibnumber);
-        Participation z = new Participation(race, racer, bibnumber);
+        Participation z = new Participation(race, racer, bibnumber2);
         Participation a = new Participation(race, racer2, bibnumber);
 
         return testPassed(
@@ -111,7 +112,6 @@ public class MyParticipationTest extends MyClassTest implements MyTestInterface 
         Participation y = new Participation(race, racer, bibnumber);
 
         int xHash = x.hashCode();
-        System.out.println(xHash);
 
         return testPassed(
                 MyMiniTestSuite.assertTrue(x.equals(y))
