@@ -1,3 +1,7 @@
+package main.java.aufgabe5;
+
+import main.java.aufgabe1.Participation;
+
 public interface PartIterator extends java.util.Iterator<Participation> {
     // returns the next 'Participation' object in the container that
     // 'this' iterates over.

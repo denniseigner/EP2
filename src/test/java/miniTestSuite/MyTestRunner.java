@@ -9,6 +9,7 @@ import test.java.classTests.aufgabe3.MyCharStack1Test;
 import test.java.classTests.aufgabe3.MyParticipations1Test;
 import test.java.classTests.aufgabe3.MyParticipations2Test;
 import test.java.classTests.aufgabe4.MyParticipations3Test;
+import test.java.classTests.aufgabe5.MyParticipations4Test;
 
 public class MyTestRunner {
     public static void main(String[] args) {
@@ -20,7 +21,8 @@ public class MyTestRunner {
             && new MyParticipations1Test().run()
             && new MyParticipations2Test().run()
             && new MyCharStack1Test().run()
-            && new MyParticipations3Test().run();
+            && new MyParticipations3Test().run()
+            && new MyParticipations4Test().run();
 
         System.out.println("All Tests succesfully run");
     }

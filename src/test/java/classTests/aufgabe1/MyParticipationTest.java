@@ -12,7 +12,9 @@ public class MyParticipationTest extends MyClassTest implements MyTestInterface 
         return testGetters()
             && testExtendedGetters()
             && testPrint()
-            && testPrint1();
+            && testPrint1()
+            && testEquals()
+            && testHashCode();
     }
 
     private boolean testGetters() {
@@ -77,5 +79,44 @@ public class MyParticipationTest extends MyClassTest implements MyTestInterface 
 
         return testPassed(emptyElement
             && filledElement);
+    }
+
+    private boolean testEquals() {
+        print("testEquals()");
+        String racer = "Mikaela Shiffrin";
+        String race = "Lienz 2011 Ladies' Slalom";
+        String racer2 = "Hermann Meier";
+        int bibnumber = 40;
+        int bibnumber2 = 50;
+        Participation x = new Participation(race, racer, bibnumber);
+        Participation y = new Participation(race, racer, bibnumber);
+        Participation z = new Participation(race, racer, bibnumber2);
+        Participation a = new Participation(race, racer2, bibnumber);
+
+        return testPassed(
+            MyMiniTestSuite.assertFalse(x.equals(null))
+            && MyMiniTestSuite.assertTrue(x.equals(x))
+            && MyMiniTestSuite.assertTrue(x.equals(y))
+            && MyMiniTestSuite.assertTrue(y.equals(z))
+            && MyMiniTestSuite.assertTrue(x.equals(z))
+            && MyMiniTestSuite.assertFalse(x.equals(a))
+        );
+    }
+
+    private boolean testHashCode() {
+        print("testHashCode()");
+        String racer = "Mikaela Shiffrin";
+        String race = "Lienz 2011 Ladies' Slalom";
+        int bibnumber = 40;
+        Participation x = new Participation(race, racer, bibnumber);
+        Participation y = new Participation(race, racer, bibnumber);
+
+        int xHash = x.hashCode();
+
+        return testPassed(
+                MyMiniTestSuite.assertTrue(x.equals(y))
+                && MyMiniTestSuite.assertEquals(x.hashCode(), y.hashCode())
+                && MyMiniTestSuite.assertEquals(x.hashCode(), xHash)
+        );
     }
 }

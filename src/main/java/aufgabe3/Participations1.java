@@ -8,8 +8,10 @@ assignment.  It is recommended to solve Assignment 3.1, 3.2 and 3.3
 // <https://docs.oracle.com/javase/8/docs/technotes/guides/collections/overview.html>.
 
 import main.java.aufgabe1.Participation;
+import main.java.aufgabe5.PartIterable;
+import main.java.aufgabe5.PartIterator;
 
-public class Participations1 {
+public class Participations1 implements PartIterable {
 
     // Assignment 3.1
 
@@ -115,7 +117,6 @@ public class Participations1 {
         return head.getP();
     }
 
-
     // Assignment 3.3 (continued in Participations2.java)
 
     // print the entries with bibnumber<=x in the order of insertion;
@@ -141,8 +142,6 @@ public class Participations1 {
         // TODO: Implement this method
 
     }
-
-
 
     // Insert p immediately after the last entry in 'this' where race is equal to r.
     // If there is no such entry, insert p before the first entry.
@@ -235,6 +234,11 @@ public class Participations1 {
         return retString.toString();
     }
 
+    @Override
+    public PartIterator iterator() {
+        return new MyParticipations1Iter(first);
+    }
+
     private class MyListNode {
 
         private MyListNode next, previous;
@@ -266,6 +270,35 @@ public class Participations1 {
             if (next != null) {
                 next.previous = previous;
             }
+        }
+    }
+
+    private class MyParticipations1Iter implements PartIterator {
+        // This class implements an iterator for the class Participations
+
+        // TODO: Introduce (private) object variables as needed.
+        private MyListNode head;
+
+        private MyParticipations1Iter(MyListNode head) {
+            this.head = head;
+        }
+
+        @Override
+        public Participation next() {
+            // TODO: Implement this method
+            if (!hasNext()) {
+                return null;
+            }
+            MyListNode tmpNode = head;
+            head = head.next;
+            return tmpNode.p;
+        }
+
+        @Override
+        public boolean hasNext() {
+            // TODO: Implement this method
+            if (head == null) return false;
+            return head.next == null;
         }
     }
 
