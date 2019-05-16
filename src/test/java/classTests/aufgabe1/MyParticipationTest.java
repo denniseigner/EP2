@@ -13,7 +13,8 @@ public class MyParticipationTest extends MyClassTest implements MyTestInterface 
             && testExtendedGetters()
             && testPrint()
             && testPrint1()
-            && testEquals();
+            && testEquals()
+            && testHashCode();
     }
 
     private boolean testGetters() {
@@ -98,6 +99,24 @@ public class MyParticipationTest extends MyClassTest implements MyTestInterface 
             && MyMiniTestSuite.assertTrue(y.equals(z))
             && MyMiniTestSuite.assertTrue(x.equals(z))
             && MyMiniTestSuite.assertFalse(x.equals(a))
+        );
+    }
+
+    private boolean testHashCode() {
+        print("testHashCode()");
+        String racer = "Mikaela Shiffrin";
+        String race = "Lienz 2011 Ladies' Slalom";
+        int bibnumber = 40;
+        Participation x = new Participation(race, racer, bibnumber);
+        Participation y = new Participation(race, racer, bibnumber);
+
+        int xHash = x.hashCode();
+        System.out.println(xHash);
+
+        return testPassed(
+                MyMiniTestSuite.assertTrue(x.equals(y))
+                && MyMiniTestSuite.assertEquals(x.hashCode(), y.hashCode())
+                && MyMiniTestSuite.assertEquals(x.hashCode(), xHash)
         );
     }
 }

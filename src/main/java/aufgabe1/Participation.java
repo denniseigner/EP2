@@ -99,6 +99,19 @@ public class Participation {
         return (race.equals(cmp.race) && racer.equals(cmp.racer) && bibnumber == cmp.bibnumber);
     }
 
+    // Computes a hash code for 'this' that satisfies the requirements for
+    // hash codes (see Section 3.1.3 in the Skriptum).
+    public int hashCode() {
+        // TODO: implement this method
+        int m = Integer.MAX_VALUE;
+        double A = (Math.sqrt(5) - 1) / 2;
+        int k = bibnumber;
+        for (char c : (race + racer).toCharArray()) {
+            k += c;
+        }
+        return (int) Math.floor(m * (k * A - Math.floor(k * A)));
+    }
+
     // Question:
     
     // Should there also be setter methods for the object variables?
