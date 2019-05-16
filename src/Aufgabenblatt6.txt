@@ -7,9 +7,9 @@ Objektvariablen sollten private sein, verlangte Methoden und
 Konstruktoren public, Hilfsmethoden private.
 
 Wenn nicht anders angegeben, verwenden Sie keine Klassen des
-Collections Framework
+Collections-Framework
 <https://docs.oracle.com/javase/8/docs/technotes/guides/collections/overview.html>.
-Sie dürfen allerdings Interfaces des Collection Frameworks
+Sie dürfen allerdings Interfaces des Collection-Frameworks
 implementieren oder erweitern.
 
 Falls Sie eine zusaetzliche Klasse definieren, verwenden Sie
@@ -23,12 +23,12 @@ Fragen sollen in der Übung beantwortet werden können.
 
 Der Abgabetermin für dieses Aufgabenblatt ist Fr., 24.5.2019, 13h.
 
-Aufgabe 6.1 (20%) Fügen Sie folgende Methode zur Klasse
+Aufgabe 6.1 (20%) Fügen Sie folgende Methoden zur Klasse
 Participations4 hinzu:
 
 // returns a StringIterable (see StringIterable.java) that contains
 // the set of 'race's (i.e., each race occurs only once) of all
-// Participation entries in 'this' (at the time when copyraces() is
+// Participation entries in 'this' (at the time when copyRaces() is
 // called).
 public StringIterable copyRaces() {
     // TODO: implement this method; you are allowed to use a data
@@ -53,7 +53,7 @@ Laufzeitaufwand für das Erzeugen des Iterators, für next(), und
 hasNext()?
 
 
-Aufgabe 6.2 (40%) Fügen Sie folgende Methode zur Klasse
+Aufgabe 6.2 (40%) Fügen Sie folgende Methoden zur Klasse
 Participations4 hinzu:
 
 // returns a StringIterable that contains the set of 'race's of all
@@ -100,13 +100,12 @@ zu einem Hilfsinterface, das von X implementiert wird):
 
 // viewRacers() returns a StringIterable that contains the set of
 // 'racer's of all Participation entries in p where the race equals
-// the string returned by 'this'.next() (unlike next(), viewRacers()
-// does not change the state of the iterator).  Iterating through the
-// resulting StringIterable enumerates all the 'racer's in 'this' at
-// the time when the iterator is created.  It is allowed to enumerate
-// none, some, or all of the new racers that are added between the
-// creation of the iterator and its exhaustion (hasNext() returns
-// false).
+// the string that will be returned by the next invocation of next().
+// Iterating through the resulting StringIterable enumerates all the
+// 'racer's in 'this' at the time when the iterator is created.
+// It is allowed to enumerate none, some, or all of the new racers
+// that are added between the creation of the iterator and its
+// exhaustion (hasNext() returns false).
 public StringIterable viewRacers() {
     // TODO: implement this method; you are allowed to use a data
     //  structure from the Collections Framework for this task.
@@ -117,7 +116,7 @@ Fragen:
 
 1) Warum darf man p nicht in einer statischen Variable in einer
 der beteiligten Klassen speichern, sondern muss stattdessen eine
-Objektvariable benutzen?  Ueberlegen Sie ein Beispiel, wo die
+Objektvariable benutzen?  Überlegen Sie ein Beispiel, wo die
 Verwendung einer statischen Variable das falsche Ergebnis liefern
 würde.
 
