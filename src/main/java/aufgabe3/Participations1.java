@@ -64,12 +64,12 @@ public class Participations1 implements PartIterable {
     // Participation, followed by a newline.
     public void print() {
         // TODO: Implement this method
+        head = first;
         MyListNode mln = poll();
         while (mln != null) {
             mln.getP().print();
             mln = poll();
         }
-        head = first;
     }
 
     // Returns the first participation (the one that was inserted
@@ -77,12 +77,22 @@ public class Participations1 implements PartIterable {
     // no such participation, return null.
     public Participation lookupRacer(String r) {
         // TODO: Implement this method
+        head = first;
         MyListNode mln = poll();
         while (mln != null) {
             if (mln.getP().getRacer().equals(r)) return mln.getP();
             mln = poll();
         }
+        return null;
+    }
+
+    public Participation lookupRacer(Participation p) {
         head = first;
+        MyListNode mln = poll();
+        while (mln != null) {
+            if (mln.getP().equals(p)) return mln.getP();
+            mln = poll();
+        }
         return null;
     }
 
@@ -127,6 +137,7 @@ public class Participations1 implements PartIterable {
     // Siehe https://tuwel.tuwien.ac.at/mod/forum/discuss.php?d=136099
     public void print(int x) {
         // TODO: Implement this method
+        head = first;
         MyListNode mln = poll();
         while (mln != null) {
             if (mln.getP().getBibnumber() <= x) {
@@ -134,7 +145,6 @@ public class Participations1 implements PartIterable {
             }
             mln = poll();
         }
-        head = first;
     }
 
     // adhoc 3
@@ -147,6 +157,7 @@ public class Participations1 implements PartIterable {
     // If there is no such entry, insert p before the first entry.
     public void addAfter(String r, Participation p) {
         // TODO: implement this method
+        head = first;
         MyListNode mln = poll();
         MyListNode tmpListNode = first;
 
@@ -154,7 +165,6 @@ public class Participations1 implements PartIterable {
             if (mln.getP().getRacer().equals(r)) tmpListNode = mln;
             mln = poll();
         }
-        head = first;
 
         if (tmpListNode == first) {
             first = new MyListNode(p, first, null);
@@ -168,6 +178,7 @@ public class Participations1 implements PartIterable {
     // If there is no such entry, insert p after the last entry.
     public void addBefore(String r, Participation p) {
         // TODO: implement this method
+        head = first;
         MyListNode mln = poll();
         MyListNode tmpListNode = null;
 
@@ -178,7 +189,6 @@ public class Participations1 implements PartIterable {
             tmpListNode = mln;
             mln = poll();
         }
-        head = first;
 
         if (tmpListNode == null) {
             head = first = new MyListNode(p, first, null);
@@ -191,6 +201,7 @@ public class Participations1 implements PartIterable {
     // Delete every entry in 'this' where race is equal to r.
     public void remove(String r) {
         // TODO: implement this method
+        head = first;
         MyListNode mln = poll();
 
         while (mln != null) {
@@ -205,32 +216,31 @@ public class Participations1 implements PartIterable {
             }
             mln = poll();
         }
-        head = first;
     }
 
     @Override
     public String toString() {
         StringBuilder retString = new StringBuilder();
+        head = first;
         MyListNode mln = poll();
         while (mln != null) {
             retString.append(mln.getP().toString());
             retString.append('\n');
             mln = poll();
         }
-        head = first;
         return retString.toString();
     }
 
     // adhoc4
     public String toString(String x, int y) {
         StringBuilder retString = new StringBuilder();
+        head = first;
         MyListNode mln = poll();
         while (mln != null) {
             retString.append(mln.getP().toString(x, y));
             retString.append('\n');
             mln = poll();
         }
-        head = first;
         return retString.toString();
     }
 
