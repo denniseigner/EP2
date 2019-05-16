@@ -11,7 +11,7 @@ public class Participations4Iter implements PartIterator {
     // TODO: Introduce (private) object variables as needed.
     private Participations1[] participations;
     private int index;
-    Iterator partIter;
+    private Iterator partIter;
 
     public Participations4Iter(Participations1[] participations) {
         this.participations = participations;
