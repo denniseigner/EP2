@@ -1,0 +1,103 @@
+22
+
+Folgende Antworten wurden erwartet und dienen als Grundlage für die Beurteilung:
+
+ 1. Welche der folgenden Aussagen stimmen in Bezug auf dynamisches und statisches Binden?
+
+    Richtig: Ein dynamischer Typ ist stets eine Klasse, kein Interface.
+    Falsch:  Ein statischer Typ ist stets ein Interface, keine Klasse.
+    Falsch:  Klassenmethoden werden immer dynamisch gebunden.
+    Richtig: Objektmethoden werden in dynamischen Typen von Objekten ausgeführt.
+    Falsch:  Objektmethoden werden in deklarierten Typen von Objekten ausgeführt.
+
+ 2. Welche der folgenden Aussagen stimmen in Bezug auf die unterschiedlichen Arten
+    linearer und assoziativer Datenstrukturen?
+
+    Richtig: Lineare Datenstrukturen erlauben keinen wahlfreien Zugriff.
+    Falsch:  Assoziative Datenstrukturen haben wie Arrays eine fixe Größe.
+    Falsch:  Assoziative Datenstrukturen haben LIFO- oder FIFO-Verhalten.
+    Richtig: Assoziative Datenstrukturen verwenden Schlüssel zur Adressierung.
+    Falsch:  put(k,v)  gibt null zurück wenn der Schlüssel k schon existiert.
+
+ 3. Welche der folgenden Aussagen müssen für jede Verwendung von
+    this(...)  bzw.  this  in einem Konstruktor zutreffen?
+
+    Richtig: Zuweisungen an  this  sind verboten.
+    Falsch:  this  ist nur in  static  Konstruktoren verwendbar.
+    Falsch:  this = null;  darf nur als erste Anweisung vorkommen.
+    Richtig: Wird  this(...);  aufgerufen, gibt es keinen Default-Konstruktor.
+    Falsch:  Zu Beginn gilt:  this == null.
+
+ 4. t sei eine Variable mit einem einfachen (unbalancierten) binären Suchbaum
+    ganzer Zahlen, der durch diese Anweisungen aufgebaut wurde:
+        STree t = new STree(); t.add(4); t.add(9); t.add(7);
+    Welche der folgenden Aussagen treffen auf t zu?
+
+    Falsch:  Der Knoten mit Wert 7 hat zumindest ein Kind.
+    Richtig: Der Baum hat eine Tiefe von 3.
+    Falsch:  Der Knoten mit Wert 7 ist die Wurzel.
+    Falsch:  Der Knoten mit Wert 9 ist ein Blattknoten.
+    Richtig: Der Knoten mit Wert 9 hat zumindest ein Kind.
+
+ 5. S und T seien Referenztypen, sodass der Compiler folgenden Programmtext
+    fehlerfrei compiliert:  T x = new S();  x.foo();
+    Welche der folgenden Aussagen treffen für alle passenden S, T, x und foo() zu?
+
+    Falsch:  Es gilt:  x.getClass() == T.class
+    Falsch:  T kann verwendet werden, wo S erwartet wird.
+    Falsch:  x kann verwendet werden, wo ein Objekt von S erwartet wird.
+    Richtig: Durch  x.foo()  wird die Methode in S ausgeführt.
+    Richtig: Die Methode foo() muss in S und T vorkommen.
+
+
+Die Multiple-Choice-Fragen wurden folgendermaßen beantwortet
+(das sind nur Ihre Antworten, keine Aussage über Korrektheit):
+
+ 1. Welche der folgenden Aussagen stimmen in Bezug auf dynamisches und statisches Binden?
+    
+    Richtig:  Ein dynamischer Typ ist stets eine Klasse, kein Interface.
+    Richtig:  Ein statischer Typ ist stets ein Interface, keine Klasse.
+    Falsch:   Klassenmethoden werden immer dynamisch gebunden.
+    Richtig:  Objektmethoden werden in dynamischen Typen von Objekten ausgeführt.
+    Richtig:  Objektmethoden werden in deklarierten Typen von Objekten ausgeführt.
+
+ 2. Welche der folgenden Aussagen stimmen in Bezug auf die unterschiedlichen Arten
+    linearer und assoziativer Datenstrukturen?
+    
+    Richtig:  Lineare Datenstrukturen erlauben keinen wahlfreien Zugriff.
+    Falsch:   Assoziative Datenstrukturen haben wie Arrays eine fixe Größe.
+    Falsch:   Assoziative Datenstrukturen haben LIFO- oder FIFO-Verhalten.
+    Richtig:  Assoziative Datenstrukturen verwenden Schlüssel zur Adressierung.
+    Falsch:   put(k,v)  gibt null zurück wenn der Schlüssel k schon existiert.
+
+ 3. Welche der folgenden Aussagen müssen für jede Verwendung von
+    this(...)  bzw.  this  in einem Konstruktor zutreffen?
+    
+    Richtig:  Zuweisungen an  this  sind verboten.
+    Falsch:   this  ist nur in  static  Konstruktoren verwendbar.
+    Falsch:   this = null;  darf nur als erste Anweisung vorkommen.
+    Falsch:   Wird  this(...);  aufgerufen, gibt es keinen Default-Konstruktor.
+    Falsch:   Zu Beginn gilt:  this == null.
+
+ 4. t sei eine Variable mit einem einfachen (unbalancierten) binären Suchbaum
+    ganzer Zahlen, der durch diese Anweisungen aufgebaut wurde:
+        STree t = new STree(); t.add(4); t.add(9); t.add(7);
+    Welche der folgenden Aussagen treffen auf t zu?
+    
+    Falsch:   Der Knoten mit Wert 7 hat zumindest ein Kind.
+    Richtig:  Der Baum hat eine Tiefe von 3.
+    Falsch:   Der Knoten mit Wert 7 ist die Wurzel.
+    Falsch:   Der Knoten mit Wert 9 ist ein Blattknoten.
+    Richtig:  Der Knoten mit Wert 9 hat zumindest ein Kind.
+
+ 5. S und T seien Referenztypen, sodass der Compiler folgenden Programmtext
+    fehlerfrei compiliert:  T x = new S();  x.foo();
+    Welche der folgenden Aussagen treffen für alle passenden S, T, x und foo() zu?
+    
+    Falsch:   Es gilt:  x.getClass() == T.class
+    Falsch:   T kann verwendet werden, wo S erwartet wird.
+    Falsch:   x kann verwendet werden, wo ein Objekt von S erwartet wird.
+    Richtig:  Durch  x.foo()  wird die Methode in S ausgeführt.
+    Richtig:  Die Methode foo() muss in S und T vorkommen.
+
+
