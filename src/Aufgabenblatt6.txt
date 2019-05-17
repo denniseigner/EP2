@@ -93,16 +93,24 @@ Erschöpfung (d.h., hasNext() liefert false) hinzugefügt werden?
 
 
 
-Aufgabe 6.3 (40%) Nehmen wir an, die Klasse des Iterators aus Aufgabe 6.2
-heißt X.  Fügen Sie folgende Methode zu X hinzu (und bei Bedarf auch noch
-zu einem Hilfsinterface, das von X implementiert wird):
+Aufgabe 6.3 (40%)
 
 // Preliminaries: 'this' is an iterator object of class X produced by
 // a call to iterator() on a StringIterable object v, which is
 // returned by p.viewRaces() (or p.viewRaces(r)), where p is a
 // Participations4 object.
 
-// viewRacers() returns a StringIterable that contains the set of
+D.h. wir nehmen an:
+
+- 'p' ist ein Objekt der Klasse Participations4.
+- p.viewRaces() (oder p.viewRaces(r)) retourniert das Objekt 'v'.
+- 'this' ist ein Iterator, entstanden durch ein Aufruf von iterator() auf 'v'.
+- Die Klasse dieses Iterators ist der von Aufgabe 6.2 und heißt 'X'.
+
+Fügen Sie folgende Methode zu X hinzu (und bei Bedarf auch noch
+zu einem Hilfsinterface, das von X implementiert wird):
+
+// Returns a StringIterable that contains the set of
 // 'racer's of all Participation entries in p where the race equals
 // the string that will be returned by the next invocation of next().
 // Iterating through the resulting StringIterable enumerates all the
@@ -110,7 +118,20 @@ zu einem Hilfsinterface, das von X implementiert wird):
 // It is allowed to enumerate none, some, or all of the new racers
 // that are added between the creation of the iterator and its
 // exhaustion (hasNext() returns false).
-public StringIterable viewRacers() {
+//
+// Example (p1, p2 are Participation objects):
+//
+//        Participations4 p = /**/;
+//        StringIterable v = p.viewRaces();
+//        StringIterator t = v.iterator(); /*class 'X', object 'this'*/
+//        p.add (p1);
+//        StringIterable it = t.viewRacersEqualToNext();
+//        StringIterator i = it.iterator();
+//        p.add (p2);
+//        while (i.hasNext) { System.out.println(i.next()); }
+//        /*must print p1, might print p2*/
+//
+public StringIterable viewRacersEqualToNext() {
     // TODO: implement this method; you are allowed to use a data
     //  structure from the Collections Framework for this task.
     //  Implement helper classes as needed.
@@ -118,7 +139,7 @@ public StringIterable viewRacers() {
 
 Fragen:
 
-1) Warum darf man p nicht in einer statischen Variable in einer
+1) Warum darf man 'p' nicht in einer statischen Variable in einer
 der beteiligten Klassen speichern, sondern muss stattdessen eine
 Objektvariable benutzen?  Nennen Sie ein Beispiel, wo die
 Verwendung einer statischen Variable das falsche Ergebnis liefern
