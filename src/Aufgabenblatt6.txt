@@ -1,0 +1,154 @@
+Allgemein: Vorgegebene Programmteile dürfen nur an den Stellen
+verändert werden, die mit TODO markiert sind.
+Zusätzliche Klassen, Interfaces, Methoden und Variablen dürfen
+aber eingefügt werden.
+
+Objektvariablen sollten private sein, verlangte Methoden und
+Konstruktoren public, Hilfsmethoden private.
+
+Wenn nicht anders angegeben, verwenden Sie keine Klassen des
+Collections-Framework
+<https://docs.oracle.com/javase/8/docs/technotes/guides/collections/overview.html>.
+Sie dürfen allerdings Interfaces des Collection-Frameworks
+implementieren oder erweitern.
+
+Falls Sie zusätzliche Klassen oder Interfaces benötigen, verwenden Sie
+bitte Namen die mit "My" beginnen, damit der
+Name nicht mit künftigen Angaben kollidiert.
+
+Schreiben Sie Tests für die Aufgaben, z.B. in einer zusätzlichen
+Klasse.
+
+Fragen sollen in der Übung beantwortet werden können.
+
+Der Abgabetermin für dieses Aufgabenblatt ist Fr., 24.5.2019, 13h.
+
+
+Aufgabe 6.1 (20%) Fügen Sie folgende Methoden zur Klasse
+Participations4 hinzu:
+
+// Returns a StringIterable (see StringIterable.java) that contains
+// the set of 'race's (i.e., each race occurs only once) of all
+// Participation entries in 'this' (at the time when copyRaces() is
+// called).
+public StringIterable copyRaces() {
+    // TODO: implement this method; you are allowed to use a data
+    //  structure from the Collections Framework for this task.
+    //  Implement helper classes as needed.
+}
+
+// As in copyRaces(), but selects only those races where the racer equals 'r'.
+public StringIterable copyRaces(String r) {
+    // TODO: implement this method; you are allowed to use a data
+    //  structure from the Collections Framework for this task.
+    //  Implement helper classes as needed.
+}
+
+Fragen:
+
+1) Wie wächst der Speicheraufwand für das StringIterable-Objekt?
+
+2) Wie wächst der Laufzeit-Aufwand für copyRaces()?
+
+3) Wie wächst der Speicheraufwand für den Iterator?
+
+4) Wie wächst der Laufzeitaufwand für das Erzeugen des Iterators,
+für next(), und hasNext()?
+
+
+Aufgabe 6.2 (40%) Fügen Sie folgende Methoden zur Klasse
+Participations4 hinzu:
+
+// Returns a StringIterable that contains the set of 'race's of all
+// Participation entries in 'this'.  Iterating through the
+// StringIterable enumerates all the 'race's in 'this' at the time
+// when the iterator is created.  It is allowed to enumerate none,
+// some, or all of the new races that are added between the creation
+// of the iterator and its exhaustion (i.e., hasNext() returns false).
+public StringIterable viewRaces() {
+    // TODO: implement this method; you are allowed to use a data
+    //  structure from the Collections Framework for this task.
+    //  Implement helper classes as needed.
+}
+
+// As in viewRaces(), but selects only those races where the racer equals 'r'.
+public StringIterable viewRaces(String r) {
+    // TODO: implement this method; you are allowed to use a data
+    //  structure from the Collections Framework for this task.
+    //  Implement helper classes as needed.
+}
+
+Fragen:
+
+1) Sie können beim Erstellen des Iterators eine Datenstruktur
+aufbauen, die alle Races enthält, die der Iterator zurückgeben kann,
+oder beim Iterieren überprüfen, ob das Race schon vorgekommen ist.
+Welche Variante haben Sie gewählt?
+In welchen Fällen unterscheidet sich der Speicherverbrauch und
+Laufzeitaufwand?
+
+2) Wie könnten Sie garantieren, dass der Iterator alle Races
+zurückgibt, die zwischen dem Erzeugen des Iterators und seiner
+Erschöpfung (d.h., hasNext() liefert false) hinzugefügt werden?
+
+
+
+Aufgabe 6.3 (40%)
+
+Nehmen wir folgendes an:
+
+- 'p' ist ein Objekt der Klasse Participations4.
+
+- p.viewRaces() (oder p.viewRaces(r)) retourniert das Objekt 'v'.
+
+- v.iterator() retourniert ein Objekt einer Klasse, die wir im
+  Folgenden X nennen; Sie haben X in Aufgabe 6.2 implementiert; es ist
+  die Klasse, die das Interface StringIterator implementiert.
+
+- Der StringIterator hat einen aktuellen String s: das ist der String,
+  der beim nächsten Aufruf von next() zurückgegeben wird.
+
+Fügen Sie folgende Methode zu X hinzu (und bei Bedarf auch noch
+zu einem Hilfsinterface, das von X implementiert wird):
+
+// Returns a StringIterable vv.  The object vv contains the set of
+// 'racer's of all Participation entries in p where the race equals s.
+// Iterating through the resulting StringIterable enumerates all the
+// 'racer's in 'this' at the time when the iterator is created.  It is
+// allowed to enumerate none, some, or all of the new racers that are
+// added between the creation of the iterator and its exhaustion
+// (hasNext() returns false).
+public StringIterable viewRacers() {
+    // TODO: implement this method; you are allowed to use a data
+    //  structure from the Collections Framework for this task.
+    //  Implement helper classes as needed.
+}
+
+Usage example: Print all races, and for each race, all racers:
+
+Participations4 p = ...;
+StringIterable v = p.viewRaces();
+p.add(new Participation(...));
+X t = v.iterator();
+while (t.hasNext()) {
+  StringIterable vv = t.viewRacers();
+  String s = t.next();
+  System.out.print("Teilnehmer an "s+":");
+  StringIterator tt = vv.iterator();
+  while(tt.hasNext()) {
+    System.out.print(" "+tt.next());
+  }
+  System.out.println("")
+}
+
+Fragen:
+
+1) Warum darf man 'p' nicht in einer statischen Variable in einer
+der beteiligten Klassen speichern, sondern muss stattdessen eine
+Objektvariable benutzen?  Nennen Sie ein Beispiel, wo die
+Verwendung einer statischen Variable das falsche Ergebnis liefern
+würde.
+
+
+
+Die Ad-hoc-Aufgabe wird auf Aufgabe 6.2 aufbauen.
