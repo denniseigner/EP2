@@ -95,46 +95,50 @@ Erschöpfung (d.h., hasNext() liefert false) hinzugefügt werden?
 
 Aufgabe 6.3 (40%)
 
-// Preliminaries: 'this' is an iterator object of class X produced by
-// a call to iterator() on a StringIterable object v, which is
-// returned by p.viewRaces() (or p.viewRaces(r)), where p is a
-// Participations4 object.
-
-D.h. wir nehmen an:
+Nehmen wir folgendes an:
 
 - 'p' ist ein Objekt der Klasse Participations4.
+
 - p.viewRaces() (oder p.viewRaces(r)) retourniert das Objekt 'v'.
-- 'this' ist ein Iterator, entstanden durch ein Aufruf von iterator() auf 'v'.
-- Die Klasse dieses Iterators ist der von Aufgabe 6.2 und heißt 'X'.
+
+- v.iterator() retourniert ein Objekt einer Klasse, die wir im
+  Folgenden X nennen; Sie haben X in Aufgabe 6.2 implementiert; es ist
+  die Klasse, die das Interface StringIterator implementiert.
+
+- Der StringIterator hat einen aktuellen String s: das ist der String,
+  der beim nächsten Aufruf von next() zurückgegeben wird.
 
 Fügen Sie folgende Methode zu X hinzu (und bei Bedarf auch noch
 zu einem Hilfsinterface, das von X implementiert wird):
 
-// Returns a StringIterable that contains the set of
-// 'racer's of all Participation entries in p where the race equals
-// the string that will be returned by the next invocation of next().
+// Returns a StringIterable vv.  The object vv contains the set of
+// 'racer's of all Participation entries in p where the race equals s.
 // Iterating through the resulting StringIterable enumerates all the
-// 'racer's in 'this' at the time when the iterator is created.
-// It is allowed to enumerate none, some, or all of the new racers
-// that are added between the creation of the iterator and its
-// exhaustion (hasNext() returns false).
-//
-// Example (p1, p2 are Participation objects):
-//
-//        Participations4 p = /**/;
-//        StringIterable v = p.viewRaces();
-//        StringIterator t = v.iterator(); /*class 'X', object 'this'*/
-//        p.add (p1);
-//        StringIterable it = t.viewRacersEqualToNext();
-//        StringIterator i = it.iterator();
-//        p.add (p2);
-//        while (i.hasNext) { System.out.println(i.next()); }
-//        /*must print p1, might print p2*/
-//
-public StringIterable viewRacersEqualToNext() {
+// 'racer's in 'this' at the time when the iterator is created.  It is
+// allowed to enumerate none, some, or all of the new racers that are
+// added between the creation of the iterator and its exhaustion
+// (hasNext() returns false).
+public StringIterable viewRacers() {
     // TODO: implement this method; you are allowed to use a data
     //  structure from the Collections Framework for this task.
     //  Implement helper classes as needed.
+}
+
+Usage example: Print all races, and for each race, all racers:
+
+Participations4 p = ...;
+StringIterable v = p.viewRaces();
+p.add(new Participation(...));
+StringIterator t = v.iterator(); /* t is of class X */
+while (t.hasNext()) {
+  StringIterable vv = t.viewRacers();
+  String s = t.next();
+  System.out.print("Teilnehmer an "s+":");
+  StringIterator tt = vv.iterator();
+  while(tt.hasNext()) {
+    System.out.print(" "+tt.next());
+  }
+  System.out.println("")
 }
 
 Fragen:
