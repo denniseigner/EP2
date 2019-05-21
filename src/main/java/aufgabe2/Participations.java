@@ -132,9 +132,6 @@ public class Participations implements PartIterable {
 
         return new ParticipationsIter(tmp, counter);
     }
-
-
-
 }
 
 
