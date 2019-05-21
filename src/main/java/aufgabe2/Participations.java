@@ -108,7 +108,6 @@ public class Participations implements PartIterable {
     // Welche Auswirkung hat die Einschränkung, dass add nicht auf mit
     // diesem Konstruktor erzeugte Objekte angewendet wird, auf Ihr
     // Programm?
-    
 
     // This method is only for testing.
     // Alternatively, you can put the tests in additional classes.
@@ -120,4 +119,19 @@ public class Participations implements PartIterable {
     public PartIterator iterator() {
         return new ParticipationsIter(participations, countParticipations);
     }
+
+    //Ad-hoc5
+    public PartIterator iterator(String x, String y){
+        Participation[] tmp = new Participation[countParticipations];
+        int counter = 0;
+        for (Participation participation : filledParticipations()) {
+            if (participation.getRacer().compareTo(x) >= 0 && participation.getRace().compareTo(y) >= 0){
+                tmp[counter++] = participation;
+            }
+        }
+
+        return new ParticipationsIter(tmp, counter);
+    }
 }
+
+
