@@ -6,7 +6,6 @@ import main.java.aufgabe6.StringIterable;
 import main.java.aufgabe6.StringIterator;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class Participations4 implements PartIterable {
     // Objects of class 'Participations3' contain participations from
@@ -130,6 +129,21 @@ public class Participations4 implements PartIterable {
         return new MyStringIterable(races);
     }
 
+    public StringIterable viewRaces() {
+        // TODO: implement this method; you are allowed to use a data
+        //  structure from the Collections Framework for this task.
+        //  Implement helper classes as needed.
+        return viewRaces(null);
+    }
+
+    // As in viewRaces(), but selects only those races where the racer equals 'r'.
+    public StringIterable viewRaces(String r) {
+        // TODO: implement this method; you are allowed to use a data
+        //  structure from the Collections Framework for this task.
+        //  Implement helper classes as needed.
+        return new MyStringIterableView(r);
+    }
+
     private class MyStringIterable implements StringIterable {
 
         ArrayList<String> races;
@@ -161,6 +175,58 @@ public class Participations4 implements PartIterable {
         @Override
         public boolean hasNext() {
             return index < races.size();
+        }
+    }
+
+    private class MyStringIterableView implements StringIterable {
+
+        String r;
+        private MyStringIterableView(String r) {
+            this.r = r;
+        }
+
+        @Override
+        public StringIterator iterator() {
+            return new MyStringIteratorView(r);
+        }
+    }
+
+    private class MyStringIteratorView implements StringIterator {
+
+        ArrayList<String> races;
+        String r;
+        int index;
+        private MyStringIteratorView(String r) {
+            this.r = r;
+            index = 0;
+            races = new ArrayList<>();
+            for (String s : copyRaces(r)) {
+                races.add(s);
+            }
+        }
+
+        @Override
+        public String next() {
+            if (!hasNext()) {
+                if (grow()) return next();
+                return null;
+            }
+            return races.get(index++);
+        }
+
+        @Override
+        public boolean hasNext() {
+            return index < races.size();
+        }
+
+        private boolean grow() {
+            boolean grew = false;
+            for (String s : copyRaces(r)) {
+                if (races.contains(s)) continue;
+                races.add(s);
+                grew = true;
+            }
+            return grew;
         }
     }
 

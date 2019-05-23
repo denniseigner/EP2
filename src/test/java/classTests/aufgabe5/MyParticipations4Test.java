@@ -2,6 +2,8 @@ package test.java.classTests.aufgabe5;
 
 import main.java.aufgabe1.Participation;
 import main.java.aufgabe5.Participations4;
+import main.java.aufgabe6.StringIterable;
+import main.java.aufgabe6.StringIterator;
 import test.java.miniTestSuite.MyClassTest;
 import test.java.miniTestSuite.MyMiniTestSuite;
 import test.java.miniTestSuite.MyTestInterface;
@@ -14,7 +16,8 @@ public class MyParticipations4Test extends MyClassTest implements MyTestInterfac
         return testPrint()
             && testLookupRacer()
             && testIterator()
-            && testStringIterator();
+            && testCopyRaces()
+            && testViewRaces();
     }
 
     private boolean testPrint() {
@@ -73,8 +76,8 @@ public class MyParticipations4Test extends MyClassTest implements MyTestInterfac
         );
     }
 
-    private boolean testStringIterator() {
-        print("testStringIterator()");
+    private boolean testCopyRaces() {
+        print("testCopyRaces()");
 
         Participations4 participations = new Participations4(100);
 
@@ -101,6 +104,45 @@ public class MyParticipations4Test extends MyClassTest implements MyTestInterfac
                 "Schladming\n" +
                     "Kitzbühel\n" +
                     "Kitzbühel"
+            )
+        );
+    }
+
+    private boolean testViewRaces() {
+        print("testViewRaces()");
+
+        Participations4 participations = new Participations4(100);
+
+        String race1 = "Kitzbühel";
+        String race2 = "Schladming";
+        String race3 = "Matterhorn";
+
+        participations.add(new Participation(race1, "Marcel Hirscher", 1));
+        participations.add(new Participation(race1, "Hermann Maier", 2));
+        participations.add(new Participation(race1, "Benni Raich", 3));
+        participations.add(new Participation(race2, "Benni Raich", 4));
+        participations.add(new Participation(race2, "Marcel Hirscher", 5));
+
+        MyMiniTestSuite.changeOutToFile();
+
+        StringIterator raceView = participations.viewRaces().iterator();
+        System.out.println(raceView.next());
+        participations.add(new Participation(race3, "Marcel Hirscher", 6));
+        System.out.println(raceView.next());
+        System.out.println(raceView.next());
+
+        StringIterator raceViewConstrained = participations.viewRaces("Hermann Maier").iterator();
+        System.out.println(raceViewConstrained.next());
+        participations.add(new Participation(race3, "Hermann Maier", 7));
+        System.out.println(raceViewConstrained.next());
+
+        return testPassed(
+            MyMiniTestSuite.assertOutContent(
+                "Schladming\n" +
+                    "Kitzbühel\n" +
+                    "Matterhorn\n" +
+                    "Kitzbühel\n" +
+                    "Matterhorn"
             )
         );
     }
