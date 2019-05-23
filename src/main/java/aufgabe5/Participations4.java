@@ -6,6 +6,7 @@ import main.java.aufgabe6.StringIterable;
 import main.java.aufgabe6.StringIterator;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Participations4 implements PartIterable {
     // Objects of class 'Participations3' contain participations from
@@ -119,14 +120,9 @@ public class Participations4 implements PartIterable {
         //  structure from the Collections Framework for this task.
         //  Implement helper classes as needed.
         ArrayList<String> races = new ArrayList<>();
-        for (Participation p : this) {
-            if (races.contains(p.getRace()) || (r != null &&  !p.getRacer().equals(r))) {
-                continue;
-            }
-            races.add(p.getRace());
-        }
+        createFilteredArrayList(r, races);
 
-        return new MyStringIterable(races);
+        return new MyStringIterable(races, false, r);
     }
 
     public StringIterable viewRaces() {
@@ -141,77 +137,56 @@ public class Participations4 implements PartIterable {
         // TODO: implement this method; you are allowed to use a data
         //  structure from the Collections Framework for this task.
         //  Implement helper classes as needed.
-        return new MyStringIterableView(r, this);
+        ArrayList<String> races = new ArrayList<>();
+        createFilteredArrayList(r, races);
+
+        return new MyStringIterable(races, true, r);
+    }
+
+    private void createFilteredArrayList(String filter, ArrayList<String> list) {
+        for (Participation p : this) {
+            if (list.contains(p.getRace()) || (filter != null &&  !p.getRacer().equals(filter))) {
+                continue;
+            }
+            list.add(p.getRace());
+        }
     }
 
     private class MyStringIterable implements StringIterable {
 
+        boolean shouldUpdate;
         ArrayList<String> races;
-        private MyStringIterable(ArrayList<String> races) {
+        String r;
+
+        private MyStringIterable(ArrayList<String> races, boolean shouldUpdate, String r) {
             this.races = races;
+            this.shouldUpdate = shouldUpdate;
+            this.r = r;
         }
 
         @Override
         public StringIterator iterator() {
-            return new MyStringIterator(races);
+            return new MyStringIterator(races, shouldUpdate, r);
         }
     }
 
-    private class MyStringIterator implements StringIterator {
+    // public because of test
+    public class MyStringIterator implements StringIterator {
 
-        ArrayList<String> races;
+        boolean shouldUpdate;
         int index;
-        private MyStringIterator(ArrayList<String> races) {
+        ArrayList<String> races;
+        String r;
+
+        private MyStringIterator(ArrayList<String> races, boolean shouldUpdate, String r) {
             this.races = races;
-            index = 0;
+            this.shouldUpdate = shouldUpdate;
+            this.r = r;
         }
 
         @Override
         public String next() {
-            if (!hasNext()) return null;
-            return races.get(index++);
-        }
-
-        @Override
-        public boolean hasNext() {
-            return index < races.size();
-        }
-    }
-
-    private class MyStringIterableView implements StringIterable {
-
-        String r;
-        Participations4 part4;
-        private MyStringIterableView(String r, Participations4 part4) {
-            this.r = r;
-            this.part4 = part4;
-        }
-
-        @Override
-        public StringIterator iterator() {
-            return new MyStringIteratorView(r, part4);
-        }
-    }
-
-    public class MyStringIteratorView implements StringIterator {
-
-        ArrayList<String> races;
-        String r;
-        int index;
-        Participations4 part4;
-        private MyStringIteratorView(String r, Participations4 part4) {
-            this.r = r;
-            this.part4 = part4;
-            index = 0;
-            races = new ArrayList<>();
-            for (String s : copyRaces(r)) {
-                races.add(s);
-            }
-        }
-
-        @Override
-        public String next() {
-            if (!hasNext()) {
+            if (shouldUpdate && !hasNext()) {
                 if (grow()) return next();
                 return null;
             }
@@ -221,6 +196,16 @@ public class Participations4 implements PartIterable {
         @Override
         public boolean hasNext() {
             return index < races.size();
+        }
+
+        private boolean grow() {
+            boolean grew = false;
+            for (String s : copyRaces(r)) {
+                if (races.contains(s)) continue;
+                races.add(s);
+                grew = true;
+            }
+            return grew;
         }
 
         // Returns a StringIterable vv.  The object vv contains the set of
@@ -235,24 +220,14 @@ public class Participations4 implements PartIterable {
             //  structure from the Collections Framework for this task.
             //  Implement helper classes as needed.
             ArrayList<String> racers = new ArrayList<>();
-            for (Participation p : part4) {
+            for (Participation p : Participations4.this) {
                 if (races.contains(p.getRacer()) || (index < races.size() &&  !p.getRace().equals(races.get(index)))) {
                     continue;
                 }
                 racers.add(p.getRacer());
             }
 
-            return new MyStringIterable(racers);
-        }
-
-        private boolean grow() {
-            boolean grew = false;
-            for (String s : copyRaces(r)) {
-                if (races.contains(s)) continue;
-                races.add(s);
-                grew = true;
-            }
-            return grew;
+            return new MyStringIterable(racers, false, null);
         }
     }
 
