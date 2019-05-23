@@ -6,6 +6,7 @@ import main.java.aufgabe6.StringIterable;
 import main.java.aufgabe6.StringIterator;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Participations4 implements PartIterable {
     // Objects of class 'Participations3' contain participations from
@@ -159,22 +160,20 @@ public class Participations4 implements PartIterable {
 
     private class MyStringIterator implements StringIterator {
 
-        ArrayList<String> races;
-        int index;
+        Iterator<String> iter;
+
         private MyStringIterator(ArrayList<String> races) {
-            this.races = races;
-            index = 0;
+            iter = races.iterator();
         }
 
         @Override
         public String next() {
-            if (!hasNext()) return null;
-            return races.get(index++);
+            return iter.next();
         }
 
         @Override
         public boolean hasNext() {
-            return index < races.size();
+            return iter.hasNext();
         }
     }
 
@@ -199,6 +198,7 @@ public class Participations4 implements PartIterable {
         String r;
         int index;
         Participations4 part4;
+
         private MyStringIteratorView(String r, Participations4 part4) {
             this.r = r;
             this.part4 = part4;
