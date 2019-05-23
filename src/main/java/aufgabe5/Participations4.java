@@ -2,6 +2,11 @@ package main.java.aufgabe5;
 
 import main.java.aufgabe1.Participation;
 import main.java.aufgabe3.Participations1;
+import main.java.aufgabe6.StringIterable;
+import main.java.aufgabe6.StringIterator;
+
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Participations4 implements PartIterable {
     // Objects of class 'Participations3' contain participations from
@@ -63,11 +68,16 @@ public class Participations4 implements PartIterable {
     public Participation lookupRacer(Participation p) {
         // TODO: Implement this method
         if (participations[hash(p)] == null) return null;
-        return participations[hash(p)].first();
+        return participations[hash(p)].lookupRacer(p);
     }
 
     private int hash(Participation p) {
         return p.hashCode() % participations.length;
+    }
+
+    @Override
+    public PartIterator iterator() {
+        return new Participations4Iter(participations);
     }
 
     // Fragen:
@@ -93,15 +103,70 @@ public class Participations4 implements PartIterable {
     // Typen übernehmen welche Eigenschaften von den übergeordneten
     // Typen, und welche fügen sie hinzu?
 
+    // Returns a StringIterable (see StringIterable.java) that contains
+    // the set of 'race's (i.e., each race occurs only once) of all
+    // Participation entries in 'this' (at the time when copyRaces() is
+    // called).
+    public StringIterable copyRaces() {
+        // TODO: implement this method; you are allowed to use a data
+        //  structure from the Collections Framework for this task.
+        //  Implement  helper classes as needed.
+        return copyRaces(null);
+    }
+
+    // As in copyRaces(), but selects only those races where the racer equals 'r'.
+    public StringIterable copyRaces(String r) {
+        // TODO: implement this method; you are allowed to use a data
+        //  structure from the Collections Framework for this task.
+        //  Implement helper classes as needed.
+        ArrayList<String> races = new ArrayList<>();
+        for (Participation p : this) {
+            if (races.contains(p.getRace()) || (r != null &&  !p.getRacer().equals(r))) {
+                continue;
+            }
+            races.add(p.getRace());
+        }
+
+        return new MyStringIterable(races);
+    }
+
+    private class MyStringIterable implements StringIterable {
+
+        ArrayList<String> races;
+        private MyStringIterable(ArrayList<String> races) {
+            this.races = races;
+        }
+
+        @Override
+        public StringIterator iterator() {
+            return new MyStringIterator(races);
+        }
+    }
+
+    private class MyStringIterator implements StringIterator {
+
+        ArrayList<String> races;
+        int index;
+        private MyStringIterator(ArrayList<String> races) {
+            this.races = races;
+            index = 0;
+        }
+
+        @Override
+        public String next() {
+            if (!hasNext()) return null;
+            return races.get(index++);
+        }
+
+        @Override
+        public boolean hasNext() {
+            return index < races.size();
+        }
+    }
 
     // This method is only for testing.
     // Alternatively, you can put the tests in additional classes.
     public static void main(String[] args) {
         // TODO: write your own test cases here if necessary.
-    }
-
-    @Override
-    public PartIterator iterator() {
-        return new Participations4Iter(participations);
     }
 }

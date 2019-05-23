@@ -13,7 +13,8 @@ public class MyParticipations4Test extends MyClassTest implements MyTestInterfac
     public boolean run() {
         return testPrint()
             && testLookupRacer()
-            && testIterator();
+            && testIterator()
+            && testStringIterator();
     }
 
     private boolean testPrint() {
@@ -69,6 +70,38 @@ public class MyParticipations4Test extends MyClassTest implements MyTestInterfac
                 && MyMiniTestSuite.assertTrue(partIterator.next().equals(c))
                 && MyMiniTestSuite.assertTrue(partIterator.next().equals(b))
                 && MyMiniTestSuite.assertFalse(partIterator.hasNext())
+        );
+    }
+
+    private boolean testStringIterator() {
+        print("testStringIterator()");
+
+        Participations4 participations = new Participations4(100);
+
+        String race1 = "Kitzbühel";
+        String race2 = "Schladming";
+
+        participations.add(new Participation(race1, "Marcel Hirscher", 1));
+        participations.add(new Participation(race1, "Hermann Maier", 2));
+        participations.add(new Participation(race1, "Benni Raich", 3));
+        participations.add(new Participation(race2, "Benni Raich", 4));
+        participations.add(new Participation(race2, "Marcel Hirscher", 5));
+
+        MyMiniTestSuite.changeOutToFile();
+        for (String s : participations.copyRaces()) {
+            System.out.println(s);
+        }
+
+        for (String s : participations.copyRaces("Hermann Maier")) {
+            System.out.println(s);
+        }
+
+        return testPassed(
+            MyMiniTestSuite.assertOutContent(
+                "Schladming\n" +
+                    "Kitzbühel\n" +
+                    "Kitzbühel"
+            )
         );
     }
 }
