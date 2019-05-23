@@ -1,3 +1,5 @@
+package main.java.aufgabe6;
+
 public interface StringIterator extends java.util.Iterator<String> {
     // returns the next 'String' object in the container that
     // 'this' iterates over.

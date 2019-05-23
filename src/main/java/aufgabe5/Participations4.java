@@ -2,6 +2,10 @@ package main.java.aufgabe5;
 
 import main.java.aufgabe1.Participation;
 import main.java.aufgabe3.Participations1;
+import main.java.aufgabe6.StringIterable;
+import main.java.aufgabe6.StringIterator;
+
+import java.util.ArrayList;
 
 public class Participations4 implements PartIterable {
     // Objects of class 'Participations3' contain participations from
@@ -63,11 +67,16 @@ public class Participations4 implements PartIterable {
     public Participation lookupRacer(Participation p) {
         // TODO: Implement this method
         if (participations[hash(p)] == null) return null;
-        return participations[hash(p)].first();
+        return participations[hash(p)].lookupRacer(p);
     }
 
     private int hash(Participation p) {
         return p.hashCode() % participations.length;
+    }
+
+    @Override
+    public PartIterator iterator() {
+        return new Participations4Iter(participations);
     }
 
     // Fragen:
@@ -93,15 +102,163 @@ public class Participations4 implements PartIterable {
     // Typen übernehmen welche Eigenschaften von den übergeordneten
     // Typen, und welche fügen sie hinzu?
 
+    // Returns a StringIterable (see StringIterable.java) that contains
+    // the set of 'race's (i.e., each race occurs only once) of all
+    // Participation entries in 'this' (at the time when copyRaces() is
+    // called).
+    public StringIterable copyRaces() {
+        // TODO: implement this method; you are allowed to use a data
+        //  structure from the Collections Framework for this task.
+        //  Implement  helper classes as needed.
+        return copyRaces(null);
+    }
+
+    // As in copyRaces(), but selects only those races where the racer equals 'r'.
+    public StringIterable copyRaces(String r) {
+        // TODO: implement this method; you are allowed to use a data
+        //  structure from the Collections Framework for this task.
+        //  Implement helper classes as needed.
+        ArrayList<String> races = new ArrayList<>();
+        for (Participation p : this) {
+            if (races.contains(p.getRace()) || (r != null &&  !p.getRacer().equals(r))) {
+                continue;
+            }
+            races.add(p.getRace());
+        }
+
+        return new MyStringIterable(races);
+    }
+
+    public StringIterable viewRaces() {
+        // TODO: implement this method; you are allowed to use a data
+        //  structure from the Collections Framework for this task.
+        //  Implement helper classes as needed.
+        return viewRaces(null);
+    }
+
+    // As in viewRaces(), but selects only those races where the racer equals 'r'.
+    public StringIterable viewRaces(String r) {
+        // TODO: implement this method; you are allowed to use a data
+        //  structure from the Collections Framework for this task.
+        //  Implement helper classes as needed.
+        return new MyStringIterableView(r, this);
+    }
+
+    private class MyStringIterable implements StringIterable {
+
+        ArrayList<String> races;
+        private MyStringIterable(ArrayList<String> races) {
+            this.races = races;
+        }
+
+        @Override
+        public StringIterator iterator() {
+            return new MyStringIterator(races);
+        }
+    }
+
+    private class MyStringIterator implements StringIterator {
+
+        ArrayList<String> races;
+        int index;
+        private MyStringIterator(ArrayList<String> races) {
+            this.races = races;
+            index = 0;
+        }
+
+        @Override
+        public String next() {
+            if (!hasNext()) return null;
+            return races.get(index++);
+        }
+
+        @Override
+        public boolean hasNext() {
+            return index < races.size();
+        }
+    }
+
+    private class MyStringIterableView implements StringIterable {
+
+        String r;
+        Participations4 part4;
+        private MyStringIterableView(String r, Participations4 part4) {
+            this.r = r;
+            this.part4 = part4;
+        }
+
+        @Override
+        public StringIterator iterator() {
+            return new MyStringIteratorView(r, part4);
+        }
+    }
+
+    public class MyStringIteratorView implements StringIterator {
+
+        ArrayList<String> races;
+        String r;
+        int index;
+        Participations4 part4;
+        private MyStringIteratorView(String r, Participations4 part4) {
+            this.r = r;
+            this.part4 = part4;
+            index = 0;
+            races = new ArrayList<>();
+            for (String s : copyRaces(r)) {
+                races.add(s);
+            }
+        }
+
+        @Override
+        public String next() {
+            if (!hasNext()) {
+                if (grow()) return next();
+                return null;
+            }
+            return races.get(index++);
+        }
+
+        @Override
+        public boolean hasNext() {
+            return index < races.size();
+        }
+
+        // Returns a StringIterable vv.  The object vv contains the set of
+        // 'racer's of all Participation entries in p where the race equals s.
+        // Iterating through the resulting StringIterable enumerates all the
+        // 'racer's in 'this' at the time when the iterator is created.  It is
+        // allowed to enumerate none, some, or all of the new racers that are
+        // added between the creation of the iterator and its exhaustion
+        // (hasNext() returns false).
+        public StringIterable viewRacers() {
+            // TODO: implement this method; you are allowed to use a data
+            //  structure from the Collections Framework for this task.
+            //  Implement helper classes as needed.
+            ArrayList<String> racers = new ArrayList<>();
+            for (Participation p : part4) {
+                if (races.contains(p.getRacer()) || (index < races.size() &&  !p.getRace().equals(races.get(index)))) {
+                    continue;
+                }
+                racers.add(p.getRacer());
+            }
+
+            return new MyStringIterable(racers);
+        }
+
+        private boolean grow() {
+            boolean grew = false;
+            for (String s : copyRaces(r)) {
+                if (races.contains(s)) continue;
+                races.add(s);
+                grew = true;
+            }
+            return grew;
+        }
+    }
 
     // This method is only for testing.
     // Alternatively, you can put the tests in additional classes.
     public static void main(String[] args) {
         // TODO: write your own test cases here if necessary.
-    }
-
-    @Override
-    public PartIterator iterator() {
-        return new Participations4Iter(participations);
     }
 }
