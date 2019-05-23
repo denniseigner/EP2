@@ -164,7 +164,7 @@ public class MyParticipations4Test extends MyClassTest implements MyTestInterfac
 
         MyMiniTestSuite.changeOutToFile();
         StringIterable v = participations.viewRaces();
-        Participations4.MyStringIteratorView t = (Participations4.MyStringIteratorView) v.iterator();
+        Participations4.MyStringIterator t = (Participations4.MyStringIterator) v.iterator();
         while (t.hasNext()) {
             StringIterable vv = t.viewRacers();
             String s = t.next();
