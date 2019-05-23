@@ -17,7 +17,8 @@ public class MyParticipations4Test extends MyClassTest implements MyTestInterfac
             && testLookupRacer()
             && testIterator()
             && testCopyRaces()
-            && testViewRaces();
+            && testViewRaces()
+            && testViewRacesNew();
     }
 
     private boolean testPrint() {
@@ -144,6 +145,39 @@ public class MyParticipations4Test extends MyClassTest implements MyTestInterfac
                     "Kitzbühel\n" +
                     "Matterhorn"
             )
+        );
+    }
+
+    private boolean testViewRacesNew() {
+        print("testViewRacesNew()");
+
+        Participations4 participations = new Participations4(100);
+
+        String race1 = "Kitzbühel";
+        String race2 = "Schladming";
+        String race3 = "Matterhorn";
+
+        participations.add(new Participation(race1, "Marcel Hirscher", 1));
+        participations.add(new Participation(race1, "Hermann Maier", 2));
+        participations.add(new Participation(race1, "Benni Raich", 3));
+        participations.add(new Participation(race2, "Benni Raich", 4));
+        participations.add(new Participation(race2, "Marcel Hirscher", 5));
+
+        StringIterable v = participations.viewRaces();
+        Participations4.MyStringIteratorView t = (Participations4.MyStringIteratorView) v.iterator();
+        while (t.hasNext()) {
+            StringIterable vv = t.viewRacers();
+            String s = t.next();
+            System.out.print("Teilnehmer an " + s + ":");
+            StringIterator tt = vv.iterator();
+            while(tt.hasNext()) {
+                System.out.print(" "+tt.next());
+            }
+            System.out.println("");
+        }
+
+        return testPassed(
+           false
         );
     }
 }

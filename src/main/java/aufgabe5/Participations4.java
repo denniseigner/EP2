@@ -191,7 +191,7 @@ public class Participations4 implements PartIterable {
         }
     }
 
-    private class MyStringIteratorView implements StringIterator {
+    public class MyStringIteratorView implements StringIterator {
 
         ArrayList<String> races;
         String r;
@@ -203,6 +203,20 @@ public class Participations4 implements PartIterable {
             for (String s : copyRaces(r)) {
                 races.add(s);
             }
+        }
+
+        // Returns a StringIterable vv.  The object vv contains the set of
+        // 'racer's of all Participation entries in p where the race equals s.
+        // Iterating through the resulting StringIterable enumerates all the
+        // 'racer's in 'this' at the time when the iterator is created.  It is
+        // allowed to enumerate none, some, or all of the new racers that are
+        // added between the creation of the iterator and its exhaustion
+        // (hasNext() returns false).
+        public StringIterable viewRacers() {
+            // TODO: implement this method; you are allowed to use a data
+            //  structure from the Collections Framework for this task.
+            //  Implement helper classes as needed.
+            return null;
         }
 
         @Override
