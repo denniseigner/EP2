@@ -155,10 +155,11 @@ public class MyParticipations4Test extends MyClassTest implements MyTestInterfac
 
         String race1 = "Kitzbühel";
         String race2 = "Schladming";
+        String race3 = "Matterhorn";
 
         participations.add(new Participation(race1, "Marcel Hirscher", 1));
         participations.add(new Participation(race1, "Hermann Maier", 2));
-        participations.add(new Participation(race1, "Benni Raich", 3));
+        participations.add(new Participation(race3, "Benni Raich", 3));
         participations.add(new Participation(race2, "Benni Raich", 4));
         participations.add(new Participation(race2, "Marcel Hirscher", 5));
 
@@ -170,6 +171,11 @@ public class MyParticipations4Test extends MyClassTest implements MyTestInterfac
             String s = t.next();
             System.out.print("Teilnehmer an " + s + ":");
             StringIterator tt = vv.iterator();
+
+            participations.add(new Participation(race1, "Lindsey Vonn", 6));
+            participations.add(new Participation(race2, "Lindsey Vonn", 7));
+            participations.add(new Participation(race3, "Hermann Maier", 8));
+
             while(tt.hasNext()) {
                 System.out.print(" " + tt.next());
             }
@@ -178,8 +184,9 @@ public class MyParticipations4Test extends MyClassTest implements MyTestInterfac
 
         return testPassed(
            MyMiniTestSuite.assertOutContent(
-               "Teilnehmer an Schladming: Benni Raich Marcel Hirscher\n" +
-                   "Teilnehmer an Kitzbühel: Hermann Maier Marcel Hirscher Benni Raich"
+               "Teilnehmer an Schladming: Benni Raich Marcel Hirscher Lindsey Vonn\n" +
+                   "Teilnehmer an Matterhorn: Benni Raich Hermann Maier\n" +
+                   "Teilnehmer an Kitzbühel: Hermann Maier Marcel Hirscher"
            )
         );
     }
